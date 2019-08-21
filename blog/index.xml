@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Issif</title>
+    <link>https://example.com/blog/</link>
+    <description>Recent content in Blogs on Issif</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <lastBuildDate>Tue, 20 Aug 2019 16:36:17 +0200</lastBuildDate>
+    
+	<atom:link href="https://example.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Chart XKCD</title>
+      <link>https://example.com/blog/chart/</link>
+      <pubDate>Tue, 20 Aug 2019 16:36:17 +0200</pubDate>
+      
+      <guid>https://example.com/blog/chart/</guid>
+      <description>Je suis tombé chart.xkcd parmi les flux RSS que je suis. J&amp;rsquo;ai trouvé l&amp;rsquo;idée amusante et le rendu agréable, j&amp;rsquo;en ai donc fait un micro shortcode pour Hugo :
+&amp;lt;div&amp;gt; &amp;lt;svg class=&#39;{{ .Get &amp;quot;name&amp;quot; }}&#39;&amp;gt;&amp;lt;/svg&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; const svg{{ .Get &amp;quot;name&amp;quot; | safeJS }} = document.querySelector(&#39;.{{ .Get &amp;quot;name&amp;quot; }}&#39;); new chartXkcd.{{ .Get &amp;quot;type&amp;quot; | safeJS }}(svg{{ .Get &amp;quot;name&amp;quot; | safeJS }}, { {{ .Inner | safeJS }} }); &amp;lt;/script&amp;gt; &amp;lt;/div&amp;gt;  A caler dans layout/shortcodes/chart-xkcd.</description>
+    </item>
+    
+    <item>
+      <title>Décoder du base64 en Go</title>
+      <link>https://example.com/blog/decoder-du-base64-en-go/</link>
+      <pubDate>Mon, 19 Aug 2019 21:18:47 +0200</pubDate>
+      
+      <guid>https://example.com/blog/decoder-du-base64-en-go/</guid>
+      <description>Je tentais de décoder la partie payload d&amp;rsquo;un token JWT (https://scotch.io/tutorials/the-anatomy-of-a-json-web-token) quand j&amp;rsquo;ai eu l&amp;rsquo;erreur suivante :
+panic: illegal base64 data at input byte 349  Ma façon de faire était pourtant classique et a toujours fonctionné auparavant :
+base64.StdEncoding.DecodeString(s)  Et le décodage du string via un autre outil ne posait pas de souci. 😧
+La solution se trouvait une fois de plus dans la documentation de Go : https://golang.</description>
+    </item>
+    
+  </channel>
+</rss>

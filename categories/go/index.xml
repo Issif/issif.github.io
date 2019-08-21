@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on Issif</title>
+    <link>https://example.com/categories/go/</link>
+    <description>Recent content in go on Issif</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <lastBuildDate>Mon, 19 Aug 2019 21:18:47 +0200</lastBuildDate>
+    
+	<atom:link href="https://example.com/categories/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Décoder du base64 en Go</title>
+      <link>https://example.com/blog/decoder-du-base64-en-go/</link>
+      <pubDate>Mon, 19 Aug 2019 21:18:47 +0200</pubDate>
+      
+      <guid>https://example.com/blog/decoder-du-base64-en-go/</guid>
+      <description>Je tentais de décoder la partie payload d&amp;rsquo;un token JWT (https://scotch.io/tutorials/the-anatomy-of-a-json-web-token) quand j&amp;rsquo;ai eu l&amp;rsquo;erreur suivante :
+panic: illegal base64 data at input byte 349  Ma façon de faire était pourtant classique et a toujours fonctionné auparavant :
+base64.StdEncoding.DecodeString(s)  Et le décodage du string via un autre outil ne posait pas de souci. 😧
+La solution se trouvait une fois de plus dans la documentation de Go : https://golang.</description>
+    </item>
+    
+  </channel>
+</rss>

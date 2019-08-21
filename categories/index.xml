@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Issif</title>
+    <link>https://example.com/categories/</link>
+    <description>Recent content in Categories on Issif</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
+    <lastBuildDate>Tue, 20 Aug 2019 16:36:17 +0200</lastBuildDate>
+    
+	<atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>chart</title>
+      <link>https://example.com/categories/chart/</link>
+      <pubDate>Tue, 20 Aug 2019 16:36:17 +0200</pubDate>
+      
+      <guid>https://example.com/categories/chart/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://example.com/categories/hugo/</link>
+      <pubDate>Tue, 20 Aug 2019 16:36:17 +0200</pubDate>
+      
+      <guid>https://example.com/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://example.com/categories/javascript/</link>
+      <pubDate>Tue, 20 Aug 2019 16:36:17 +0200</pubDate>
+      
+      <guid>https://example.com/categories/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://example.com/categories/go/</link>
+      <pubDate>Mon, 19 Aug 2019 21:18:47 +0200</pubDate>
+      
+      <guid>https://example.com/categories/go/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
