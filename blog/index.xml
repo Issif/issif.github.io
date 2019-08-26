@@ -2,40 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Issif</title>
-    <link>https://example.com/blog/</link>
+    <link>https://thomas.labarussias.fr/blog/</link>
     <description>Recent content in Blogs on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Wed, 21 Aug 2019 17:59:22 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 13:18:10 +0200</lastBuildDate>
     
-	<atom:link href="https://example.com/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://thomas.labarussias.fr/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Falcosidekick 2.6.0</title>
+      <link>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</link>
+      <pubDate>Mon, 26 Aug 2019 13:18:10 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</guid>
+      <description>Nouvelle release, la 2.6.0, de mon proxy pour falco.
+La grosse feature étant l&amp;rsquo;ajout du SMTP (envoi d&amp;rsquo;email) comme sortie :
+Afin de respecter les standards, la version html contient également la version plaintext. Il est aussi possible d&amp;rsquo;envoyer uniquement la version plaintext, utile pour certains systèmes de ticketing qui utilisent l&amp;rsquo;email pour la création.
+Le repo Github et l&amp;rsquo;image sur le DockerHub.
+Enjoy</description>
+    </item>
+    
+    <item>
       <title>Conversion de Types en Go</title>
-      <link>https://example.com/blog/golang-conversion-types/</link>
+      <link>https://thomas.labarussias.fr/blog/golang-conversion-types/</link>
       <pubDate>Wed, 21 Aug 2019 17:59:22 +0200</pubDate>
       
-      <guid>https://example.com/blog/golang-conversion-types/</guid>
+      <guid>https://thomas.labarussias.fr/blog/golang-conversion-types/</guid>
       <description>int64 🠮 string FormatInt strconv.FormatInt(i int64, base int)  Itoa strconv.Itoa(i int) // Itoa is equivalent to FormatInt(int64(i), 10).  string 🠮 int64 ParseInt strconv.ParseInt(s string, base int, bitSize int)  Atoi strconv.Atoi(s string) // Atoi is equivalent to ParseInt(s, 10, 0), converted to type int.  string 🠮 Time  Pour le layout. Pour la location.  Parse time.Parse(layout, value string)  ParseInLocation time.ParseInLocation(layout, value string, loc *Location)  Time 🠮 string Pour le layout.</description>
     </item>
     
     <item>
       <title>Chart XKCD</title>
-      <link>https://example.com/blog/chart/</link>
+      <link>https://thomas.labarussias.fr/blog/chart-xkcd/</link>
       <pubDate>Tue, 20 Aug 2019 16:36:17 +0200</pubDate>
       
-      <guid>https://example.com/blog/chart/</guid>
+      <guid>https://thomas.labarussias.fr/blog/chart-xkcd/</guid>
       <description>Je suis tombé chart.xkcd parmi les flux RSS que je suis. J&amp;rsquo;ai trouvé l&amp;rsquo;idée amusante et le rendu agréable, j&amp;rsquo;en ai donc fait un micro shortcode pour Hugo :
 &amp;lt;div&amp;gt; &amp;lt;svg class=&#39;{{ .Get &amp;quot;name&amp;quot; }}&#39;&amp;gt;&amp;lt;/svg&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; const svg{{ .Get &amp;quot;name&amp;quot; | safeJS }} = document.querySelector(&#39;.{{ .Get &amp;quot;name&amp;quot; }}&#39;); new chartXkcd.{{ .Get &amp;quot;type&amp;quot; | safeJS }}(svg{{ .Get &amp;quot;name&amp;quot; | safeJS }}, { {{ .Inner | safeJS }} }); &amp;lt;/script&amp;gt; &amp;lt;/div&amp;gt;  A caler dans layout/shortcodes/chart-xkcd.</description>
     </item>
     
     <item>
       <title>Décoder du base64 en Go</title>
-      <link>https://example.com/blog/decoder-du-base64-en-go/</link>
+      <link>https://thomas.labarussias.fr/blog/decoder-du-base64-en-go/</link>
       <pubDate>Mon, 19 Aug 2019 21:18:47 +0200</pubDate>
       
-      <guid>https://example.com/blog/decoder-du-base64-en-go/</guid>
+      <guid>https://thomas.labarussias.fr/blog/decoder-du-base64-en-go/</guid>
       <description>Je tentais de décoder la partie payload d&amp;rsquo;un token JWT (https://scotch.io/tutorials/the-anatomy-of-a-json-web-token) quand j&amp;rsquo;ai eu l&amp;rsquo;erreur suivante :
 panic: illegal base64 data at input byte 349  Ma façon de faire était pourtant classique et a toujours fonctionné auparavant :
 base64.StdEncoding.DecodeString(s)  Et le décodage du string via un autre outil ne posait pas de souci. 😧

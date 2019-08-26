@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>chart on Issif</title>
-    <link>https://example.com/categories/chart/</link>
+    <link>https://thomas.labarussias.fr/categories/chart/</link>
     <description>Recent content in chart on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <lastBuildDate>Tue, 20 Aug 2019 16:36:17 +0200</lastBuildDate>
     
-	<atom:link href="https://example.com/categories/chart/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://thomas.labarussias.fr/categories/chart/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Chart XKCD</title>
-      <link>https://example.com/blog/chart/</link>
+      <link>https://thomas.labarussias.fr/blog/chart-xkcd/</link>
       <pubDate>Tue, 20 Aug 2019 16:36:17 +0200</pubDate>
       
-      <guid>https://example.com/blog/chart/</guid>
+      <guid>https://thomas.labarussias.fr/blog/chart-xkcd/</guid>
       <description>Je suis tombé chart.xkcd parmi les flux RSS que je suis. J&amp;rsquo;ai trouvé l&amp;rsquo;idée amusante et le rendu agréable, j&amp;rsquo;en ai donc fait un micro shortcode pour Hugo :
 &amp;lt;div&amp;gt; &amp;lt;svg class=&#39;{{ .Get &amp;quot;name&amp;quot; }}&#39;&amp;gt;&amp;lt;/svg&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; const svg{{ .Get &amp;quot;name&amp;quot; | safeJS }} = document.querySelector(&#39;.{{ .Get &amp;quot;name&amp;quot; }}&#39;); new chartXkcd.{{ .Get &amp;quot;type&amp;quot; | safeJS }}(svg{{ .Get &amp;quot;name&amp;quot; | safeJS }}, { {{ .Inner | safeJS }} }); &amp;lt;/script&amp;gt; &amp;lt;/div&amp;gt;  A caler dans layout/shortcodes/chart-xkcd.</description>
     </item>
