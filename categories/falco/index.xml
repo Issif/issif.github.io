@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>falco on Issif</title>
@@ -8,8 +7,93 @@
     <language>fr</language>
     <lastBuildDate>Mon, 26 Aug 2019 13:18:10 +0200</lastBuildDate>
     
-	<atom:link href="https://thomas.labarussias.fr/categories/falco/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://thomas.labarussias.fr/categories/falco/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Proxifier Traefik par Traefik</title>
+      <link>https://thomas.labarussias.fr/blog/traefik-proxyfier-dashboard/</link>
+      <pubDate>Mon, 26 Aug 2019 14:28:24 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/traefik-proxyfier-dashboard/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://traefik.io/&#34;&gt;&lt;strong&gt;Traefik&lt;/strong&gt;&lt;/a&gt; possède une &lt;em&gt;UI&lt;/em&gt; basique qui est par défaut exposée sur un port différent. Il est possible de faire en sorte que &lt;strong&gt;Traefik&lt;/strong&gt; serve lui même de proxy, cela permet :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ne plus avoir à utiliser un port différent pour accéder l&amp;rsquo;&lt;em&gt;UI&lt;/em&gt;, mais un domaine classique (&amp;rdquo;&lt;em&gt;traefik.mondomaine.net&lt;/em&gt;&amp;rdquo; par ex.)&lt;/li&gt;
+&lt;li&gt;forcer l&amp;rsquo;accès en http&lt;strong&gt;s&lt;/strong&gt; avec en prime un certificat &lt;a href=&#34;https://letsencrypt.org/fr/&#34;&gt;&lt;em&gt;Let&amp;rsquo;s Encrypt&lt;/em&gt;&lt;/a&gt; automatique et gratuit&lt;/li&gt;
+&lt;li&gt;permettre de rajouter une authentification, par défaut, l&amp;rsquo;&lt;em&gt;UI&lt;/em&gt; est ouverte à tout une fois activée&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dans mon cas, je fais tourner &lt;strong&gt;Traefik&lt;/strong&gt; dans un container, mais ça marchera pareil si vous le faîtes tourner directement sur l&amp;rsquo;&lt;em&gt;host&lt;/em&gt;, prenez juste soin de filtrer le port de l&amp;rsquo;&lt;em&gt;UI&lt;/em&gt; (&lt;em&gt;8080&lt;/em&gt; par défaut) pour qu&amp;rsquo;il n&amp;rsquo;accepte que les connexions de la boucle local (&lt;em&gt;127.0.0.1&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Voilà ce qu&amp;rsquo;il faut avoir à minima dans sa configuration &lt;em&gt;config.toml&lt;/em&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;################################################################
+# Configuration globale
+################################################################
+
+defaultEntryPoints = [&amp;quot;http&amp;quot;, &amp;quot;https&amp;quot;]
+
+[entryPoints]
+  [entryPoints.http]
+  address = &amp;quot;:80&amp;quot;               # traefik ecoute sur le port 80
+    [entryPoints.http.redirect]
+      entryPoint = &amp;quot;https&amp;quot;      # redirection http &amp;gt; https
+  [entryPoints.https]
+  address = &amp;quot;:443&amp;quot;              # traefik ecoute sur le port 443
+  [entryPoints.https.tls]
+    minVersion = &amp;quot;VersionTLS12&amp;quot; # version minimum de TLS acceptee
+  [entryPoints.ui]
+  address=&amp;quot;127.0.0.1:8080&amp;quot;      # on ecoute uniquement sur la boucle locale pour ce port
+    [entryPoints.ui.auth]
+      [entryPoints.ui.auth.basic]
+        users = [&amp;quot;XXXX:YYYY&amp;quot;]   # les identifiants au format htpasswd
+
+################################################################
+# Configuration pour let&#39;s encrypt
+################################################################
+
+[acme]
+email = &amp;quot;xxx@yyy.zzz&amp;quot;           # votre mail pour lets encrypt
+storage = &amp;quot;/certs/acme.json&amp;quot;
+entryPoint = &amp;quot;https&amp;quot;
+onDemand = true                 # demande automatique de certificat
+acmeLogging = true
+  [acme.httpChallenge]
+  entryPoint = &amp;quot;http&amp;quot;
+
+################################################################
+# Configuration de l&#39;API de Traefik
+################################################################
+
+[api]
+entryPoint = &amp;quot;ui&amp;quot;               # l API ecoutera sur cet entrypoint
+dashboard = true
+  [api.statistics]
+  recentErrors = 50
+
+################################################################
+# Configuration pour l&#39;UI de Traefik
+################################################################
+
+[file]
+
+[frontends]
+  [frontends.ui]
+  backend = &amp;quot;ui&amp;quot;
+  passHostHeader = true
+    [frontends.ui.routes.default]
+    rule = &amp;quot;Host:ui.mondomaine.net&amp;quot; # votre domaine a configurer
+
+[backends]
+  [backends.ui]
+    [backends.ui.servers.default]
+      url = &amp;quot;http://127.0.0.1:8080&amp;quot;   # le backend a utiliser qui s avere etre l entrypoint de l API
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Falcosidekick 2.6.0</title>
@@ -17,11 +101,250 @@
       <pubDate>Mon, 26 Aug 2019 13:18:10 +0200</pubDate>
       
       <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</guid>
-      <description>Nouvelle release, la 2.6.0, de mon proxy pour falco.
-La grosse feature étant l&amp;rsquo;ajout du SMTP (envoi d&amp;rsquo;email) comme sortie :
-Afin de respecter les standards, la version html contient également la version plaintext. Il est aussi possible d&amp;rsquo;envoyer uniquement la version plaintext, utile pour certains systèmes de ticketing qui utilisent l&amp;rsquo;email pour la création.
-Le repo Github et l&amp;rsquo;image sur le DockerHub.
-Enjoy</description>
+      <description>&lt;p&gt;Nouvelle release, la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.6.0&#34;&gt;&lt;strong&gt;2.6.0&lt;/strong&gt;&lt;/a&gt;, de mon proxy pour &lt;a href=&#34;https://falco.org/&#34;&gt;falco&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;La grosse feature étant l&amp;rsquo;ajout du &lt;em&gt;SMTP&lt;/em&gt; (envoi d&amp;rsquo;email) comme sortie :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/Issif/falcosidekick/master/imgs/smtp_html.png&#34; alt=&#34;smtp html falcosidekick&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Afin de respecter les standards, la version &lt;em&gt;html&lt;/em&gt; contient également la version &lt;em&gt;plaintext&lt;/em&gt;. Il est aussi possible d&amp;rsquo;envoyer uniquement la version &lt;em&gt;plaintext&lt;/em&gt;, utile pour certains systèmes de &lt;em&gt;ticketing&lt;/em&gt; qui utilisent l&amp;rsquo;email pour la création.&lt;/p&gt;
+
+&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/Issif/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/issif/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Conversion de Types en Go</title>
+      <link>https://thomas.labarussias.fr/blog/golang-conversion-types/</link>
+      <pubDate>Wed, 21 Aug 2019 17:59:22 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/golang-conversion-types/</guid>
+      <description>
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;int64-string&#34;&gt;int64 🠮 string&lt;/h1&gt;
+
+&lt;h2 id=&#34;formatint-https-golang-org-pkg-strconv-formatint&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#FormatInt&#34;&gt;FormatInt&lt;/a&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;strconv.FormatInt(i int64, base int)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;itoa-https-golang-org-pkg-strconv-itoa&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#Itoa&#34;&gt;Itoa&lt;/a&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;strconv.Itoa(i int)
+// Itoa is equivalent to FormatInt(int64(i), 10). 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;string-int64&#34;&gt;string 🠮 int64&lt;/h1&gt;
+
+&lt;h2 id=&#34;parseint-https-golang-org-pkg-strconv-parseint&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#ParseInt&#34;&gt;ParseInt&lt;/a&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;strconv.ParseInt(s string, base int, bitSize int)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;atoi-https-golang-org-pkg-strconv-atoi&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#Atoi&#34;&gt;Atoi&lt;/a&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;strconv.Atoi(s string)
+// Atoi is equivalent to ParseInt(s, 10, 0), converted to type int. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;string-time&#34;&gt;string 🠮 Time&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pour le &lt;a href=&#34;https://godoc.org/time#pkg-constants&#34;&gt;layout&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Pour la &lt;a href=&#34;https://godoc.org/time#LoadLocation&#34;&gt;location&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;parse-https-godoc-org-time-parse&#34;&gt;&lt;a href=&#34;https://godoc.org/time#Parse&#34;&gt;Parse&lt;/a&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;time.Parse(layout, value string)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;parseinlocation-https-godoc-org-time-parseinlocation&#34;&gt;&lt;a href=&#34;https://godoc.org/time#ParseInLocation&#34;&gt;ParseInLocation&lt;/a&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;time.ParseInLocation(layout, value string, loc *Location)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;time-string&#34;&gt;Time 🠮 string&lt;/h1&gt;
+
+&lt;p&gt;Pour le &lt;a href=&#34;https://godoc.org/time#pkg-constants&#34;&gt;layout&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;time-format-https-godoc-org-time-time-format&#34;&gt;&lt;a href=&#34;https://godoc.org/time#Time.Format&#34;&gt;Time.Format&lt;/a&gt;&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;var t time.Time
+t.Format(layout string)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Chart XKCD</title>
+      <link>https://thomas.labarussias.fr/blog/chart-xkcd/</link>
+      <pubDate>Tue, 20 Aug 2019 16:36:17 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/chart-xkcd/</guid>
+      <description>
+
+&lt;p&gt;Je suis tombé &lt;a href=&#34;https://github.com/timqian/chart.xkcd&#34;&gt;chart.xkcd&lt;/a&gt; parmi les flux RSS que je suis. J&amp;rsquo;ai trouvé l&amp;rsquo;idée amusante et le rendu agréable, j&amp;rsquo;en ai donc fait un micro &lt;em&gt;shortcode&lt;/em&gt; pour &lt;strong&gt;Hugo&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div&amp;gt;
+&amp;lt;svg class=&#39;{{ .Get &amp;quot;name&amp;quot; }}&#39;&amp;gt;&amp;lt;/svg&amp;gt;
+&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+  const svg{{ .Get &amp;quot;name&amp;quot; | safeJS }} = document.querySelector(&#39;.{{ .Get &amp;quot;name&amp;quot; }}&#39;);
+  new chartXkcd.{{ .Get &amp;quot;type&amp;quot; | safeJS }}(svg{{ .Get &amp;quot;name&amp;quot; | safeJS }}, {
+    {{ .Inner | safeJS }}
+  });
+&amp;lt;/script&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A caler dans &lt;code&gt;layout/shortcodes/chart-xkcd.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Trois types de diagrammes sont dispos pour le moment : &lt;a href=&#34;#line&#34;&gt;&lt;strong&gt;Line&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#pie&#34;&gt;&lt;strong&gt;Pie&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#bar&#34;&gt;&lt;strong&gt;Bar&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;exemples&#34;&gt;Exemples&lt;/h2&gt;
+
+&lt;h3 id=&#34;line&#34;&gt;Line&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;line&amp;quot; type=&amp;quot;Line&amp;quot; %}}
+    title: &#39;A vs B&#39;,
+    xLabel: &#39;Abscisse&#39;,
+    yLabel: &#39;Ordonnee&#39;,
+    data: {
+      labels:[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;,&#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;],
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [30, 2500, 200, 300, 250 ,800, 1500, 2900, 5000, 800],
+      }, {
+        label: &#39;B&#39;,
+        data: [0, 1, 30, 70, 80, 100, 50, 80, 40, 150],
+      }]
+    }
+{{% /chart-xkcd %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;line&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgline = document.querySelector(&#39;.line&#39;);
+  new chartXkcd.Line(svgline, {
+    
+    title: &#39;A vs B&#39;,
+    xLabel: &#39;Abscisse&#39;,
+    yLabel: &#39;Ordonnee&#39;,
+    data: {
+      labels:[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;,&#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;],
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [30, 2500, 200, 300, 250 ,800, 1500, 2900, 5000, 800],
+      }, {
+        label: &#39;B&#39;,
+        data: [0, 145, 300, 770, 80, 45, 50, 1080, 40, 150],
+      }]
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;pie&#34;&gt;Pie&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;pie&amp;quot; type=&amp;quot;Pie&amp;quot; %}}
+    title: &#39;What Tim made of&#39;,
+    data: {
+      labels:[ &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
+      datasets: [{
+        data: [200, 122, 60, 130, 44,],
+      }]
+    }
+{{% /chart-xkcd %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;pie&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgpie = document.querySelector(&#39;.pie&#39;);
+  new chartXkcd.Pie(svgpie, {
+    
+    title: &#39;Pie&#39;,
+    data: {
+      labels:[ &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
+      datasets: [{
+        data: [200, 122, 60, 130, 44,],
+      }]
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;bar&#34;&gt;Bar&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;bar&amp;quot; type=&amp;quot;Bar&amp;quot; %}}
+    data: {
+      labels:[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
+      datasets: [{
+        data: [20, 33, 5, 12],
+      }]
+    }
+{{% /chart-xkcd %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;bar&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgbar = document.querySelector(&#39;.bar&#39;);
+  new chartXkcd.Bar(svgbar, {
+    
+    data: {
+      labels:[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
+      datasets: [{
+        data: [20, 33, 5, 12],
+      }]
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Décoder du base64 en Go</title>
+      <link>https://thomas.labarussias.fr/blog/decoder-du-base64-en-go/</link>
+      <pubDate>Mon, 19 Aug 2019 21:18:47 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/decoder-du-base64-en-go/</guid>
+      <description>&lt;p&gt;Je tentais de décoder la partie &lt;em&gt;payload&lt;/em&gt; d&amp;rsquo;un token &lt;em&gt;JWT&lt;/em&gt; (&lt;a href=&#34;https://scotch.io/tutorials/the-anatomy-of-a-json-web-token&#34;&gt;https://scotch.io/tutorials/the-anatomy-of-a-json-web-token&lt;/a&gt;) quand j&amp;rsquo;ai eu l&amp;rsquo;erreur suivante :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;panic: illegal base64 data at input byte 349
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ma façon de faire était pourtant classique et a toujours fonctionné auparavant :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;base64.StdEncoding.DecodeString(s)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Et le décodage du &lt;em&gt;string&lt;/em&gt; via un autre outil ne posait pas de souci. 😧&lt;/p&gt;
+
+&lt;p&gt;La solution se trouvait une fois de plus dans la documentation de &lt;strong&gt;Go&lt;/strong&gt; : &lt;a href=&#34;https://golang.org/pkg/encoding/base64/#pkg-variables&#34;&gt;https://golang.org/pkg/encoding/base64/#pkg-variables&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Il existe plusieurs fonctions de décodage qui prennent ou non en compte les caractères de &lt;em&gt;padding&lt;/em&gt;, en changeant pour :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;base64.RawStdEncoding.DecodeString(s)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Mon &lt;em&gt;payload&lt;/em&gt; était décodé.&lt;/p&gt;
+
+&lt;p&gt;👍&lt;/p&gt;
+</description>
     </item>
     
   </channel>
