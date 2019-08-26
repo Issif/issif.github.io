@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
   <meta charset="utf-8">
-<title>go - Issif</title>
+<title>Contact - Issif</title>
 <meta name="description" content="Go addict">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,19 +17,18 @@
 
 
   <meta name="generator" content="Hugo 0.57.2" />
-  <meta itemprop="name" content="go">
+  <meta itemprop="name" content="Contact">
 <meta itemprop="description" content="">
 
 
-  <meta property="og:title" content="go" />
+  <meta property="og:title" content="Contact" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://thomas.labarussias.fr/categories/go/" />
+<meta property="og:url" content="https://thomas.labarussias.fr/contact/" />
 
-<meta property="og:updated_time" content="2019-08-26T13:18:10+02:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="go"/>
+<meta name="twitter:title" content="Contact"/>
 <meta name="twitter:description" content=""/>
 
   
@@ -64,7 +63,7 @@
       <a href="/">
         
           
-            Catégories
+            Contact
           
         
       </a>
@@ -110,7 +109,7 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/categories/go/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
+    <li><a href="/contact/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
 
 
         <li><a href="//github.com/issif" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
@@ -160,214 +159,44 @@
   
 </section>
       <main id="site-main">
-        <h1>go</h1>
-        
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/falcosidekick-v-2-6-0/">Falcosidekick 2.6.0</a></h2>
-    
-    
-        <p>release v2.6.0</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-08-26 13:18:10 &#43;0200 CEST">
-      26-08-2019
-    </time>
-    <span class="author">Issif</span>
-    
-        <p>1 minutes</p>
-    
-  </div>
-</header>
-
-  
-<a href="/blog/falcosidekick-v-2-6-0/" class="image featured">
-  <img src="/img/main/falcosidekick-feature.png" alt="galcosidekick feature">
-</a>
-
-
-  
-  <p>Nouvelle release, la <a href="https://github.com/Issif/falcosidekick/releases/tag/2.6.0"><strong>2.6.0</strong></a>, de mon proxy pour <a href="https://falco.org/">falco</a>.</p>
-  <footer>
-    <a href="/blog/falcosidekick-v-2-6-0/" class="button big">Lire la suite</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/falco">falco</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9">sécurité</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/golang-conversion-types/">Conversion de Types en Go</a></h2>
-    
-    
-        <p>Comment convertir les types en Go</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-08-21 17:59:22 &#43;0200 CEST">
-      21-08-2019
-    </time>
-    <span class="author">Issif</span>
-    
-        <p>1 minutes</p>
-    
-  </div>
-</header>
-
-  
-
-  
-  <pre><code class="language-go">strconv.FormatInt(i int64, base int)
-</code></pre>
-
-<h2 id="itoa-https-golang-org-pkg-strconv-itoa"><a href="https://golang.org/pkg/strconv/#Itoa">Itoa</a></h2>
-
-<pre><code class="language-go">strconv.Itoa(i int)
-// Itoa is equivalent to FormatInt(int64(i), 10). 
-</code></pre>
-
-<h1 id="string-int64">string 🠮 int64</h1>
-
-<h2 id="parseint-https-golang-org-pkg-strconv-parseint"><a href="https://golang.org/pkg/strconv/#ParseInt">ParseInt</a></h2>
-
-<pre><code class="language-go">strconv.ParseInt(s string, base int, bitSize int)
-</code></pre>
-
-<h2 id="atoi-https-golang-org-pkg-strconv-atoi"><a href="https://golang.org/pkg/strconv/#Atoi">Atoi</a></h2>
-
-<pre><code class="language-go">strconv.Atoi(s string)
-// Atoi is equivalent to ParseInt(s, 10, 0), converted to type int. 
-</code></pre>
-
-<h1 id="string-time">string 🠮 Time</h1>
-
-<ul>
-<li>Pour le <a href="https://godoc.org/time#pkg-constants">layout</a>.</li>
-<li>Pour la <a href="https://godoc.org/time#LoadLocation">location</a>.</li>
-</ul>
-
-<h2 id="parse-https-godoc-org-time-parse"><a href="https://godoc.org/time#Parse">Parse</a></h2>
-
-<pre><code class="language-go">time.Parse(layout, value string)
-</code></pre>
-
-<h2 id="parseinlocation-https-godoc-org-time-parseinlocation"><a href="https://godoc.org/time#ParseInLocation">ParseInLocation</a></h2>
-
-<pre><code class="language-go">time.ParseInLocation(layout, value string, loc *Location)
-</code></pre>
-
-<h1 id="time-string">Time 🠮 string</h1>
-
-<p>Pour le <a href="https://godoc.org/time#pkg-constants">layout</a>.</p>
-  <footer>
-    <a href="/blog/golang-conversion-types/" class="button big">Lire la suite</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/decoder-du-base64-en-go/">Décoder du base64 en Go</a></h2>
-    
-    
-        <p>comment corriger &#34;panic: illegal base64 data at input byte&#34;</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-08-19 21:18:47 &#43;0200 CEST">
-      19-08-2019
-    </time>
-    <span class="author">Issif</span>
-    
-        <p>1 minutes</p>
-    
-  </div>
-</header>
-
-  
-
-  
-  <p>Je tentais de décoder la partie <em>payload</em> d&rsquo;un token <em>JWT</em> (<a href="https://scotch.io/tutorials/the-anatomy-of-a-json-web-token">https://scotch.io/tutorials/the-anatomy-of-a-json-web-token</a>) quand j&rsquo;ai eu l&rsquo;erreur suivante :</p>
-  <footer>
-    <a href="/blog/decoder-du-base64-en-go/" class="button big">Lire la suite</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-        
-<div class="pagination">
-  
-    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
-  
-  
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
-  
-</div>
-
+        <article class="post">
+          <header>
+            <div class="title">
+              
+                <h2><a href="/contact/">Contact</a></h2>
+              
+              
+            </div>
+          </header>
+            <div id="content">
+              
+              <div class="contact-container">
+                
+                  <form id="contact" action="//formspree.io/issif_blog@gadz.org" method="post" center width="300px">
+                
+                <h4>Réponse généralement en 24 heures.</h4>
+                <fieldset>
+                  <input placeholder="Nom" type="text" name="name" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Email" type="email" name="_replyto" tabindex="2" required>
+                </fieldset>
+                <fieldset>
+                  <input placeholder="Sujet" type="text" name="_subject" tabindex="3" required>
+                </fieldset>
+                <fieldset>
+                  <textarea placeholder="Message" name="message" tabindex="4" required></textarea>
+                </fieldset>
+                <fieldset>
+                  <input type="hidden" name="_language" value="fr">
+                </fieldset>
+                <fieldset>
+                  <button name="submit" class="button" type="submit" id="contact-submit" tabindex="5">Envoyer</button>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </article>
       </main>
       <section id="site-sidebar">
   
