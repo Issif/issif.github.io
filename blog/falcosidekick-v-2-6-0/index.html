@@ -244,7 +244,23 @@
 
   </footer>
 </article>
-
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<article class="post">
+<div id="comments"></div>
+<script>
+const gitment = new Gitment({
+  id: 'blog\/', 
+  owner: 'issif',
+  repo: 'issif.github.io-comments',
+  oauth: {
+    client_id: '595f1434f9549a19b589',
+    client_secret: '74980f37f59e3596eb7944c33bff7f1a3968e810',
+  },
+})
+gitment.render('comments')
+</script>
+</article>
 
 <div class="pagination">
   
