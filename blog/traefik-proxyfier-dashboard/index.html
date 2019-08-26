@@ -2,8 +2,8 @@
 <html lang="fr">
   <head>
   <meta charset="utf-8">
-<title>404 Page not found - Issif</title>
-<meta name="description" content="Go addict">
+<title>Proxifier Traefik par Traefik - Issif</title>
+<meta name="description" content="Comment faire en sorte que Traefik proxyfie son dashboard">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -17,19 +17,28 @@
 
 
   <meta name="generator" content="Hugo 0.57.2" />
-  <meta itemprop="name" content="404 Page not found">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Proxifier Traefik par Traefik">
+<meta itemprop="description" content="Comment faire en sorte que Traefik proxyfie son dashboard">
 
 
-  <meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://thomas.labarussias.fr/404.html" />
+<meta itemprop="datePublished" content="2019-08-26T14:28:24&#43;02:00" />
+<meta itemprop="dateModified" content="2019-08-26T14:28:24&#43;02:00" />
+<meta itemprop="wordCount" content="321">
 
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="Proxifier Traefik par Traefik" />
+<meta property="og:description" content="Comment faire en sorte que Traefik proxyfie son dashboard" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomas.labarussias.fr/blog/traefik-proxyfier-dashboard/" />
+<meta property="article:published_time" content="2019-08-26T14:28:24+02:00" />
+<meta property="article:modified_time" content="2019-08-26T14:28:24+02:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Proxifier Traefik par Traefik"/>
+<meta name="twitter:description" content="Comment faire en sorte que Traefik proxyfie son dashboard"/>
 
   
 
@@ -62,7 +71,9 @@
     <h1 class="nav-title">
       <a href="/">
         
-          404 Page not found
+          
+            Blog
+          
         
       </a>
     </h1>
@@ -151,22 +162,159 @@
 </section>
 
       <main id="site-main">
-      <article class="post">
-        <header>
+        <article class="post">
+  <header>
   <div class="title">
     
-      <h2><a href="/404.html">404 Page not found</a></h2>
+        <h2><a href="/blog/traefik-proxyfier-dashboard/">Proxifier Traefik par Traefik</a></h2>
     
+    
+        <p>Comment faire en sorte que Traefik proxyfie son dashboard</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-08-26 14:28:24 &#43;0200 CEST">
+      26-08-2019
+    </time>
+    <span class="author">Issif</span>
+    
+        <p>2 minutes</p>
     
   </div>
 </header>
 
-        <div class="content">
-            </br><em>Ce n'est pas la page que vous recherchez.</em></br></br>
-            <a href="javascript:history.back()"><img src="https://media.giphy.com/media/4Xbr39OD96ZmU/giphy.gif" alt=""></a></br></br>
-            <a href="javascript:history.back()">Go Back</a>
-        </div>
-        </article>
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+
+  </section>
+  
+<a href="/blog/traefik-proxyfier-dashboard/" class="image featured">
+  <img src="/img/2019/08/traefik-feature.png" alt="traefik feature">
+</a>
+
+
+  
+  <div class="content">
+    <p><a href="https://traefik.io/"><strong>Traefik</strong></a> possède une <em>UI</em> basique qui est par défaut exposée sur un port différent. Il est possible de faire en sorte que <strong>Traefik</strong> serve lui même de proxy, cela permet :</p>
+
+<ul>
+<li>ne plus avoir à utiliser un port différent pour accéder l&rsquo;<em>UI</em>, mais un domaine classique (&rdquo;<em>traefik.mondomaine.net</em>&rdquo; par ex.)</li>
+<li>forcer l&rsquo;accès en http<strong>s</strong> avec en prime un certificat <a href="https://letsencrypt.org/fr/"><em>Let&rsquo;s Encrypt</em></a> automatique et gratuit</li>
+<li>permettre de rajouter une authentification, par défaut, l&rsquo;<em>UI</em> est ouverte à tout une fois activée</li>
+</ul>
+
+<p>Dans mon cas, je fais tourner <strong>Traefik</strong> dans un container, mais ça marchera pareil si vous le faîtes tourner directement sur l&rsquo;<em>host</em>, prenez juste soin de filtrer le port de l&rsquo;<em>UI</em> (<em>8080</em> par défaut) pour qu&rsquo;il n&rsquo;accepte que les connexions de la boucle local (<em>127.0.0.1</em>).</p>
+
+<p>Voilà ce qu&rsquo;il faut avoir à minima dans sa configuration <em>config.toml</em> :</p>
+
+<pre><code class="language-toml">################################################################
+# Configuration globale
+################################################################
+
+defaultEntryPoints = [&quot;http&quot;, &quot;https&quot;]
+
+[entryPoints]
+  [entryPoints.http]
+  address = &quot;:80&quot;               # traefik ecoute sur le port 80
+    [entryPoints.http.redirect]
+      entryPoint = &quot;https&quot;      # redirection http &gt; https
+  [entryPoints.https]
+  address = &quot;:443&quot;              # traefik ecoute sur le port 443
+  [entryPoints.https.tls]
+    minVersion = &quot;VersionTLS12&quot; # version minimum de TLS acceptee
+  [entryPoints.ui]
+  address=&quot;127.0.0.1:8080&quot;      # on ecoute uniquement sur la boucle locale pour ce port
+    [entryPoints.ui.auth]
+      [entryPoints.ui.auth.basic]
+        users = [&quot;XXXX:YYYY&quot;]   # les identifiants au format htpasswd
+
+################################################################
+# Configuration pour let's encrypt
+################################################################
+
+[acme]
+email = &quot;xxx@yyy.zzz&quot;           # votre mail pour lets encrypt
+storage = &quot;/certs/acme.json&quot;
+entryPoint = &quot;https&quot;
+onDemand = true                 # demande automatique de certificat
+acmeLogging = true
+  [acme.httpChallenge]
+  entryPoint = &quot;http&quot;
+
+################################################################
+# Configuration de l'API de Traefik
+################################################################
+
+[api]
+entryPoint = &quot;ui&quot;               # l API ecoutera sur cet entrypoint
+dashboard = true
+  [api.statistics]
+  recentErrors = 50
+
+################################################################
+# Configuration pour l'UI de Traefik
+################################################################
+
+[file]
+
+[frontends]
+  [frontends.ui]
+  backend = &quot;ui&quot;
+  passHostHeader = true
+    [frontends.ui.routes.default]
+    rule = &quot;Host:ui.mondomaine.net&quot; # votre domaine a configurer
+
+[backends]
+  [backends.ui]
+    [backends.ui.servers.default]
+      url = &quot;http://127.0.0.1:8080&quot;   # le backend a utiliser qui s avere etre l entrypoint de l API
+</code></pre>
+
+<p><em>Enjoy</em></p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/traefik">traefik</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9">sécurité</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/web">web</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+</ul>
+
+  </footer>
+</article>
+
+
+<div class="pagination">
+  
+    <a href="/blog/falcosidekick-v-2-6-0/" class="button big previous"><i class="fas fa-angle-left"></i> Falcosidekick 2.6.0</a>
+  
+  
+</div>
+
+
       </main>
       <section id="site-sidebar">
   

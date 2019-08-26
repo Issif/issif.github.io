@@ -6,10 +6,23 @@
     <description>Recent content in go on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Wed, 21 Aug 2019 17:59:22 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 13:18:10 +0200</lastBuildDate>
     
 	<atom:link href="https://thomas.labarussias.fr/categories/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Falcosidekick 2.6.0</title>
+      <link>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</link>
+      <pubDate>Mon, 26 Aug 2019 13:18:10 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</guid>
+      <description>Nouvelle release, la 2.6.0, de mon proxy pour falco.
+La grosse feature étant l&amp;rsquo;ajout du SMTP (envoi d&amp;rsquo;email) comme sortie :
+Afin de respecter les standards, la version html contient également la version plaintext. Il est aussi possible d&amp;rsquo;envoyer uniquement la version plaintext, utile pour certains systèmes de ticketing qui utilisent l&amp;rsquo;email pour la création.
+Le repo Github et l&amp;rsquo;image sur le DockerHub.
+Enjoy</description>
+    </item>
     
     <item>
       <title>Conversion de Types en Go</title>

@@ -6,10 +6,33 @@
     <description>Recent content in Blogs on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Wed, 21 Aug 2019 17:59:22 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 14:28:24 +0200</lastBuildDate>
     
 	<atom:link href="https://thomas.labarussias.fr/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Proxifier Traefik par Traefik</title>
+      <link>https://thomas.labarussias.fr/blog/traefik-proxyfier-dashboard/</link>
+      <pubDate>Mon, 26 Aug 2019 14:28:24 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/traefik-proxyfier-dashboard/</guid>
+      <description>Traefik possède une UI basique qui est par défaut exposée sur un port différent. Il est possible de faire en sorte que Traefik serve lui même de proxy, cela permet :
+ ne plus avoir à utiliser un port différent pour accéder l&amp;rsquo;UI, mais un domaine classique (&amp;rdquo;traefik.mondomaine.net&amp;rdquo; par ex.) forcer l&amp;rsquo;accès en https avec en prime un certificat Let&amp;rsquo;s Encrypt automatique et gratuit permettre de rajouter une authentification, par défaut, l&amp;rsquo;UI est ouverte à tout une fois activée  Dans mon cas, je fais tourner Traefik dans un container, mais ça marchera pareil si vous le faîtes tourner directement sur l&amp;rsquo;host, prenez juste soin de filtrer le port de l&amp;rsquo;UI (8080 par défaut) pour qu&amp;rsquo;il n&amp;rsquo;accepte que les connexions de la boucle local (127.</description>
+    </item>
+    
+    <item>
+      <title>Falcosidekick 2.6.0</title>
+      <link>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</link>
+      <pubDate>Mon, 26 Aug 2019 13:18:10 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</guid>
+      <description>Nouvelle release, la 2.6.0, de mon proxy pour falco.
+La grosse feature étant l&amp;rsquo;ajout du SMTP (envoi d&amp;rsquo;email) comme sortie :
+Afin de respecter les standards, la version html contient également la version plaintext. Il est aussi possible d&amp;rsquo;envoyer uniquement la version plaintext, utile pour certains systèmes de ticketing qui utilisent l&amp;rsquo;email pour la création.
+Le repo Github et l&amp;rsquo;image sur le DockerHub.
+Enjoy</description>
+    </item>
     
     <item>
       <title>Conversion de Types en Go</title>
