@@ -5,10 +5,28 @@
     <description>Recent content in go on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Mon, 26 Aug 2019 13:18:10 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2019 17:15:10 +0200</lastBuildDate>
     
         <atom:link href="https://thomas.labarussias.fr/categories/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Falcosidekick 2.7.0</title>
+      <link>https://thomas.labarussias.fr/blog/falcosidekick-v-2-7-0/</link>
+      <pubDate>Tue, 27 Aug 2019 17:15:10 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-7-0/</guid>
+      <description>&lt;p&gt;Nouvelle release, la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.7.0&#34;&gt;&lt;strong&gt;2.7.0&lt;/strong&gt;&lt;/a&gt;, de mon proxy pour &lt;a href=&#34;https://falco.org/&#34;&gt;falco&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;La grosse feature étant l&amp;rsquo;ajout de &lt;a href=&#34;https://grafana.com/oss/loki&#34;&gt;&lt;strong&gt;Loki&lt;/strong&gt;&lt;/a&gt; comme sortie :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/Issif/falcosidekick/master/imgs/loki.png&#34; alt=&#34;loki falcosidekick&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/Issif/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/issif/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Proxifier Traefik par Traefik</title>
@@ -103,7 +121,7 @@ dashboard = true
       <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</guid>
       <description>&lt;p&gt;Nouvelle release, la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.6.0&#34;&gt;&lt;strong&gt;2.6.0&lt;/strong&gt;&lt;/a&gt;, de mon proxy pour &lt;a href=&#34;https://falco.org/&#34;&gt;falco&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;La grosse feature étant l&amp;rsquo;ajout du &lt;em&gt;SMTP&lt;/em&gt; (envoi d&amp;rsquo;email) comme sortie :&lt;/p&gt;
+&lt;p&gt;La grosse feature étant l&amp;rsquo;ajout du &lt;strong&gt;SMTP&lt;/strong&gt; (envoi d&amp;rsquo;email) comme sortie :&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/Issif/falcosidekick/master/imgs/smtp_html.png&#34; alt=&#34;smtp html falcosidekick&#34; /&gt;&lt;/p&gt;
 
