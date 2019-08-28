@@ -36,13 +36,13 @@
   
   
   &lt;div class=&#34;fancybox&#34;&gt;
-    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://raw.githubusercontent.com/Issif/falcosidekick/master/imgs//loki.png&#34; data-caption=&#34;Loki Grafana&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/Issif/falcosidekick/master/imgs//loki.png&#34;&gt;&lt;/a&gt;
+    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs//loki.png&#34; data-caption=&#34;Loki Grafana&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs//loki.png&#34;&gt;&lt;/a&gt;
     &lt;div class=&#34;caption&#34;&gt;Loki Grafana&lt;/div&gt;
   &lt;/div&gt;
 
 
 
-&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/Issif/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/issif/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
@@ -160,7 +160,7 @@ dashboard = true
   
   
   &lt;div class=&#34;fancybox&#34;&gt;
-    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://raw.githubusercontent.com/Issif/falcosidekick/master/imgs//smtp_html.png&#34; data-caption=&#34;SMTP html&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/Issif/falcosidekick/master/imgs//smtp_html.png&#34;&gt;&lt;/a&gt;
+    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs//smtp_html.png&#34; data-caption=&#34;SMTP html&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs//smtp_html.png&#34;&gt;&lt;/a&gt;
     &lt;div class=&#34;caption&#34;&gt;SMTP html&lt;/div&gt;
   &lt;/div&gt;
 
@@ -168,7 +168,7 @@ dashboard = true
 
 &lt;p&gt;Afin de respecter les standards, la version &lt;em&gt;html&lt;/em&gt; contient également la version &lt;em&gt;plaintext&lt;/em&gt;. Il est aussi possible d&amp;rsquo;envoyer uniquement la version &lt;em&gt;plaintext&lt;/em&gt;, utile pour certains systèmes de &lt;em&gt;ticketing&lt;/em&gt; qui utilisent l&amp;rsquo;email pour la création.&lt;/p&gt;
 
-&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/Issif/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/issif/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
