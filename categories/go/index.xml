@@ -5,10 +5,26 @@
     <description>Recent content in go on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Tue, 27 Aug 2019 17:15:10 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 28 Aug 2019 11:12:35 +0200</lastBuildDate>
     
         <atom:link href="https://thomas.labarussias.fr/categories/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Falcosidekick fait désormais partie de l&#39;organisation Falcosecurity</title>
+      <link>https://thomas.labarussias.fr/blog/falcosidekick-migre-vers-falcosecurity/</link>
+      <pubDate>Wed, 28 Aug 2019 11:12:35 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falcosidekick-migre-vers-falcosecurity/</guid>
+      <description>&lt;p&gt;Les mainteneurs de &lt;strong&gt;falco&lt;/strong&gt;  m&amp;rsquo;ont proposé de migrer &lt;strong&gt;falcosidekick&lt;/strong&gt; au sein de l&amp;rsquo;organisation officiel &lt;strong&gt;falcosecurity&lt;/strong&gt;. Il devient donc un projet officiel 🎉😍.&lt;/p&gt;
+
+&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Au passage, j&amp;rsquo;ai sortie la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.7.1&#34;&gt;&lt;strong&gt;2.7.1&lt;/strong&gt;&lt;/a&gt; qui met à jour la version de Go utilisée (1.12).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Falcosidekick 2.7.0</title>
