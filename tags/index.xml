@@ -87,6 +87,131 @@ k3d-mon-cluster-test-worker-0   Ready    worker   2m    v1.14.4-k3s.1
 k3d-mon-cluster-test-worker-1   Ready    worker   2m    v1.14.4-k3s.1
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h2 id=&#34;premier-déploiement&#34;&gt;Premier déploiement&lt;/h2&gt;
+
+&lt;p&gt;Afin de tester tout cela, nous allons appliquer un premier &lt;em&gt;deployment&lt;/em&gt; et tenter d&amp;rsquo;y accéder. Cela sera un simple &lt;em&gt;micro-service&lt;/em&gt; qui nous répondra quelques infos sur lui-même (sur quel &lt;em&gt;noeud&lt;/em&gt; il tourne, son nom, le contenu de la requête &lt;em&gt;HTTP&lt;/em&gt; qu&amp;rsquo;il a reçue, etc). Le container qui sera utilisé est fourni par ailleurs par ceux derrière &lt;strong&gt;traefik&lt;/strong&gt; : &lt;a href=&#34;https://hub.docker.com/r/containous/whoami&#34;&gt;&lt;strong&gt;containous/whoami&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;création-d-un-namespace-dédié&#34;&gt;Création d&amp;rsquo;un namespace dédié&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl create namespace whoami
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;C&amp;rsquo;est juste histoire de bien segmenter les choses.&lt;/p&gt;
+
+&lt;h3 id=&#34;application-du-deployment&#34;&gt;Application du &lt;em&gt;deployment&lt;/em&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl create deployment whoami --image=containous/whoami -n whoami
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;scaling-du-replicaset&#34;&gt;&lt;em&gt;Scaling&lt;/em&gt; du &lt;em&gt;replicaSet&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Nous avons un &lt;em&gt;cluster&lt;/em&gt; à 2 noeuds, ça serait dommage de n&amp;rsquo;avoir qu&amp;rsquo;un seul &lt;em&gt;pod&lt;/em&gt;, augmentons à 2 le &lt;em&gt;replicaSet&lt;/em&gt; associé :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl scale --replicas 2 deployment/whoami -n whoami
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl get rs -n whoami
+NAME                DESIRED   CURRENT   READY   AGE  
+whoami-756586b9ff   2         2         2       4m33s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;création-du-service&#34;&gt;Création du &lt;em&gt;service&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Nous avons 2 &lt;em&gt;pods&lt;/em&gt;, nous allons créer un &lt;em&gt;service&lt;/em&gt; pour avoir une répartition de charge :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl create service clusterip whoami --tcp=80:80 -n whoami
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;création-de-l-ingress&#34;&gt;Création de l&amp;rsquo;&lt;em&gt;ingress&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Tout est prêt au sein de notre &lt;em&gt;cluster&lt;/em&gt;, il est temps de nous permettre d&amp;rsquo;accéder à notre &lt;em&gt;micro-service&lt;/em&gt;, on va utiliser une ressource de type &lt;em&gt;ingress&lt;/em&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ cat &amp;lt;&amp;lt;EOF | kubectl apply -n whoami -f -
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: whoami
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: &amp;quot;false&amp;quot;
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: whoami
+          servicePort: 80
+EOF
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;testons-le-micro-service&#34;&gt;Testons le &lt;em&gt;micro-service&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;A la création du cluster, nous avons publier le port 80 au niveau de l&amp;rsquo;host, il est temps de trouver le port qui a été associé (&lt;em&gt;bind&lt;/em&gt;) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ docker inspect --format=&#39;{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -&amp;gt; {{(index $conf 0).HostPort}} {{end}}&#39; $(docker ps --filter &amp;quot;name=k3d-mon-cluster-test-server&amp;quot; -q)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;443/tcp -&amp;gt; 32810  6443/tcp -&amp;gt; 6443  80/tcp -&amp;gt; 32811  8080/tcp -&amp;gt; 32809
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;L&amp;rsquo;&lt;em&gt;ingress&lt;/em&gt; écoute sur le port 80, le port associé est donc le 32811 dans mon cas. Faisons plusieurs appels et vérifions :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ curl http://localhost:32811
+Hostname: whoami-756586b9ff-4mqb6
+IP: 127.0.0.1
+IP: ::1
+IP: 10.42.2.4
+IP: fe80::a89f:5eff:fef5:d426
+RemoteAddr: 10.42.1.3:36824
+GET / HTTP/1.1
+Host: localhost:32811
+User-Agent: curl/7.47.0
+Accept: */*
+Accept-Encoding: gzip
+X-Forwarded-For: 10.42.1.1
+X-Forwarded-Host: localhost:32811
+X-Forwarded-Port: 32811
+X-Forwarded-Proto: http
+X-Forwarded-Server: traefik-56688c4464-wlk2r
+X-Real-Ip: 10.42.1.1
+
+~ $ curl http://localhost:32811
+Hostname: whoami-756586b9ff-6wn52
+IP: 127.0.0.1
+IP: ::1
+IP: 10.42.0.4
+IP: fe80::7c0f:1fff:fe2b:bcb2
+RemoteAddr: 10.42.1.3:41180
+GET / HTTP/1.1
+Host: localhost:32811
+User-Agent: curl/7.47.0
+Accept: */*
+Accept-Encoding: gzip
+X-Forwarded-For: 10.42.1.1
+X-Forwarded-Host: localhost:32811
+X-Forwarded-Port: 32811
+X-Forwarded-Proto: http
+X-Forwarded-Server: traefik-56688c4464-wlk2r
+X-Real-Ip: 10.42.1.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nous avons bien 2 réponses différentes :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Hostname: whoami-756586b9ff-4mqb6
+IP: 10.42.2.4
+
+Hostname: whoami-756586b9ff-6wn52
+IP: 10.42.0.4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Qui correspondent à nos 2 &lt;em&gt;pods&lt;/em&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl get pods -n whoami
+NAME                      READY   STATUS    RESTARTS   AGE
+whoami-756586b9ff-4mqb6   1/1     Running   0          24m
+whoami-756586b9ff-6wn52   1/1     Running   0          20m
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>

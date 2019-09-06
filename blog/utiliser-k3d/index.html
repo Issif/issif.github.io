@@ -23,7 +23,7 @@
 
 <meta itemprop="datePublished" content="2019-09-05T23:12:52&#43;02:00" />
 <meta itemprop="dateModified" content="2019-09-05T23:12:52&#43;02:00" />
-<meta itemprop="wordCount" content="437">
+<meta itemprop="wordCount" content="880">
 
 
 
@@ -182,7 +182,7 @@
     </time>
     <span class="author">Issif</span>
     
-        <p>3 minutes</p>
+        <p>5 minutes</p>
     
   </div>
 </header>
@@ -275,6 +275,131 @@ NAME                            STATUS   ROLES    AGE   VERSION
 k3d-mon-cluster-test-server     Ready    master   2m    v1.14.4-k3s.1
 k3d-mon-cluster-test-worker-0   Ready    worker   2m    v1.14.4-k3s.1
 k3d-mon-cluster-test-worker-1   Ready    worker   2m    v1.14.4-k3s.1
+</code></pre>
+
+<h2 id="premier-déploiement">Premier déploiement</h2>
+
+<p>Afin de tester tout cela, nous allons appliquer un premier <em>deployment</em> et tenter d&rsquo;y accéder. Cela sera un simple <em>micro-service</em> qui nous répondra quelques infos sur lui-même (sur quel <em>noeud</em> il tourne, son nom, le contenu de la requête <em>HTTP</em> qu&rsquo;il a reçue, etc). Le container qui sera utilisé est fourni par ailleurs par ceux derrière <strong>traefik</strong> : <a href="https://hub.docker.com/r/containous/whoami"><strong>containous/whoami</strong></a>.</p>
+
+<h3 id="création-d-un-namespace-dédié">Création d&rsquo;un namespace dédié</h3>
+
+<pre><code class="language-bash">~ $ kubectl create namespace whoami
+</code></pre>
+
+<p>C&rsquo;est juste histoire de bien segmenter les choses.</p>
+
+<h3 id="application-du-deployment">Application du <em>deployment</em></h3>
+
+<pre><code class="language-bash">~ $ kubectl create deployment whoami --image=containous/whoami -n whoami
+</code></pre>
+
+<h3 id="scaling-du-replicaset"><em>Scaling</em> du <em>replicaSet</em></h3>
+
+<p>Nous avons un <em>cluster</em> à 2 noeuds, ça serait dommage de n&rsquo;avoir qu&rsquo;un seul <em>pod</em>, augmentons à 2 le <em>replicaSet</em> associé :</p>
+
+<pre><code class="language-bash">~ $ kubectl scale --replicas 2 deployment/whoami -n whoami
+</code></pre>
+
+<pre><code class="language-bash">~ $ kubectl get rs -n whoami
+NAME                DESIRED   CURRENT   READY   AGE  
+whoami-756586b9ff   2         2         2       4m33s
+</code></pre>
+
+<h3 id="création-du-service">Création du <em>service</em></h3>
+
+<p>Nous avons 2 <em>pods</em>, nous allons créer un <em>service</em> pour avoir une répartition de charge :</p>
+
+<pre><code class="language-bash">~ $ kubectl create service clusterip whoami --tcp=80:80 -n whoami
+</code></pre>
+
+<h3 id="création-de-l-ingress">Création de l&rsquo;<em>ingress</em></h3>
+
+<p>Tout est prêt au sein de notre <em>cluster</em>, il est temps de nous permettre d&rsquo;accéder à notre <em>micro-service</em>, on va utiliser une ressource de type <em>ingress</em> :</p>
+
+<pre><code class="language-bash">~ $ cat &lt;&lt;EOF | kubectl apply -n whoami -f -
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: whoami
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: &quot;false&quot;
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: whoami
+          servicePort: 80
+EOF
+</code></pre>
+
+<h3 id="testons-le-micro-service">Testons le <em>micro-service</em></h3>
+
+<p>A la création du cluster, nous avons publier le port 80 au niveau de l&rsquo;host, il est temps de trouver le port qui a été associé (<em>bind</em>) :</p>
+
+<pre><code class="language-bash">~ $ docker inspect --format='{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -&gt; {{(index $conf 0).HostPort}} {{end}}' $(docker ps --filter &quot;name=k3d-mon-cluster-test-server&quot; -q)
+</code></pre>
+
+<pre><code class="language-bash">443/tcp -&gt; 32810  6443/tcp -&gt; 6443  80/tcp -&gt; 32811  8080/tcp -&gt; 32809
+</code></pre>
+
+<p>L&rsquo;<em>ingress</em> écoute sur le port 80, le port associé est donc le 32811 dans mon cas. Faisons plusieurs appels et vérifions :</p>
+
+<pre><code class="language-bash">~ $ curl http://localhost:32811
+Hostname: whoami-756586b9ff-4mqb6
+IP: 127.0.0.1
+IP: ::1
+IP: 10.42.2.4
+IP: fe80::a89f:5eff:fef5:d426
+RemoteAddr: 10.42.1.3:36824
+GET / HTTP/1.1
+Host: localhost:32811
+User-Agent: curl/7.47.0
+Accept: */*
+Accept-Encoding: gzip
+X-Forwarded-For: 10.42.1.1
+X-Forwarded-Host: localhost:32811
+X-Forwarded-Port: 32811
+X-Forwarded-Proto: http
+X-Forwarded-Server: traefik-56688c4464-wlk2r
+X-Real-Ip: 10.42.1.1
+
+~ $ curl http://localhost:32811
+Hostname: whoami-756586b9ff-6wn52
+IP: 127.0.0.1
+IP: ::1
+IP: 10.42.0.4
+IP: fe80::7c0f:1fff:fe2b:bcb2
+RemoteAddr: 10.42.1.3:41180
+GET / HTTP/1.1
+Host: localhost:32811
+User-Agent: curl/7.47.0
+Accept: */*
+Accept-Encoding: gzip
+X-Forwarded-For: 10.42.1.1
+X-Forwarded-Host: localhost:32811
+X-Forwarded-Port: 32811
+X-Forwarded-Proto: http
+X-Forwarded-Server: traefik-56688c4464-wlk2r
+X-Real-Ip: 10.42.1.1
+</code></pre>
+
+<p>Nous avons bien 2 réponses différentes :</p>
+
+<pre><code class="language-bash">Hostname: whoami-756586b9ff-4mqb6
+IP: 10.42.2.4
+
+Hostname: whoami-756586b9ff-6wn52
+IP: 10.42.0.4
+</code></pre>
+
+<p>Qui correspondent à nos 2 <em>pods</em> :</p>
+
+<pre><code class="language-bash">~ $ kubectl get pods -n whoami
+NAME                      READY   STATUS    RESTARTS   AGE
+whoami-756586b9ff-4mqb6   1/1     Running   0          24m
+whoami-756586b9ff-6wn52   1/1     Running   0          20m
 </code></pre>
 
 <p><em>Enjoy</em></p>
