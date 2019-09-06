@@ -10,6 +10,88 @@
     
     
     <item>
+      <title>Utiliser k3d pour avoir un cluster k8s en local</title>
+      <link>https://thomas.labarussias.fr/blog/utiliser-k3d/</link>
+      <pubDate>Thu, 05 Sep 2019 23:12:52 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/utiliser-k3d/</guid>
+      <description>
+
+&lt;p&gt;Afin de parfaire mes connaissances sur &lt;a href=&#34;https://kubernetes.io/&#34;&gt;&lt;strong&gt;kubernetes&lt;/strong&gt;&lt;/a&gt;, &lt;em&gt;aka&lt;/em&gt; &lt;strong&gt;k8s&lt;/strong&gt; pour les intimes, j&amp;rsquo;avais envie de monter un &lt;em&gt;cluster&lt;/em&gt; sur mon &lt;em&gt;laptop&lt;/em&gt;, pas juste un noeud tout seul. Jusqu&amp;rsquo;à présent je n&amp;rsquo;avais testé que des solutions pour avoir des &lt;strong&gt;k8s&lt;/strong&gt; mono-noeud, c&amp;rsquo;est sympa, mais trop éloigné de la réalité, surtout si on veut tester des méthodes de résilience, d&amp;rsquo;&lt;em&gt;auto-scaling&lt;/em&gt; de &lt;em&gt;pods&lt;/em&gt;, de &lt;em&gt;deployments&lt;/em&gt;, de &lt;em&gt;daemonset&lt;/em&gt;, etc.&lt;/p&gt;
+
+&lt;p&gt;Et là, la révélation ! Je connaissais déjà &lt;a href=&#34;https://github.com/rancher/k3s&#34;&gt;&lt;strong&gt;k3s&lt;/strong&gt;&lt;/a&gt;, le &lt;strong&gt;k8s&lt;/strong&gt; ultra allégé de chez &lt;a href=&#34;https://rancher.com/&#34;&gt;&lt;strong&gt;rancher&lt;/strong&gt;&lt;/a&gt; et il s&amp;rsquo;avère qu&amp;rsquo;ils ont développé un petit utilitaire pour monter un &lt;em&gt;cluster&lt;/em&gt; avec, le bien nommé &lt;a href=&#34;https://github.com/rancher/k3d&#34;&gt;&lt;strong&gt;k3d&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Après plusieurs heures de tests, je suis emballé, c&amp;rsquo;est ultra rapide, ultra &lt;em&gt;light&lt;/em&gt; et ça fonctionne avec tous les outils classiques. Un &lt;strong&gt;ingress controller&lt;/strong&gt; basé sur &lt;strong&gt;traefik&lt;/strong&gt; est directement déployé, donc on a de base un environnement fonctionnel. Simple. Efficace.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation-de-k3d&#34;&gt;Installation de k3d&lt;/h2&gt;
+
+&lt;p&gt;Rien de compliqué pour l&amp;rsquo;installer, plusieurs méthodes sont fournies sur le &lt;a href=&#34;https://github.com/rancher/k3d#get&#34;&gt;repo Github officiel&lt;/a&gt;. Comme c&amp;rsquo;est du &lt;strong&gt;go&lt;/strong&gt;, aucune dépendance. &lt;em&gt;Easy&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;créer-son-premier-cluster&#34;&gt;Créer son premier cluster&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ k3d create -n mon-cluster-test --publish 80 --publish 8080 --publish 443 -w 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;2019/09/05 23:16:34 Created cluster network with ID cae80bddca7cf614494b9d97f7d6edf2b14d45864ef1aa0b1a899a93122ecc1b
+2019/09/05 23:16:34 Created docker volume  k3d-mon-cluster-test-images   
+2019/09/05 23:16:34 Creating cluster [mon-cluster-test]
+2019/09/05 23:16:34 Creating server using docker.io/rancher/k3s:v0.7.0...
+2019/09/05 23:16:34 Pulling image docker.io/rancher/k3s:v0.7.0...
+2019/09/05 23:16:47 Booting 2 workers for cluster mon-cluster-test
+2019/09/05 23:16:48 Created worker with ID b0c019c001376c9aa07f8fb65b52da1b2d52fbe61f25cb24c7198c5b122a2a09
+2019/09/05 23:16:49 Created worker with ID a9d959899a2119606248bf8dd5d681f05efb7232d19c5f8206ffb5025f10885b
+2019/09/05 23:16:49 SUCCESS: created cluster [mon-cluster-test]    
+2019/09/05 23:16:49 You can now use the cluster with:
+
+export KUBECONFIG=&amp;quot;$(k3d get-kubeconfig --name=&#39;mon-cluster-test&#39;)&amp;quot;
+kubectl cluster-info
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sur ma machine, l&amp;rsquo;exécution a pris environ 20s, en sachant que 95% du temps est lié la récupération de l&amp;rsquo;image &lt;strong&gt;k3s&lt;/strong&gt;. Impressionnant.&lt;/p&gt;
+
+&lt;p&gt;Une petite explication des arguments :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; : le nom de notre cluster &lt;strong&gt;k8s&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--publish 80 --publish 8080 --publish 443&lt;/code&gt; : les ports qu&amp;rsquo;on va exposer, comme c&amp;rsquo;est fait avec la commande &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#expose-incoming-ports&#34;&gt;&lt;em&gt;docker run&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-w 2&lt;/code&gt; : le nombre de &lt;em&gt;workers&lt;/em&gt; qu&amp;rsquo;on veut&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On peut lister nos &lt;em&gt;clusters&lt;/em&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ k3d ls
++------------------+------------------------------+---------+---------+
+|       NAME       |            IMAGE             | STATUS  | WORKERS |
++------------------+------------------------------+---------+---------+
+| mon-cluster-test | docker.io/rancher/k3s:v0.7.0 | running |   2/2   |
++------------------+------------------------------+---------+---------+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;L&amp;rsquo;image est effectivement de taille réduite (&lt;em&gt;proportionnellement aux autres solutions&lt;/em&gt;) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;REPOSITORY    TAG     IMAGE ID      CREATED       SIZE 
+rancher/k3s   v0.7.0  f1ec9d3fbf66  6 weeks ago   119MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;se-connecter-au-cluster&#34;&gt;Se connecter au cluster&lt;/h2&gt;
+
+&lt;p&gt;Comme précisé dans les logs de création, on peut récupérer le &lt;em&gt;kubeconfig&lt;/em&gt; associé pour utiliser les outils classiques (&lt;a href=&#34;https://github.com/kubernetes/kubernetes/tree/master/pkg/kubectl&#34;&gt;&lt;strong&gt;kubectl&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://github.com/derailed/k9s&#34;&gt;&lt;strong&gt;k9s&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://github.com/helm/helm&#34;&gt;&lt;strong&gt;helm&lt;/strong&gt;&lt;/a&gt;, etc) :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ export KUBECONFIG=&amp;quot;$(k3d get-kubeconfig --name=&#39;mon-cluster-test&#39;)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl get nodes
+NAME                            STATUS   ROLES    AGE   VERSION
+k3d-mon-cluster-test-server     Ready    master   2m    v1.14.4-k3s.1
+k3d-mon-cluster-test-worker-0   Ready    worker   2m    v1.14.4-k3s.1
+k3d-mon-cluster-test-worker-1   Ready    worker   2m    v1.14.4-k3s.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Falcosidekick fait désormais partie de l&#39;organisation Falcosecurity</title>
       <link>https://thomas.labarussias.fr/blog/falcosidekick-migre-vers-falcosecurity/</link>
       <pubDate>Wed, 28 Aug 2019 11:12:35 +0200</pubDate>

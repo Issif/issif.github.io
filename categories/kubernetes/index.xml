@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on Issif</title>
-    <link>https://thomas.labarussias.fr/blog/</link>
-    <description>Recent content in Blogs on Issif</description>
+    <title>kubernetes on Issif</title>
+    <link>https://thomas.labarussias.fr/categories/kubernetes/</link>
+    <description>Recent content in kubernetes on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <lastBuildDate>Thu, 05 Sep 2019 23:12:52 +0200</lastBuildDate>
     
-        <atom:link href="https://thomas.labarussias.fr/blog/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://thomas.labarussias.fr/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

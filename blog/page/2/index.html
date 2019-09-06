@@ -26,7 +26,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://thomas.labarussias.fr/blog/" />
 
-<meta property="og:updated_time" content="2019-08-28T11:12:35+02:00" />
+<meta property="og:updated_time" content="2019-09-05T23:12:52+02:00" />
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Blogs"/>
@@ -166,6 +166,95 @@
   <header>
   <div class="title">
     
+        <h2><a href="/blog/golang-conversion-types/">Conversion de Types en Go</a></h2>
+    
+    
+        <p>Comment convertir les types en Go</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2019-08-21 17:59:22 &#43;0200 CEST">
+      21-08-2019
+    </time>
+    <span class="author">Issif</span>
+    
+        <p>1 minutes</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <pre><code class="language-go">strconv.FormatInt(i int64, base int)
+</code></pre>
+
+<h2 id="itoa-https-golang-org-pkg-strconv-itoa"><a href="https://golang.org/pkg/strconv/#Itoa">Itoa</a></h2>
+
+<pre><code class="language-go">strconv.Itoa(i int)
+// Itoa is equivalent to FormatInt(int64(i), 10). 
+</code></pre>
+
+<h1 id="string-int64">string 🠮 int64</h1>
+
+<h2 id="parseint-https-golang-org-pkg-strconv-parseint"><a href="https://golang.org/pkg/strconv/#ParseInt">ParseInt</a></h2>
+
+<pre><code class="language-go">strconv.ParseInt(s string, base int, bitSize int)
+</code></pre>
+
+<h2 id="atoi-https-golang-org-pkg-strconv-atoi"><a href="https://golang.org/pkg/strconv/#Atoi">Atoi</a></h2>
+
+<pre><code class="language-go">strconv.Atoi(s string)
+// Atoi is equivalent to ParseInt(s, 10, 0), converted to type int. 
+</code></pre>
+
+<h1 id="string-time">string 🠮 Time</h1>
+
+<ul>
+<li>Pour le <a href="https://godoc.org/time#pkg-constants">layout</a>.</li>
+<li>Pour la <a href="https://godoc.org/time#LoadLocation">location</a>.</li>
+</ul>
+
+<h2 id="parse-https-godoc-org-time-parse"><a href="https://godoc.org/time#Parse">Parse</a></h2>
+
+<pre><code class="language-go">time.Parse(layout, value string)
+</code></pre>
+
+<h2 id="parseinlocation-https-godoc-org-time-parseinlocation"><a href="https://godoc.org/time#ParseInLocation">ParseInLocation</a></h2>
+
+<pre><code class="language-go">time.ParseInLocation(layout, value string, loc *Location)
+</code></pre>
+
+<h1 id="time-string">Time 🠮 string</h1>
+
+<p>Pour le <a href="https://godoc.org/time#pkg-constants">layout</a>.</p>
+  <footer>
+    <a href="/blog/golang-conversion-types/" class="button big">Lire la suite</a>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+</ul>
+
+  </footer>
+</article>
+
+        
+          <article class="post">
+  <header>
+  <div class="title">
+    
         <h2><a href="/blog/chart-xkcd/">Chart XKCD</a></h2>
     
     
@@ -289,6 +378,21 @@
       <article class="mini-post">
         <section>
           
+<a href="/blog/utiliser-k3d/" class="image featured">
+  <img src="/img/main/kubernetes-feature.png" alt="kubernetes feature">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/utiliser-k3d/">Utiliser k3d pour avoir un cluster k8s en local</a></h1>
+          <time class="published" datetime="">05-09-2019</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
 <a href="/blog/falcosidekick-migre-vers-falcosecurity/" class="image featured">
   <img src="/img/main/falcosidekick-feature.png" alt="falcosidekick feature">
 </a>
@@ -313,21 +417,6 @@
         <header>
           <h1><a href="/blog/falcosidekick-v-2-7-0/">Falcosidekick 2.7.0</a></h1>
           <time class="published" datetime="">27-08-2019</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-<a href="/blog/traefik-proxyfier-dashboard/" class="image featured">
-  <img src="/img/2019/08/traefik-feature.png" alt="traefik feature">
-</a>
-
-
-        </section>
-        <header>
-          <h1><a href="/blog/traefik-proxyfier-dashboard/">Proxifier Traefik par Traefik</a></h1>
-          <time class="published" datetime="">26-08-2019</time>
         </header>
       </article>
       
@@ -376,6 +465,11 @@
           <li>
             
               <a href="/categories/javascript/">javascript<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/kubernetes/">kubernetes<span class="count">1</span></a>
             
           
           <li>

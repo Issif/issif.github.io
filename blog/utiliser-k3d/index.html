@@ -2,8 +2,8 @@
 <html lang="fr">
   <head>
   <meta charset="utf-8">
-<title>Falcosidekick 2.7.0 - Issif</title>
-<meta name="description" content="release v2.7.0">
+<title>Utiliser k3d pour avoir un cluster k8s en local - Issif</title>
+<meta name="description" content="Comment monter en moins de 5min un cluster k8s pour ses tests">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -17,28 +17,28 @@
 
 
   <meta name="generator" content="Hugo 0.57.2" />
-  <meta itemprop="name" content="Falcosidekick 2.7.0">
-<meta itemprop="description" content="release v2.7.0">
+  <meta itemprop="name" content="Utiliser k3d pour avoir un cluster k8s en local">
+<meta itemprop="description" content="Comment monter en moins de 5min un cluster k8s pour ses tests">
 
 
-<meta itemprop="datePublished" content="2019-08-27T17:15:10&#43;02:00" />
-<meta itemprop="dateModified" content="2019-08-27T17:15:10&#43;02:00" />
-<meta itemprop="wordCount" content="30">
+<meta itemprop="datePublished" content="2019-09-05T23:12:52&#43;02:00" />
+<meta itemprop="dateModified" content="2019-09-05T23:12:52&#43;02:00" />
+<meta itemprop="wordCount" content="433">
 
 
 
 <meta itemprop="keywords" content="" />
 
-  <meta property="og:title" content="Falcosidekick 2.7.0" />
-<meta property="og:description" content="release v2.7.0" />
+  <meta property="og:title" content="Utiliser k3d pour avoir un cluster k8s en local" />
+<meta property="og:description" content="Comment monter en moins de 5min un cluster k8s pour ses tests" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://thomas.labarussias.fr/blog/falcosidekick-v-2-7-0/" />
-<meta property="article:published_time" content="2019-08-27T17:15:10+02:00" />
-<meta property="article:modified_time" content="2019-08-27T17:15:10+02:00" />
+<meta property="og:url" content="https://thomas.labarussias.fr/blog/utiliser-k3d/" />
+<meta property="article:published_time" content="2019-09-05T23:12:52+02:00" />
+<meta property="article:modified_time" content="2019-09-05T23:12:52+02:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Falcosidekick 2.7.0"/>
-<meta name="twitter:description" content="release v2.7.0"/>
+<meta name="twitter:title" content="Utiliser k3d pour avoir un cluster k8s en local"/>
+<meta name="twitter:description" content="Comment monter en moins de 5min un cluster k8s pour ses tests"/>
 
   
 
@@ -170,19 +170,19 @@
   <header>
   <div class="title">
     
-        <h2><a href="/blog/falcosidekick-v-2-7-0/">Falcosidekick 2.7.0</a></h2>
+        <h2><a href="/blog/utiliser-k3d/">Utiliser k3d pour avoir un cluster k8s en local</a></h2>
     
     
-        <p>release v2.7.0</p>
+        <p>Comment monter en moins de 5min un cluster k8s pour ses tests</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2019-08-27 17:15:10 &#43;0200 CEST">
-      27-08-2019
+    <time class="published" datetime="2019-09-05 23:12:52 &#43;0200 CEST">
+      05-09-2019
     </time>
     <span class="author">Issif</span>
     
-        <p>1 minutes</p>
+        <p>3 minutes</p>
     
   </div>
 </header>
@@ -198,41 +198,84 @@
 
   </section>
   
-<a href="/blog/falcosidekick-v-2-7-0/" class="image featured">
-  <img src="/img/main/falcosidekick-feature.png" alt="falcosidekick feature">
+<a href="/blog/utiliser-k3d/" class="image featured">
+  <img src="/img/main/kubernetes-feature.png" alt="kubernetes feature">
 </a>
 
 
   
   <div class="content">
-    <p>Nouvelle release, la <a href="https://github.com/Issif/falcosidekick/releases/tag/2.7.0"><strong>2.7.0</strong></a>, de mon proxy pour <a href="https://falco.org/"><strong>falco</strong></a>.</p>
-
-<p>La grosse feature étant l&rsquo;ajout de <a href="https://grafana.com/oss/loki"><strong>Loki</strong></a> comme sortie :</p>
-
-
-
-
-  
     
-    
-    
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="fancybox">
-    <a data-fancybox="Screenshot" href="https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs//loki.png" data-caption="Loki Grafana"><img src="https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs//loki.png"></a>
-    <div class="caption">Loki Grafana</div>
-  </div>
 
+<p>Afin de parfaire mes connaissances sur <a href="https://kubernetes.io/"><strong>kubernetes</strong></a>, <em>aka</em> <strong>k8s</strong> pour les intimes, j&rsquo;avais envie de monter un <em>cluster</em> sur mon <em>laptop</em>, pas juste un noeud tout seul. Jusqu&rsquo;à présent je n&rsquo;avais testé que des solutions pour avoir des <strong>k8s</strong> mono-noeud, c&rsquo;est sympa, mais trop éloigné de la réalité, surtout si on veut tester des méthodes de résilience, d&rsquo;<em>auto-scaling</em> de <em>pods</em>, de <em>deployments</em>, de <em>daemonset</em>, etc.</p>
 
+<p>Et là, la révélation ! Je connaissais déjà <a href="https://github.com/rancher/k3s"><strong>k3s</strong></a>, le <strong>k8s</strong> ultra allégé de chez <a href="https://rancher.com/"><strong>rancher</strong></a> et il s&rsquo;avère qu&rsquo;ils ont développé un petit utilitaire pour monter un <em>cluster</em> avec, le bien nommé <a href="https://github.com/rancher/k3d"><strong>k3d</strong></a>.</p>
 
-<p>Le repo <a href="https://github.com/falcosecurity/falcosidekick">Github</a> et l&rsquo;image sur le <a href="https://hub.docker.com/r/falcosecurity/falcosidekick/">DockerHub</a>.</p>
+<p>Après plusieurs heures de tests, je suis emballé, c&rsquo;est ultra rapide, ultra <em>light</em> et ça fonctionne avec tous les outils classiques. Un <strong>ingress controller</strong> basé sur <strong>traefik</strong> est directement déployé, donc on a de base un environnement fonctionnel. Simple. Efficace.</p>
+
+<h2 id="installation-de-k3d">Installation de k3d</h2>
+
+<p>Rien de compliqué pour l&rsquo;installer, plusieurs méthodes sont fournies sur le <a href="https://github.com/rancher/k3d#get">repo Github officiel</a>. Comme c&rsquo;est du <strong>go</strong>, aucune dépendance. <em>Easy</em>.</p>
+
+<h2 id="créer-son-premier-cluster">Créer son premier cluster</h2>
+
+<pre><code class="language-bash">~ $ k3d create -n mon-cluster-test --publish 80 --publish 8080 --publish 443 -w 2
+</code></pre>
+
+<pre><code class="language-bash">2019/09/05 23:16:34 Created cluster network with ID cae80bddca7cf614494b9d97f7d6edf2b14d45864ef1aa0b1a899a93122ecc1b
+2019/09/05 23:16:34 Created docker volume  k3d-mon-cluster-test-images   
+2019/09/05 23:16:34 Creating cluster [mon-cluster-test]
+2019/09/05 23:16:34 Creating server using docker.io/rancher/k3s:v0.7.0...
+2019/09/05 23:16:34 Pulling image docker.io/rancher/k3s:v0.7.0...
+2019/09/05 23:16:47 Booting 2 workers for cluster mon-cluster-test
+2019/09/05 23:16:48 Created worker with ID b0c019c001376c9aa07f8fb65b52da1b2d52fbe61f25cb24c7198c5b122a2a09
+2019/09/05 23:16:49 Created worker with ID a9d959899a2119606248bf8dd5d681f05efb7232d19c5f8206ffb5025f10885b
+2019/09/05 23:16:49 SUCCESS: created cluster [mon-cluster-test]    
+2019/09/05 23:16:49 You can now use the cluster with:
+
+export KUBECONFIG=&quot;$(k3d get-kubeconfig --name='mon-cluster-test')&quot;
+kubectl cluster-info
+</code></pre>
+
+<p>Sur ma machine, l&rsquo;exécution a pris environ 20s, en sachant que 95% du temps est lié la récupération de l&rsquo;image <strong>k3s</strong>. Impressionnant.</p>
+
+<p>Une petite explication des arguments :</p>
+
+<ul>
+<li><code>-n</code> : le nom de notre cluster <strong>k8s</strong></li>
+<li><code>--publish 80 --publish 8080 --publish 443</code> : les ports qu&rsquo;on va exposer, comme c&rsquo;est fait avec la commande <a href="https://docs.docker.com/engine/reference/run/#expose-incoming-ports"><em>docker run</em></a></li>
+<li><code>-w 2</code> : le nombre de <em>workers</em> qu&rsquo;on veut</li>
+</ul>
+
+<p>On peut lister nos <em>clusters</em> :</p>
+
+<pre><code class="language-bash">~ $ k3d ls
++------------------+------------------------------+---------+---------+
+|       NAME       |            IMAGE             | STATUS  | WORKERS |
++------------------+------------------------------+---------+---------+
+| mon-cluster-test | docker.io/rancher/k3s:v0.7.0 | running |   2/2   |
++------------------+------------------------------+---------+---------+
+</code></pre>
+
+<p>L&rsquo;image est effectivement de taille réduite (<em>proportionnellement aux autres solutions</em>) :</p>
+
+<pre><code class="language-bash">REPOSITORY    TAG     IMAGE ID      CREATED       SIZE 
+rancher/k3s   v0.7.0  f1ec9d3fbf66  6 weeks ago   119MB
+</code></pre>
+
+<h2 id="se-connecter-au-cluster">Se connecter au cluster</h2>
+
+<p>Comme précisé dans les logs de création, on peut récupérer le <em>kubeconfig</em> associé pour utiliser les outils classiques (<a href="https://github.com/kubernetes/kubernetes/tree/master/pkg/kubectl"><strong>kubectl</strong></a>, <a href="https://github.com/derailed/k9s"><strong>k9s</strong></a>, <a href="https://github.com/helm/helm"><strong>helm</strong></a>, etc) :</p>
+
+<pre><code class="language-bash">~ $ export KUBECONFIG=&quot;$(k3d get-kubeconfig --name='mon-cluster-test')&quot;
+</code></pre>
+
+<pre><code class="language-bash">~ $ kubectl get nodes
+NAME                            STATUS   ROLES    AGE   VERSION
+k3d-mon-cluster-test-server     Ready    master   2m    v1.14.4-k3s.1
+k3d-mon-cluster-test-worker-0   Ready    worker   2m    v1.14.4-k3s.1
+k3d-mon-cluster-test-worker-1   Ready    worker   2m    v1.14.4-k3s.1
+</code></pre>
 
 <p><em>Enjoy</em></p>
 
@@ -246,13 +289,7 @@
         <ul>
           
             
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/falco">falco</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9">sécurité</a></li>
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/kubernetes">kubernetes</a></li>
           
         </ul>
       </li>
@@ -277,10 +314,8 @@
 
 <div class="pagination">
   
-    <a href="/blog/traefik-proxyfier-dashboard/" class="button big previous"><i class="fas fa-angle-left"></i> Proxifier Traefik par Traefik</a>
+    <a href="/blog/falcosidekick-migre-vers-falcosecurity/" class="button big previous"><i class="fas fa-angle-left"></i> Falcosidekick fait désormais partie de l&#39;organisation Falcosecurity</a>
   
-  
-    <a href="/blog/falcosidekick-migre-vers-falcosecurity/" class="button big next">Falcosidekick fait désormais partie de l&#39;organisation Falcosecurity <i class="fas fa-angle-right"></i></a>
   
 </div>
 
