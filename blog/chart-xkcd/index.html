@@ -23,7 +23,7 @@
 
 <meta itemprop="datePublished" content="2019-08-20T16:36:17&#43;02:00" />
 <meta itemprop="dateModified" content="2019-08-20T16:36:17&#43;02:00" />
-<meta itemprop="wordCount" content="315">
+<meta itemprop="wordCount" content="701">
 
 
 
@@ -182,7 +182,7 @@
     </time>
     <span class="author">Issif</span>
     
-        <p>2 minutes</p>
+        <p>4 minutes</p>
     
   </div>
 </header>
@@ -223,7 +223,9 @@
 
 <p>A caler dans <code>layout/shortcodes/chart-xkcd.html</code>.</p>
 
-<p>Trois types de diagrammes sont dispos pour le moment : <a href="#line"><strong>Line</strong></a>, <a href="#pie"><strong>Pie</strong></a>, <a href="#bar"><strong>Bar</strong></a>.</p>
+<p>Trois types de diagrammes sont dispos pour le moment : <a href="#line"><strong>Line</strong></a>, <a href="#pie"><strong>Pie</strong></a>, <a href="#bar"><strong>Bar</strong></a>, <a href="#xy"><strong>XY</strong></a>.</p>
+
+<p>Les options de chaque diagramme sont trouvables dans la <a href="https://timqian.com/chart.xkcd/">doc</a>.</p>
 
 <h2 id="exemples">Exemples</h2>
 
@@ -242,6 +244,9 @@
         label: 'B',
         data: [0, 1, 30, 70, 80, 100, 50, 80, 40, 150],
       }]
+    },
+    options: { // optional
+      yTickCount: 10,
     }
 {{% /chart-xkcd %}}
 </code></pre>
@@ -265,6 +270,9 @@
         label: 'B',
         data: [0, 145, 300, 770, 80, 45, 50, 1080, 40, 150],
       }]
+    },
+    options: {
+      yTickCount: 10,
     }
 
   });
@@ -274,12 +282,16 @@
 <h3 id="pie">Pie</h3>
 
 <pre><code class="language-js">{{% chart-xkcd name=&quot;pie&quot; type=&quot;Pie&quot; %}}
-    title: 'What Tim made of',
+    title: 'A B C D E',
     data: {
       labels:[ 'A', 'B', 'C', 'D', 'E'],
       datasets: [{
         data: [200, 122, 60, 130, 44,],
       }]
+    },
+    options: {
+      innerRadius: 0.5, // mettre à 0 pour obtenir un diagramme camembert (pie chart)
+      legendPosition: chartXkcd.config.positionType.upRight,
     }
 {{% /chart-xkcd %}}
 </code></pre>
@@ -291,12 +303,16 @@
   const svgpie = document.querySelector('.pie');
   new chartXkcd.Pie(svgpie, {
     
-    title: 'Pie',
+    title: 'A B C D E',
     data: {
       labels:[ 'A', 'B', 'C', 'D', 'E'],
       datasets: [{
         data: [200, 122, 60, 130, 44,],
       }]
+    },
+    options: {
+      innerRadius: 0.5,
+      legendPosition: chartXkcd.config.positionType.upRight,
     }
 
   });
@@ -306,11 +322,15 @@
 <h3 id="bar">Bar</h3>
 
 <pre><code class="language-js">{{% chart-xkcd name=&quot;bar&quot; type=&quot;Bar&quot; %}}
+    title: &quot;A B C D&quot;,
     data: {
       labels:['A', 'B', 'C', 'D'],
       datasets: [{
         data: [20, 33, 5, 12],
       }]
+    },
+    options: { // optional
+      yTickCount: 8,
     }
 {{% /chart-xkcd %}}
 </code></pre>
@@ -322,11 +342,101 @@
   const svgbar = document.querySelector('.bar');
   new chartXkcd.Bar(svgbar, {
     
+    title: "A B C D",
     data: {
       labels:['A', 'B', 'C', 'D'],
       datasets: [{
         data: [20, 33, 5, 12],
       }]
+    },
+    options: { // optional
+      yTickCount: 8,
+    }
+
+  });
+</script>
+</div>
+
+<h3 id="xy">XY</h3>
+
+<pre><code class="language-js">{{% chart-xkcd name=&quot;xy&quot; type=&quot;XY&quot; %}}
+    title: 'A vs B',
+    xLabel: 'Abscisse',
+    yLabel: 'Ordonnee',
+    data: {
+      datasets: [{
+        label: 'A',
+        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
+      }, {
+        label: 'B',
+        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
+      }],
+    },
+    options: {
+      xTickCount: 10,
+      yTickCount: 10,
+      showLine: false,
+      dotSize: 1,
+    }
+{{% /chart-xkcd %}}
+</code></pre>
+
+<div>
+<svg class='xy1'></svg>
+<script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
+<script>
+  const svgxy1 = document.querySelector('.xy1');
+  new chartXkcd.XY(svgxy1, {
+    
+    title: 'A vs B',
+    xLabel: 'Abscisse',
+    yLabel: 'Ordonnee',
+    data: {
+      datasets: [{
+        label: 'A',
+        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
+      }, {
+        label: 'B',
+        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
+      }],
+    },
+    options: {
+      xTickCount: 10,
+      yTickCount: 10,
+      showLine: false,
+      dotSize: 1,
+    }
+
+  });
+</script>
+</div>
+
+<p>Avec <code>options: {showLine: true}</code> :</p>
+
+<div>
+<svg class='xy2'></svg>
+<script src="https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js"></script>
+<script>
+  const svgxy2 = document.querySelector('.xy2');
+  new chartXkcd.XY(svgxy2, {
+    
+    title: 'A vs B',
+    xLabel: 'Abscisse',
+    yLabel: 'Ordonnee',
+    data: {
+      datasets: [{
+        label: 'A',
+        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
+      }, {
+        label: 'B',
+        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
+      }],
+    },
+    options: {
+      xTickCount: 10,
+      yTickCount: 10,
+      showLine: true,
+      dotSize: 1,
     }
 
   });
