@@ -5,10 +5,26 @@
     <description>Recent content in Categories on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Thu, 05 Sep 2019 23:12:52 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 11 Sep 2019 16:00:10 +0200</lastBuildDate>
     
         <atom:link href="https://thomas.labarussias.fr/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Falcosidekick 2.8.0</title>
+      <link>https://thomas.labarussias.fr/blog/falcosidekick-v-2-8-0/</link>
+      <pubDate>Wed, 11 Sep 2019 16:00:10 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-8-0/</guid>
+      <description>&lt;p&gt;Nouvelle release, la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.8.0&#34;&gt;&lt;strong&gt;2.8.0&lt;/strong&gt;&lt;/a&gt;, de mon proxy pour &lt;a href=&#34;https://falco.org/&#34;&gt;&lt;strong&gt;falco&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;La grosse feature étant l&amp;rsquo;ajout de &lt;a href=&#34;https://nats.io/&#34;&gt;&lt;strong&gt;NATS&lt;/strong&gt;&lt;/a&gt; (une &lt;em&gt;message queue&lt;/em&gt; en &lt;strong&gt;Go&lt;/strong&gt;) comme sortie.&lt;/p&gt;
+
+&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Utiliser k3d pour avoir un cluster k8s en local</title>
