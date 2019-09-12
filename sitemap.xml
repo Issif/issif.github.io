@@ -4,12 +4,37 @@
   
   <url>
     <loc>https://thomas.labarussias.fr/blog/</loc>
-    <lastmod>2019-09-11T16:00:10+02:00</lastmod>
+    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://thomas.labarussias.fr/categories/</loc>
-    <lastmod>2019-09-11T16:00:10+02:00</lastmod>
+    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/chart/</loc>
+    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/blog/chart-xkcd/</loc>
+    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/hugo/</loc>
+    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/</loc>
+    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/javascript/</loc>
+    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
   </url>
   
   <url>
@@ -24,11 +49,6 @@
   
   <url>
     <loc>https://thomas.labarussias.fr/categories/go/</loc>
-    <lastmod>2019-09-11T16:00:10+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/</loc>
     <lastmod>2019-09-11T16:00:10+02:00</lastmod>
   </url>
   
@@ -80,26 +100,6 @@
   <url>
     <loc>https://thomas.labarussias.fr/blog/golang-conversion-types/</loc>
     <lastmod>2019-08-21T17:59:22+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/categories/chart/</loc>
-    <lastmod>2019-08-20T16:36:17+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/blog/chart-xkcd/</loc>
-    <lastmod>2019-08-20T16:36:17+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/categories/hugo/</loc>
-    <lastmod>2019-08-20T16:36:17+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/categories/javascript/</loc>
-    <lastmod>2019-08-20T16:36:17+02:00</lastmod>
   </url>
   
   <url>

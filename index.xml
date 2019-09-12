@@ -5,10 +5,306 @@
     <description>Recent content on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Wed, 11 Sep 2019 16:00:10 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 12 Sep 2019 22:20:17 +0200</lastBuildDate>
     
         <atom:link href="https://thomas.labarussias.fr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Chart XKCD</title>
+      <link>https://thomas.labarussias.fr/blog/chart-xkcd/</link>
+      <pubDate>Thu, 12 Sep 2019 22:20:17 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/chart-xkcd/</guid>
+      <description>
+
+&lt;p&gt;Je suis tombé &lt;a href=&#34;https://github.com/timqian/chart.xkcd&#34;&gt;chart.xkcd&lt;/a&gt; parmi les flux RSS que je suis. J&amp;rsquo;ai trouvé l&amp;rsquo;idée amusante et le rendu agréable, j&amp;rsquo;en ai donc fait un micro &lt;em&gt;shortcode&lt;/em&gt; pour &lt;strong&gt;Hugo&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div&amp;gt;
+&amp;lt;svg class=&#39;{{ .Get &amp;quot;name&amp;quot; }}&#39;&amp;gt;&amp;lt;/svg&amp;gt;
+&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+  const svg{{ .Get &amp;quot;name&amp;quot; | safeJS }} = document.querySelector(&#39;.{{ .Get &amp;quot;name&amp;quot; }}&#39;);
+  new chartXkcd.{{ .Get &amp;quot;type&amp;quot; | safeJS }}(svg{{ .Get &amp;quot;name&amp;quot; | safeJS }}, {
+    {{ .Inner | safeJS }}
+  });
+&amp;lt;/script&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A caler dans &lt;code&gt;layout/shortcodes/chart-xkcd.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Trois types de diagrammes sont dispos pour le moment : &lt;a href=&#34;#line&#34;&gt;&lt;strong&gt;Line&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#pie&#34;&gt;&lt;strong&gt;Pie&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#bar&#34;&gt;&lt;strong&gt;Bar&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#xy&#34;&gt;&lt;strong&gt;XY&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#radar&#34;&gt;&lt;strong&gt;Radar&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Les options de chaque diagramme sont trouvables dans la &lt;a href=&#34;https://timqian.com/chart.xkcd/&#34;&gt;doc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;exemples&#34;&gt;Exemples&lt;/h2&gt;
+
+&lt;h3 id=&#34;line&#34;&gt;Line&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;line&amp;quot; type=&amp;quot;Line&amp;quot; %}}
+    title: &#39;A vs B&#39;,
+    xLabel: &#39;Abscisse&#39;,
+    yLabel: &#39;Ordonnee&#39;,
+    data: {
+      labels:[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;,&#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;],
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [30, 2500, 200, 300, 250 ,800, 1500, 2900, 5000, 800],
+      }, {
+        label: &#39;B&#39;,
+        data: [0, 1, 30, 70, 80, 100, 50, 80, 40, 150],
+      }]
+    },
+    options: { // optional
+      yTickCount: 10,
+    }
+{{% /chart-xkcd %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;line&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgline = document.querySelector(&#39;.line&#39;);
+  new chartXkcd.Line(svgline, {
+    
+    title: &#39;A vs B&#39;,
+    xLabel: &#39;Abscisse&#39;,
+    yLabel: &#39;Ordonnee&#39;,
+    data: {
+      labels:[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;,&#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;],
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [30, 2500, 200, 300, 250 ,800, 1500, 2900, 5000, 800],
+      }, {
+        label: &#39;B&#39;,
+        data: [0, 145, 300, 770, 80, 45, 50, 1080, 40, 150],
+      }]
+    },
+    options: {
+      yTickCount: 10,
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;pie&#34;&gt;Pie&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;pie&amp;quot; type=&amp;quot;Pie&amp;quot; %}}
+    title: &#39;A B C D E&#39;,
+    data: {
+      labels:[ &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
+      datasets: [{
+        data: [200, 122, 60, 130, 44,],
+      }]
+    },
+    options: {
+      innerRadius: 0.5, // mettre à 0 pour obtenir un diagramme camembert (pie chart)
+      legendPosition: chartXkcd.config.positionType.upRight,
+    }
+{{% /chart-xkcd %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;pie&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgpie = document.querySelector(&#39;.pie&#39;);
+  new chartXkcd.Pie(svgpie, {
+    
+    title: &#39;A B C D E&#39;,
+    data: {
+      labels:[ &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
+      datasets: [{
+        data: [200, 122, 60, 130, 44,],
+      }]
+    },
+    options: {
+      innerRadius: 0.5,
+      legendPosition: chartXkcd.config.positionType.upRight,
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;bar&#34;&gt;Bar&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;bar&amp;quot; type=&amp;quot;Bar&amp;quot; %}}
+    title: &amp;quot;A B C D&amp;quot;,
+    data: {
+      labels:[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
+      datasets: [{
+        data: [20, 33, 5, 12],
+      }]
+    },
+    options: { // optional
+      yTickCount: 8,
+    }
+{{% /chart-xkcd %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;bar&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgbar = document.querySelector(&#39;.bar&#39;);
+  new chartXkcd.Bar(svgbar, {
+    
+    title: &#34;A B C D&#34;,
+    data: {
+      labels:[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
+      datasets: [{
+        data: [20, 33, 5, 12],
+      }]
+    },
+    options: { // optional
+      yTickCount: 8,
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;xy&#34;&gt;XY&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;xy&amp;quot; type=&amp;quot;XY&amp;quot; %}}
+    title: &#39;A vs B&#39;,
+    xLabel: &#39;Abscisse&#39;,
+    yLabel: &#39;Ordonnee&#39;,
+    data: {
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
+      }, {
+        label: &#39;B&#39;,
+        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
+      }],
+    },
+    options: {
+      xTickCount: 10,
+      yTickCount: 10,
+      showLine: false,
+      dotSize: 1,
+    }
+{{% /chart-xkcd %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;xy1&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgxy1 = document.querySelector(&#39;.xy1&#39;);
+  new chartXkcd.XY(svgxy1, {
+    
+    title: &#39;A vs B&#39;,
+    xLabel: &#39;Abscisse&#39;,
+    yLabel: &#39;Ordonnee&#39;,
+    data: {
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
+      }, {
+        label: &#39;B&#39;,
+        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
+      }],
+    },
+    options: {
+      xTickCount: 10,
+      yTickCount: 10,
+      showLine: false,
+      dotSize: 1,
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Avec &lt;code&gt;options: {showLine: true}&lt;/code&gt; :&lt;/p&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;xy2&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgxy2 = document.querySelector(&#39;.xy2&#39;);
+  new chartXkcd.XY(svgxy2, {
+    
+    title: &#39;A vs B&#39;,
+    xLabel: &#39;Abscisse&#39;,
+    yLabel: &#39;Ordonnee&#39;,
+    data: {
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
+      }, {
+        label: &#39;B&#39;,
+        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
+      }],
+    },
+    options: {
+      xTickCount: 10,
+      yTickCount: 10,
+      showLine: true,
+      dotSize: 1,
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;radar&#34;&gt;Radar&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;radar&amp;quot; type=&amp;quot;Radar&amp;quot; %}}
+    title: &#39;A vs B&#39;,
+    data: {
+      labels: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;],
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [4, 1, 3, 3, 2],
+      }, {
+        label: &#39;B&#39;,
+        data: [1, 4, 2, 3, 1],
+      }],
+    },
+    options: { 
+      showLegend: true,
+      dotSize: .7,
+      showLabels: true,
+    },
+{{% /chart-xkcd %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;svg class=&#39;radar&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgradar = document.querySelector(&#39;.radar&#39;);
+  new chartXkcd.Radar(svgradar, {
+    
+    title: &#39;A vs B&#39;,
+    data: {
+      labels: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;],
+      datasets: [{
+        label: &#39;A&#39;,
+        data: [3, 1, 3, 3, 2],
+      }, {
+        label: &#39;B&#39;,
+        data: [1, 3, 2, 3, 1],
+      }],
+    },
+    options: { 
+      showLegend: true,
+      dotSize: .7,
+      showLabels: true,
+    },
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Falcosidekick 2.8.0</title>
@@ -476,252 +772,6 @@ dashboard = true
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;var t time.Time
 t.Format(layout string)
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Chart XKCD</title>
-      <link>https://thomas.labarussias.fr/blog/chart-xkcd/</link>
-      <pubDate>Tue, 20 Aug 2019 16:36:17 +0200</pubDate>
-      
-      <guid>https://thomas.labarussias.fr/blog/chart-xkcd/</guid>
-      <description>
-
-&lt;p&gt;Je suis tombé &lt;a href=&#34;https://github.com/timqian/chart.xkcd&#34;&gt;chart.xkcd&lt;/a&gt; parmi les flux RSS que je suis. J&amp;rsquo;ai trouvé l&amp;rsquo;idée amusante et le rendu agréable, j&amp;rsquo;en ai donc fait un micro &lt;em&gt;shortcode&lt;/em&gt; pour &lt;strong&gt;Hugo&lt;/strong&gt; :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div&amp;gt;
-&amp;lt;svg class=&#39;{{ .Get &amp;quot;name&amp;quot; }}&#39;&amp;gt;&amp;lt;/svg&amp;gt;
-&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script&amp;gt;
-  const svg{{ .Get &amp;quot;name&amp;quot; | safeJS }} = document.querySelector(&#39;.{{ .Get &amp;quot;name&amp;quot; }}&#39;);
-  new chartXkcd.{{ .Get &amp;quot;type&amp;quot; | safeJS }}(svg{{ .Get &amp;quot;name&amp;quot; | safeJS }}, {
-    {{ .Inner | safeJS }}
-  });
-&amp;lt;/script&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A caler dans &lt;code&gt;layout/shortcodes/chart-xkcd.html&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Trois types de diagrammes sont dispos pour le moment : &lt;a href=&#34;#line&#34;&gt;&lt;strong&gt;Line&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#pie&#34;&gt;&lt;strong&gt;Pie&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#bar&#34;&gt;&lt;strong&gt;Bar&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#xy&#34;&gt;&lt;strong&gt;XY&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Les options de chaque diagramme sont trouvables dans la &lt;a href=&#34;https://timqian.com/chart.xkcd/&#34;&gt;doc&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;exemples&#34;&gt;Exemples&lt;/h2&gt;
-
-&lt;h3 id=&#34;line&#34;&gt;Line&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;line&amp;quot; type=&amp;quot;Line&amp;quot; %}}
-    title: &#39;A vs B&#39;,
-    xLabel: &#39;Abscisse&#39;,
-    yLabel: &#39;Ordonnee&#39;,
-    data: {
-      labels:[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;,&#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;],
-      datasets: [{
-        label: &#39;A&#39;,
-        data: [30, 2500, 200, 300, 250 ,800, 1500, 2900, 5000, 800],
-      }, {
-        label: &#39;B&#39;,
-        data: [0, 1, 30, 70, 80, 100, 50, 80, 40, 150],
-      }]
-    },
-    options: { // optional
-      yTickCount: 10,
-    }
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
-&lt;svg class=&#39;line&#39;&gt;&lt;/svg&gt;
-&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-  const svgline = document.querySelector(&#39;.line&#39;);
-  new chartXkcd.Line(svgline, {
-    
-    title: &#39;A vs B&#39;,
-    xLabel: &#39;Abscisse&#39;,
-    yLabel: &#39;Ordonnee&#39;,
-    data: {
-      labels:[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;,&#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;],
-      datasets: [{
-        label: &#39;A&#39;,
-        data: [30, 2500, 200, 300, 250 ,800, 1500, 2900, 5000, 800],
-      }, {
-        label: &#39;B&#39;,
-        data: [0, 145, 300, 770, 80, 45, 50, 1080, 40, 150],
-      }]
-    },
-    options: {
-      yTickCount: 10,
-    }
-
-  });
-&lt;/script&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&#34;pie&#34;&gt;Pie&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;pie&amp;quot; type=&amp;quot;Pie&amp;quot; %}}
-    title: &#39;A B C D E&#39;,
-    data: {
-      labels:[ &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
-      datasets: [{
-        data: [200, 122, 60, 130, 44,],
-      }]
-    },
-    options: {
-      innerRadius: 0.5, // mettre à 0 pour obtenir un diagramme camembert (pie chart)
-      legendPosition: chartXkcd.config.positionType.upRight,
-    }
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
-&lt;svg class=&#39;pie&#39;&gt;&lt;/svg&gt;
-&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-  const svgpie = document.querySelector(&#39;.pie&#39;);
-  new chartXkcd.Pie(svgpie, {
-    
-    title: &#39;A B C D E&#39;,
-    data: {
-      labels:[ &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
-      datasets: [{
-        data: [200, 122, 60, 130, 44,],
-      }]
-    },
-    options: {
-      innerRadius: 0.5,
-      legendPosition: chartXkcd.config.positionType.upRight,
-    }
-
-  });
-&lt;/script&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&#34;bar&#34;&gt;Bar&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;bar&amp;quot; type=&amp;quot;Bar&amp;quot; %}}
-    title: &amp;quot;A B C D&amp;quot;,
-    data: {
-      labels:[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
-      datasets: [{
-        data: [20, 33, 5, 12],
-      }]
-    },
-    options: { // optional
-      yTickCount: 8,
-    }
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
-&lt;svg class=&#39;bar&#39;&gt;&lt;/svg&gt;
-&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-  const svgbar = document.querySelector(&#39;.bar&#39;);
-  new chartXkcd.Bar(svgbar, {
-    
-    title: &#34;A B C D&#34;,
-    data: {
-      labels:[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
-      datasets: [{
-        data: [20, 33, 5, 12],
-      }]
-    },
-    options: { // optional
-      yTickCount: 8,
-    }
-
-  });
-&lt;/script&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&#34;xy&#34;&gt;XY&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;xy&amp;quot; type=&amp;quot;XY&amp;quot; %}}
-    title: &#39;A vs B&#39;,
-    xLabel: &#39;Abscisse&#39;,
-    yLabel: &#39;Ordonnee&#39;,
-    data: {
-      datasets: [{
-        label: &#39;A&#39;,
-        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
-      }, {
-        label: &#39;B&#39;,
-        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
-      }],
-    },
-    options: {
-      xTickCount: 10,
-      yTickCount: 10,
-      showLine: false,
-      dotSize: 1,
-    }
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
-&lt;svg class=&#39;xy1&#39;&gt;&lt;/svg&gt;
-&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-  const svgxy1 = document.querySelector(&#39;.xy1&#39;);
-  new chartXkcd.XY(svgxy1, {
-    
-    title: &#39;A vs B&#39;,
-    xLabel: &#39;Abscisse&#39;,
-    yLabel: &#39;Ordonnee&#39;,
-    data: {
-      datasets: [{
-        label: &#39;A&#39;,
-        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
-      }, {
-        label: &#39;B&#39;,
-        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
-      }],
-    },
-    options: {
-      xTickCount: 10,
-      yTickCount: 10,
-      showLine: false,
-      dotSize: 1,
-    }
-
-  });
-&lt;/script&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Avec &lt;code&gt;options: {showLine: true}&lt;/code&gt; :&lt;/p&gt;
-
-&lt;div&gt;
-&lt;svg class=&#39;xy2&#39;&gt;&lt;/svg&gt;
-&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-  const svgxy2 = document.querySelector(&#39;.xy2&#39;);
-  new chartXkcd.XY(svgxy2, {
-    
-    title: &#39;A vs B&#39;,
-    xLabel: &#39;Abscisse&#39;,
-    yLabel: &#39;Ordonnee&#39;,
-    data: {
-      datasets: [{
-        label: &#39;A&#39;,
-        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
-      }, {
-        label: &#39;B&#39;,
-        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
-      }],
-    },
-    options: {
-      xTickCount: 10,
-      yTickCount: 10,
-      showLine: true,
-      dotSize: 1,
-    }
-
-  });
-&lt;/script&gt;
-&lt;/div&gt;
 </description>
     </item>
     
