@@ -5,10 +5,32 @@
     <description>Recent content in Blogs on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Thu, 12 Sep 2019 22:20:17 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 23 Sep 2019 23:15:46 +0200</lastBuildDate>
     
         <atom:link href="https://thomas.labarussias.fr/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Falco Probes</title>
+      <link>https://thomas.labarussias.fr/blog/falco-probes/</link>
+      <pubDate>Mon, 23 Sep 2019 23:15:46 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falco-probes/</guid>
+      <description>&lt;p&gt;Je traîne pas mal sur le &lt;strong&gt;slack&lt;/strong&gt; de &lt;a href=&#34;https://sysdig.slack.com/&#34;&gt;&lt;strong&gt;sysdig&lt;/strong&gt;&lt;/a&gt;, où on parle bien entendu de &lt;strong&gt;falco&lt;/strong&gt;. Un problème très récurrent des utilisateurs est l&amp;rsquo;existence ou non de modules &lt;em&gt;kernel&lt;/em&gt; précompilés pour leurs versions de &lt;em&gt;kernel&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Quand le module n&amp;rsquo;est pas présent sur la machine hôte, l&amp;rsquo;installeur tente de le télécharger depuis un &lt;em&gt;bucket S3&lt;/em&gt;, c&amp;rsquo;est pratique, mais étant donné l&amp;rsquo;immense variété d&amp;rsquo;architectures et de versions de &lt;em&gt;kernel&lt;/em&gt; dans la nature, impossible de tous les avoir tout prêts au chaud sur &lt;em&gt;S3&lt;/em&gt;. Jusqu&amp;rsquo;à présent, la seule manière pour savoir si la version du module pour son &lt;em&gt;kernel&lt;/em&gt; est présente ou non sur le &lt;em&gt;bucket&lt;/em&gt; est d&amp;rsquo;aller sur la page indigeste qui est celle-ci : &lt;a href=&#34;https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html&#34;&gt;https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Pas très pratique (ça oblige à faire du &lt;em&gt;ctrl+F&lt;/em&gt; pour recherhcer) et surtout la page est de plus en plus volumineuse.&lt;/p&gt;
+
+&lt;p&gt;J&amp;rsquo;ai donc codé un petit machin qui parse cet &lt;em&gt;index&lt;/em&gt; et ressort le tout sous forme de tableaux dans lequels on peut chercher et également transmettre les diens vers les modules.&lt;/p&gt;
+
+&lt;p&gt;Le domaine est temporaire jusqu&amp;rsquo;à nouvel ordre : &lt;strong&gt;&lt;a href=&#34;https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0&#34;&gt;https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;En espérant que ça serve à quelqu&amp;rsquo;un d&amp;rsquo;autre que moi, en tout cas c&amp;rsquo;est très pratique pour vérifier si les soucis d&amp;rsquo;installation de &lt;strong&gt;falco&lt;/strong&gt; d&amp;rsquo;une personne viennent de l&amp;rsquo;absence du module ou non.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Chart XKCD</title>

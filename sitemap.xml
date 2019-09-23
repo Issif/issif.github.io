@@ -4,12 +4,37 @@
   
   <url>
     <loc>https://thomas.labarussias.fr/blog/</loc>
-    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
+    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://thomas.labarussias.fr/categories/</loc>
-    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
+    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/falco/</loc>
+    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/blog/falco-probes/</loc>
+    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/go/</loc>
+    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/</loc>
+    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9/</loc>
+    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
   </url>
   
   <url>
@@ -28,32 +53,12 @@
   </url>
   
   <url>
-    <loc>https://thomas.labarussias.fr/</loc>
-    <lastmod>2019-09-12T22:20:17+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://thomas.labarussias.fr/categories/javascript/</loc>
     <lastmod>2019-09-12T22:20:17+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://thomas.labarussias.fr/categories/falco/</loc>
-    <lastmod>2019-09-11T16:00:10+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://thomas.labarussias.fr/blog/falcosidekick-v-2-8-0/</loc>
-    <lastmod>2019-09-11T16:00:10+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/categories/go/</loc>
-    <lastmod>2019-09-11T16:00:10+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9/</loc>
     <lastmod>2019-09-11T16:00:10+02:00</lastmod>
   </url>
   

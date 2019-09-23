@@ -2,8 +2,8 @@
 <html lang="fr">
   <head>
   <meta charset="utf-8">
-<title>hugo - Issif</title>
-<meta name="description" content="Go addict">
+<title>Falco Probes - Issif</title>
+<meta name="description" content="Falco Probes">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -17,20 +17,28 @@
 
 
   <meta name="generator" content="Hugo 0.57.2" />
-  <meta itemprop="name" content="hugo">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="Falco Probes">
+<meta itemprop="description" content="Falco Probes">
 
 
-  <meta property="og:title" content="hugo" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://thomas.labarussias.fr/categories/hugo/" />
+<meta itemprop="datePublished" content="2019-09-23T23:15:46&#43;02:00" />
+<meta itemprop="dateModified" content="2019-09-23T23:15:46&#43;02:00" />
+<meta itemprop="wordCount" content="209">
 
-<meta property="og:updated_time" content="2019-09-12T22:20:17+02:00" />
+
+
+<meta itemprop="keywords" content="" />
+
+  <meta property="og:title" content="Falco Probes" />
+<meta property="og:description" content="Falco Probes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomas.labarussias.fr/blog/falco-probes/" />
+<meta property="article:published_time" content="2019-09-23T23:15:46+02:00" />
+<meta property="article:modified_time" content="2019-09-23T23:15:46+02:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="hugo"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Falco Probes"/>
+<meta name="twitter:description" content="Falco Probes"/>
 
   
 
@@ -64,7 +72,7 @@
       <a href="/">
         
           
-            Catégories
+            Blog
           
         
       </a>
@@ -110,8 +118,6 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/categories/hugo/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         <li><a href="//github.com/issif" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
 
@@ -160,40 +166,61 @@
   
 </section>
       <main id="site-main">
-        <h1>hugo</h1>
-        
-        
-            <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
-        <h2><a href="/blog/chart-xkcd/">Chart XKCD</a></h2>
+        <h2><a href="/blog/falco-probes/">Falco Probes</a></h2>
     
     
-        <p>https://github.com/timqian/chart.xkcd</p>
+        <p>Falco Probes</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2019-09-12 22:20:17 &#43;0200 CEST">
-      12-09-2019
+    <time class="published" datetime="2019-09-23 23:15:46 &#43;0200 CEST">
+      23-09-2019
     </time>
     <span class="author">Issif</span>
     
-        <p>4 minutes</p>
+        <p>1 minutes</p>
     
   </div>
 </header>
 
+  <section id="socnet-share">
+    
+
+
+
+
   
-<a href="/blog/chart-xkcd/" class="image featured">
-  <img src="/img/2019/09/chart-xkcd-feature.png" alt="chart-xkcd-feature">
+
+
+  </section>
+  
+<a href="/blog/falco-probes/" class="image featured">
+  <img src="/img/main/falco-feature.png" alt="falco feature">
 </a>
 
 
   
-  <p>Je suis tombé <a href="https://github.com/timqian/chart.xkcd">chart.xkcd</a> parmi les flux RSS que je suis. J&rsquo;ai trouvé l&rsquo;idée amusante et le rendu agréable, j&rsquo;en ai donc fait un micro <em>shortcode</em> pour <strong>Hugo</strong> :</p>
+  <div class="content">
+    <p>Je traîne pas mal sur le <strong>slack</strong> de <a href="https://sysdig.slack.com/"><strong>sysdig</strong></a>, où on parle bien entendu de <strong>falco</strong>. Un problème très récurrent des utilisateurs est l&rsquo;existence ou non de modules <em>kernel</em> précompilés pour leurs versions de <em>kernel</em>.</p>
+
+<p>Quand le module n&rsquo;est pas présent sur la machine hôte, l&rsquo;installeur tente de le télécharger depuis un <em>bucket S3</em>, c&rsquo;est pratique, mais étant donné l&rsquo;immense variété d&rsquo;architectures et de versions de <em>kernel</em> dans la nature, impossible de tous les avoir tout prêts au chaud sur <em>S3</em>. Jusqu&rsquo;à présent, la seule manière pour savoir si la version du module pour son <em>kernel</em> est présente ou non sur le <em>bucket</em> est d&rsquo;aller sur la page indigeste qui est celle-ci : <a href="https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html">https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html</a></p>
+
+<p>Pas très pratique (ça oblige à faire du <em>ctrl+F</em> pour recherhcer) et surtout la page est de plus en plus volumineuse.</p>
+
+<p>J&rsquo;ai donc codé un petit machin qui parse cet <em>index</em> et ressort le tout sous forme de tableaux dans lequels on peut chercher et également transmettre les diens vers les modules.</p>
+
+<p>Le domaine est temporaire jusqu&rsquo;à nouvel ordre : <strong><a href="https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0">https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0</a></strong></p>
+
+<p>En espérant que ça serve à quelqu&rsquo;un d&rsquo;autre que moi, en tout cas c&rsquo;est très pratique pour vérifier si les soucis d&rsquo;installation de <strong>falco</strong> d&rsquo;une personne viennent de l&rsquo;absence du module ou non.</p>
+
+<p><em>Enjoy</em></p>
+
+  </div>
   <footer>
-    <a href="/blog/chart-xkcd/" class="button big">Lire la suite</a>
     <ul class="stats">
   
     
@@ -202,13 +229,13 @@
         <ul>
           
             
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/chart">chart</a></li>
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/falco">falco</a></li>
           
             
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/javascript">javascript</a></li>
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9">sécurité</a></li>
           
             
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/hugo">hugo</a></li>
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
           
         </ul>
       </li>
@@ -219,17 +246,25 @@
 
   </footer>
 </article>
+<article class="post">
+<div id="comments">
+    <script src="https://utteranc.es/client.js"
+        repo='issif/issif.github.io-comments'
+        issue-term="pathname"
+        theme='github-light'
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+</article>
 
-        
-        
 <div class="pagination">
   
-    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
+    <a href="/blog/chart-xkcd/" class="button big previous"><i class="fas fa-angle-left"></i> Chart XKCD</a>
   
-  
-    <a href="#" class="disabled button big next"><i class="fas fa-angle-right"></i></a>
   
 </div>
+
 
       </main>
       <section id="site-sidebar">
