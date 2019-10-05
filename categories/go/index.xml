@@ -11,6 +11,74 @@
     
     
     <item>
+      <title>Falcosidekick 2.9.0 : nouvelle intégration et nouvel avatar</title>
+      <link>https://thomas.labarussias.fr/blog/falcosidekick-v-2-9-0-new-avatar/</link>
+      <pubDate>Sat, 05 Oct 2019 10:28:13 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-9-0-new-avatar/</guid>
+      <description>&lt;p&gt;Je viens de sortir la version &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick/releases/tag/2.9.0&#34;&gt;&lt;strong&gt;2.9.0&lt;/strong&gt;&lt;/a&gt; de &lt;strong&gt;falcosidekick&lt;/strong&gt; et en outre un nouvel output, &lt;a href=&#34;https://www.opsgenie.com/&#34;&gt;&lt;strong&gt;Opsgenie&lt;/strong&gt;&lt;/a&gt;, j&amp;rsquo;ai également refait l&amp;rsquo;avatar du projet. Il est désormais en couleurs et a une forme globale carrée, pour faciliter l&amp;rsquo;utilisation en icône (&lt;strong&gt;Slack&lt;/strong&gt;, &lt;strong&gt;Teams&lt;/strong&gt;, &amp;hellip;).&lt;/p&gt;
+
+&lt;p&gt;Voilà le résultat :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs/falcosidekick_color.png&#34; alt=&#34;falcosidekick new avatar&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ce qui donne ceci dans &lt;strong&gt;Slack&lt;/strong&gt; :&lt;/p&gt;
+
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  &lt;div class=&#34;fancybox&#34;&gt;
+    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://thomas.labarussias.fr/img/2019/10/slack_with_new_falcosidekick_avatar.png&#34; data-caption=&#34;Slack avec le nouvel avatar&#34;&gt;&lt;img src=&#34;https://thomas.labarussias.fr/img/2019/10/slack_with_new_falcosidekick_avatar.png&#34;&gt;&lt;/a&gt;
+    &lt;div class=&#34;caption&#34;&gt;Slack avec le nouvel avatar&lt;/div&gt;
+  &lt;/div&gt;
+
+
+
+&lt;p&gt;En ce qui concerne &lt;a href=&#34;https://www.opsgenie.com/&#34;&gt;&lt;strong&gt;Opsgenie&lt;/strong&gt;&lt;/a&gt;, voilà le résultat :&lt;/p&gt;
+
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  &lt;div class=&#34;fancybox&#34;&gt;
+    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs//opsgenie.png&#34; data-caption=&#34;Opsgenie&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs//opsgenie.png&#34;&gt;&lt;/a&gt;
+    &lt;div class=&#34;caption&#34;&gt;Opsgenie&lt;/div&gt;
+  &lt;/div&gt;
+
+
+
+&lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Falco Probes</title>
       <link>https://thomas.labarussias.fr/blog/falco-probes/</link>
       <pubDate>Mon, 23 Sep 2019 23:15:46 +0200</pubDate>
