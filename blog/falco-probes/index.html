@@ -16,11 +16,9 @@
   <meta name="theme-color" content="#ffffff">
 
 
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.64.1" />
   <meta itemprop="name" content="Falco Probes">
 <meta itemprop="description" content="Falco Probes">
-
-
 <meta itemprop="datePublished" content="2019-09-23T23:15:46&#43;02:00" />
 <meta itemprop="dateModified" content="2019-09-23T23:15:46&#43;02:00" />
 <meta itemprop="wordCount" content="209">
@@ -28,7 +26,6 @@
 
 
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Falco Probes" />
 <meta property="og:description" content="Falco Probes" />
 <meta property="og:type" content="article" />
@@ -206,17 +203,11 @@
   
   <div class="content">
     <p>Je traîne pas mal sur le <strong>slack</strong> de <a href="https://sysdig.slack.com/"><strong>sysdig</strong></a>, où on parle bien entendu de <strong>falco</strong>. Un problème très récurrent des utilisateurs est l&rsquo;existence ou non de modules <em>kernel</em> précompilés pour leurs versions de <em>kernel</em>.</p>
-
-<p>Quand le module n&rsquo;est pas présent sur la machine hôte, l&rsquo;installeur tente de le télécharger depuis un <em>bucket S3</em>, c&rsquo;est pratique, mais étant donné l&rsquo;immense variété d&rsquo;architectures et de versions de <em>kernel</em> dans la nature, impossible de tous les avoir tout prêts au chaud sur <em>S3</em>. Jusqu&rsquo;à présent, la seule manière pour savoir si la version du module pour son <em>kernel</em> est présente ou non sur le <em>bucket</em> est d&rsquo;aller sur la page indigeste qui est celle-ci : <a href="https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html">https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html</a></p>
-
+<p>Quand le module n&rsquo;est pas présent sur la machine hôte, l&rsquo;installeur tente de le télécharger depuis un <em>bucket S3</em>, c&rsquo;est pratique, mais étant donné l&rsquo;immense variété d&rsquo;architectures et de versions de <em>kernel</em> dans la nature, impossible de tous les avoir tout prêts au chaud sur <em>S3</em>. Jusqu'à présent, la seule manière pour savoir si la version du module pour son <em>kernel</em> est présente ou non sur le <em>bucket</em> est d&rsquo;aller sur la page indigeste qui est celle-ci : <a href="https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html">https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html</a></p>
 <p>Pas très pratique (ça oblige à faire du <em>ctrl+F</em> pour recherhcer) et surtout la page est de plus en plus volumineuse.</p>
-
 <p>J&rsquo;ai donc codé un petit machin qui parse cet <em>index</em> et ressort le tout sous forme de tableaux dans lequels on peut chercher et également transmettre les diens vers les modules.</p>
-
-<p>Le domaine est temporaire jusqu&rsquo;à nouvel ordre : <strong><a href="https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0">https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0</a></strong></p>
-
+<p>Le domaine est temporaire jusqu'à nouvel ordre : <strong><a href="https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0">https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0</a></strong></p>
 <p>En espérant que ça serve à quelqu&rsquo;un d&rsquo;autre que moi, en tout cas c&rsquo;est très pratique pour vérifier si les soucis d&rsquo;installation de <strong>falco</strong> d&rsquo;une personne viennent de l&rsquo;absence du module ou non.</p>
-
 <p><em>Enjoy</em></p>
 
   </div>
@@ -279,6 +270,21 @@
       <article class="mini-post">
         <section>
           
+<a href="/blog/falcosidekick-100k-pulls/" class="image featured">
+  <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/falcosidekick-100k-pulls/">Falcosidekick 100k Pulls</a></h1>
+          <time class="published" datetime="">18-02-2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
 <a href="/blog/falcosidekick-v-2-9-0-new-avatar/" class="image featured">
   <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
 </a>
@@ -306,21 +312,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-<a href="/blog/chart-xkcd/" class="image featured">
-  <img src="/img/2019/09/chart-xkcd-feature.png" alt="chart-xkcd-feature">
-</a>
-
-
-        </section>
-        <header>
-          <h1><a href="/blog/chart-xkcd/">Chart XKCD</a></h1>
-          <time class="published" datetime="">12-09-2019</time>
-        </header>
-      </article>
-      
       
         <a href="/blog/" class="button">Voir plus</a>
       
@@ -340,17 +331,17 @@
           
           <li>
             
-              <a href="/categories/go/">go<span class="count">7</span></a>
+              <a href="/categories/go/">go<span class="count">8</span></a>
             
           
           <li>
             
-              <a href="/categories/falco/">falco<span class="count">6</span></a>
+              <a href="/categories/falco/">falco<span class="count">7</span></a>
             
           
           <li>
             
-              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">6</span></a>
+              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">7</span></a>
             
           
           <li>
@@ -404,12 +395,12 @@
   
   <p class="copyright">
     
-      &copy; 2019
+      &copy; 2020
       
         Issif
       
     . <br>
-    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.58.3' target='_blank' rel='noopener'>Hugo</a>
+    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.64.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

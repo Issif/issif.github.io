@@ -5,10 +5,48 @@
     <description>Recent content in Blogs on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Sat, 05 Oct 2019 10:28:13 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2020 21:55:00 +0100</lastBuildDate>
     
         <atom:link href="https://thomas.labarussias.fr/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Falcosidekick 100k Pulls</title>
+      <link>https://thomas.labarussias.fr/blog/falcosidekick-100k-pulls/</link>
+      <pubDate>Tue, 18 Feb 2020 21:55:00 +0100</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/falcosidekick-100k-pulls/</guid>
+      <description>&lt;p&gt;Un petit post d&amp;rsquo;auto-promo (après des mois d&amp;rsquo;absences&amp;hellip;).&lt;/p&gt;
+&lt;p&gt;J&amp;rsquo;ai noté récemment que mon petit &lt;code&gt;falcosidekick&lt;/code&gt; a dépassé les &lt;em&gt;100000 pulls&lt;/em&gt; sur le &lt;code&gt;DockerHub&lt;/code&gt;. Je suis bluffé, surtout que je sais que des entités grosses et connues l&amp;rsquo;utilisent (je ne sais pas si je peux dire qui, dont je me tais, &lt;em&gt;sorry&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Un petit graphe pour montrer l&amp;rsquo;historique (la légende est illisible, mais les dates sont obtenables en survolant) :&lt;/p&gt;
+&lt;div&gt;
+&lt;svg class=&#39;line&#39;&gt;&lt;/svg&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const svgline = document.querySelector(&#39;.line&#39;);
+  new chartXkcd.Line(svgline, {
+    
+    title: &#39;Docker Pulls&#39;,
+    xLabel: &#39;Pulls&#39;,
+    yLabel: &#39;Date&#39;,
+    data: {
+      labels:[&#39;2019-08-28&#39;,&#39;2019-08-29&#39;,&#39;2019-08-30&#39;,&#39;2019-08-31&#39;,&#39;2019-09-01&#39;,&#39;2019-09-02&#39;,&#39;2019-09-03&#39;,&#39;2019-09-04&#39;,&#39;2019-09-05&#39;,&#39;2019-09-06&#39;,&#39;2019-09-07&#39;,&#39;2019-09-08&#39;,&#39;2019-09-09&#39;,&#39;2019-09-10&#39;,&#39;2019-09-11&#39;,&#39;2019-09-12&#39;,&#39;2019-09-13&#39;,&#39;2019-09-14&#39;,&#39;2019-09-15&#39;,&#39;2019-09-16&#39;,&#39;2019-09-17&#39;,&#39;2019-09-18&#39;,&#39;2019-09-19&#39;,&#39;2019-09-20&#39;,&#39;2019-09-21&#39;,&#39;2019-09-22&#39;,&#39;2019-09-23&#39;,&#39;2019-09-24&#39;,&#39;2019-09-25&#39;,&#39;2019-09-26&#39;,&#39;2019-09-27&#39;,&#39;2019-09-28&#39;,&#39;2019-09-29&#39;,&#39;2019-09-30&#39;,&#39;2019-10-01&#39;,&#39;2019-10-02&#39;,&#39;2019-10-03&#39;,&#39;2019-10-04&#39;,&#39;2019-10-05&#39;,&#39;2019-10-06&#39;,&#39;2019-10-07&#39;,&#39;2019-10-08&#39;,&#39;2019-10-09&#39;,&#39;2019-10-10&#39;,&#39;2019-10-11&#39;,&#39;2019-10-12&#39;,&#39;2019-10-13&#39;,&#39;2019-10-14&#39;,&#39;2019-10-15&#39;,&#39;2019-10-16&#39;,&#39;2019-10-17&#39;,&#39;2019-10-18&#39;,&#39;2019-10-19&#39;,&#39;2019-10-20&#39;,&#39;2019-10-21&#39;,&#39;2019-10-22&#39;,&#39;2019-10-23&#39;,&#39;2019-10-24&#39;,&#39;2019-10-25&#39;,&#39;2019-10-26&#39;,&#39;2019-10-27&#39;,&#39;2019-10-28&#39;,&#39;2019-10-29&#39;,&#39;2019-10-30&#39;,&#39;2019-10-31&#39;,&#39;2019-11-01&#39;,&#39;2019-11-02&#39;,&#39;2019-11-03&#39;,&#39;2019-11-04&#39;,&#39;2019-11-05&#39;,&#39;2019-11-06&#39;,&#39;2019-11-07&#39;,&#39;2019-11-08&#39;,&#39;2019-11-09&#39;,&#39;2019-11-10&#39;,&#39;2019-11-11&#39;,&#39;2019-11-12&#39;,&#39;2019-11-13&#39;,&#39;2019-11-14&#39;,&#39;2019-11-15&#39;,&#39;2019-11-16&#39;,&#39;2019-11-17&#39;,&#39;2019-11-18&#39;,&#39;2019-11-19&#39;,&#39;2019-11-20&#39;,&#39;2019-11-21&#39;,&#39;2019-11-22&#39;,&#39;2019-11-23&#39;,&#39;2019-11-24&#39;,&#39;2019-11-25&#39;,&#39;2019-11-26&#39;,&#39;2019-11-27&#39;,&#39;2019-11-28&#39;,&#39;2019-11-29&#39;,&#39;2019-11-30&#39;,&#39;2019-12-01&#39;,&#39;2019-12-02&#39;,&#39;2019-12-03&#39;,&#39;2019-12-04&#39;,&#39;2019-12-05&#39;,&#39;2019-12-06&#39;,&#39;2019-12-07&#39;,&#39;2019-12-08&#39;,&#39;2019-12-09&#39;,&#39;2019-12-10&#39;,&#39;2019-12-11&#39;,&#39;2019-12-12&#39;,&#39;2019-12-13&#39;,&#39;2019-12-14&#39;,&#39;2019-12-15&#39;,&#39;2019-12-16&#39;,&#39;2019-12-17&#39;,&#39;2019-12-18&#39;,&#39;2019-12-19&#39;,&#39;2019-12-20&#39;,&#39;2019-12-21&#39;,&#39;2019-12-22&#39;,&#39;2019-12-23&#39;,&#39;2019-12-24&#39;,&#39;2019-12-25&#39;,&#39;2019-12-26&#39;,&#39;2019-12-27&#39;,&#39;2019-12-28&#39;,&#39;2019-12-29&#39;,&#39;2019-12-30&#39;,&#39;2019-12-31&#39;,&#39;2020-01-01&#39;,&#39;2020-01-02&#39;,&#39;2020-01-03&#39;,&#39;2020-01-04&#39;,&#39;2020-01-05&#39;,&#39;2020-01-06&#39;,&#39;2020-01-07&#39;,&#39;2020-01-08&#39;,&#39;2020-01-09&#39;,&#39;2020-01-10&#39;,&#39;2020-01-11&#39;,&#39;2020-01-12&#39;,&#39;2020-01-13&#39;,&#39;2020-01-14&#39;,&#39;2020-01-15&#39;,&#39;2020-01-16&#39;,&#39;2020-01-17&#39;,&#39;2020-01-18&#39;,&#39;2020-01-19&#39;,&#39;2020-01-20&#39;,&#39;2020-01-21&#39;,&#39;2020-01-22&#39;,&#39;2020-01-23&#39;,&#39;2020-01-24&#39;,&#39;2020-01-25&#39;,&#39;2020-01-26&#39;,&#39;2020-01-27&#39;,&#39;2020-01-28&#39;,&#39;2020-01-29&#39;,&#39;2020-01-30&#39;,&#39;2020-01-31&#39;,&#39;2020-02-01&#39;,&#39;2020-02-02&#39;,&#39;2020-02-03&#39;,&#39;2020-02-04&#39;,&#39;2020-02-05&#39;,&#39;2020-02-06&#39;,&#39;2020-02-07&#39;,&#39;2020-02-08&#39;,&#39;2020-02-09&#39;,&#39;2020-02-10&#39;,&#39;2020-02-11&#39;,&#39;2020-02-12&#39;,&#39;2020-02-13&#39;,&#39;2020-02-14&#39;,&#39;2020-02-15&#39;,&#39;2020-02-16&#39;,&#39;2020-02-17&#39;,&#39;2020-02-18&#39;],
+      datasets: [{
+        label: &#39;Pulls&#39;,
+        data: [2,2,9,106,108,134,173,434,492,615,761,761,816,950,1084,1104,1111,1111,1111,1157,1194,1210,1232,1232,1232,1232,1235,7685,7988,8042,8086,8086,8086,8087,8188,8200,8250,8373,8401,8408,8409,8524,8532,8603,8659,8707,8707,8771,8842,8992,9467,9713,9995,10255,10572,10903,10986,11041,11467,12042,12206,12277,12380,12470,12490,12642,12707,12783,13239,13754,14426,15159,15837,16155,16292,16776,17425,18001,18931,19596,20055,20321,20694,21490,22307,23572,24904,25591,25738,26321,27371,28516,29413,30216,30967,31052,31591,32710,34168,35164,35858,36239,36536,36849,37305,39011,40333,41472,42265,42508,43081,44534,45853,47028,47575,47880,47884,48428,48877,48882,49219,49683,49784,49786,49981,50538,50625,50860,51338,51413,51419,51501,51809,52676,53759,54978,55761,55828,56622,58214,59431,60331,62154,63643,64460,65872,67662,69453,71212,73267,74537,75335,76767,79124,81637,83863,86340,87692,88663,89862,91420,92794,94149,95124,95836,96571,97335,98296,99070,99906,100752,101480,102182,102885,103582],
+      }]
+    },
+    options: { // optional
+      yTickCount: 20,
+    }
+
+  });
+&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;Merci à tous ceux qui l&amp;rsquo;utilisent et bien sûr à toute l&#39;équipe derrière &lt;code&gt;falco&lt;/code&gt;. J&amp;rsquo;ai d&amp;rsquo;autres idées en réserve pour améliorer, j&amp;rsquo;espère avoir le temps de m&amp;rsquo;y atteler.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Falcosidekick 2.9.0 : nouvelle intégration et nouvel avatar</title>
@@ -17,13 +55,9 @@
       
       <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-9-0-new-avatar/</guid>
       <description>&lt;p&gt;Je viens de sortir la version &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick/releases/tag/2.9.0&#34;&gt;&lt;strong&gt;2.9.0&lt;/strong&gt;&lt;/a&gt; de &lt;strong&gt;falcosidekick&lt;/strong&gt; et en outre un nouvel output, &lt;a href=&#34;https://www.opsgenie.com/&#34;&gt;&lt;strong&gt;Opsgenie&lt;/strong&gt;&lt;/a&gt;, j&amp;rsquo;ai également refait l&amp;rsquo;avatar du projet. Il est désormais en couleurs et a une forme globale carrée, pour faciliter l&amp;rsquo;utilisation en icône (&lt;strong&gt;Slack&lt;/strong&gt;, &lt;strong&gt;Teams&lt;/strong&gt;, &amp;hellip;).&lt;/p&gt;
-
 &lt;p&gt;Voilà le résultat :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs/falcosidekick_color.png&#34; alt=&#34;falcosidekick new avatar&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/falcosecurity/falcosidekick/master/imgs/falcosidekick_color.png&#34; alt=&#34;falcosidekick new avatar&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Ce qui donne ceci dans &lt;strong&gt;Slack&lt;/strong&gt; :&lt;/p&gt;
-
 
 
 
@@ -46,9 +80,7 @@
   &lt;/div&gt;
 
 
-
 &lt;p&gt;En ce qui concerne &lt;a href=&#34;https://www.opsgenie.com/&#34;&gt;&lt;strong&gt;Opsgenie&lt;/strong&gt;&lt;/a&gt;, voilà le résultat :&lt;/p&gt;
-
 
 
 
@@ -71,9 +103,7 @@
   &lt;/div&gt;
 
 
-
 &lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
@@ -85,17 +115,11 @@
       
       <guid>https://thomas.labarussias.fr/blog/falco-probes/</guid>
       <description>&lt;p&gt;Je traîne pas mal sur le &lt;strong&gt;slack&lt;/strong&gt; de &lt;a href=&#34;https://sysdig.slack.com/&#34;&gt;&lt;strong&gt;sysdig&lt;/strong&gt;&lt;/a&gt;, où on parle bien entendu de &lt;strong&gt;falco&lt;/strong&gt;. Un problème très récurrent des utilisateurs est l&amp;rsquo;existence ou non de modules &lt;em&gt;kernel&lt;/em&gt; précompilés pour leurs versions de &lt;em&gt;kernel&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Quand le module n&amp;rsquo;est pas présent sur la machine hôte, l&amp;rsquo;installeur tente de le télécharger depuis un &lt;em&gt;bucket S3&lt;/em&gt;, c&amp;rsquo;est pratique, mais étant donné l&amp;rsquo;immense variété d&amp;rsquo;architectures et de versions de &lt;em&gt;kernel&lt;/em&gt; dans la nature, impossible de tous les avoir tout prêts au chaud sur &lt;em&gt;S3&lt;/em&gt;. Jusqu&amp;rsquo;à présent, la seule manière pour savoir si la version du module pour son &lt;em&gt;kernel&lt;/em&gt; est présente ou non sur le &lt;em&gt;bucket&lt;/em&gt; est d&amp;rsquo;aller sur la page indigeste qui est celle-ci : &lt;a href=&#34;https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html&#34;&gt;https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html&lt;/a&gt;&lt;/p&gt;
-
+&lt;p&gt;Quand le module n&amp;rsquo;est pas présent sur la machine hôte, l&amp;rsquo;installeur tente de le télécharger depuis un &lt;em&gt;bucket S3&lt;/em&gt;, c&amp;rsquo;est pratique, mais étant donné l&amp;rsquo;immense variété d&amp;rsquo;architectures et de versions de &lt;em&gt;kernel&lt;/em&gt; dans la nature, impossible de tous les avoir tout prêts au chaud sur &lt;em&gt;S3&lt;/em&gt;. Jusqu&#39;à présent, la seule manière pour savoir si la version du module pour son &lt;em&gt;kernel&lt;/em&gt; est présente ou non sur le &lt;em&gt;bucket&lt;/em&gt; est d&amp;rsquo;aller sur la page indigeste qui est celle-ci : &lt;a href=&#34;https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html&#34;&gt;https://s3.amazonaws.com/download.draios.com/stable/sysdig-probe-binaries/index.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Pas très pratique (ça oblige à faire du &lt;em&gt;ctrl+F&lt;/em&gt; pour recherhcer) et surtout la page est de plus en plus volumineuse.&lt;/p&gt;
-
 &lt;p&gt;J&amp;rsquo;ai donc codé un petit machin qui parse cet &lt;em&gt;index&lt;/em&gt; et ressort le tout sous forme de tableaux dans lequels on peut chercher et également transmettre les diens vers les modules.&lt;/p&gt;
-
-&lt;p&gt;Le domaine est temporaire jusqu&amp;rsquo;à nouvel ordre : &lt;strong&gt;&lt;a href=&#34;https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0&#34;&gt;https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
+&lt;p&gt;Le domaine est temporaire jusqu&#39;à nouvel ordre : &lt;strong&gt;&lt;a href=&#34;https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0&#34;&gt;https://thomas.labarussias.fr/falco-probes/?falcoversion=0.17.0&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;En espérant que ça serve à quelqu&amp;rsquo;un d&amp;rsquo;autre que moi, en tout cas c&amp;rsquo;est très pratique pour vérifier si les soucis d&amp;rsquo;installation de &lt;strong&gt;falco&lt;/strong&gt; d&amp;rsquo;une personne viennent de l&amp;rsquo;absence du module ou non.&lt;/p&gt;
-
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
@@ -106,53 +130,41 @@
       <pubDate>Thu, 12 Sep 2019 22:20:17 +0200</pubDate>
       
       <guid>https://thomas.labarussias.fr/blog/chart-xkcd/</guid>
-      <description>
-
-&lt;p&gt;Je suis tombé &lt;a href=&#34;https://github.com/timqian/chart.xkcd&#34;&gt;chart.xkcd&lt;/a&gt; parmi les flux RSS que je suis. J&amp;rsquo;ai trouvé l&amp;rsquo;idée amusante et le rendu agréable, j&amp;rsquo;en ai donc fait un micro &lt;em&gt;shortcode&lt;/em&gt; pour &lt;strong&gt;Hugo&lt;/strong&gt; :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div&amp;gt;
-&amp;lt;svg class=&#39;{{ .Get &amp;quot;name&amp;quot; }}&#39;&amp;gt;&amp;lt;/svg&amp;gt;
-&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script&amp;gt;
-  const svg{{ .Get &amp;quot;name&amp;quot; | safeJS }} = document.querySelector(&#39;.{{ .Get &amp;quot;name&amp;quot; }}&#39;);
-  new chartXkcd.{{ .Get &amp;quot;type&amp;quot; | safeJS }}(svg{{ .Get &amp;quot;name&amp;quot; | safeJS }}, {
-    {{ .Inner | safeJS }}
+      <description>&lt;p&gt;Je suis tombé &lt;a href=&#34;https://github.com/timqian/chart.xkcd&#34;&gt;chart.xkcd&lt;/a&gt; parmi les flux RSS que je suis. J&amp;rsquo;ai trouvé l&amp;rsquo;idée amusante et le rendu agréable, j&amp;rsquo;en ai donc fait un micro &lt;em&gt;shortcode&lt;/em&gt; pour &lt;strong&gt;Hugo&lt;/strong&gt; :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;svg&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{{ .Get &amp;#34;name&amp;#34; }}&amp;#39;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;svg&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;svg&lt;/span&gt;{{ .&lt;span style=&#34;color:#a6e22e&#34;&gt;Get&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;safeJS&lt;/span&gt; }} &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;querySelector&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.{{ .Get &amp;#34;name&amp;#34; }}&amp;#39;&lt;/span&gt;);
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chartXkcd&lt;/span&gt;.{{ .&lt;span style=&#34;color:#a6e22e&#34;&gt;Get&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;safeJS&lt;/span&gt; }}(&lt;span style=&#34;color:#a6e22e&#34;&gt;svg&lt;/span&gt;{{ .&lt;span style=&#34;color:#a6e22e&#34;&gt;Get&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;safeJS&lt;/span&gt; }}, {
+    {{ .&lt;span style=&#34;color:#a6e22e&#34;&gt;Inner&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;safeJS&lt;/span&gt; }}
   });
-&amp;lt;/script&amp;gt;
-&amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;A caler dans &lt;code&gt;layout/shortcodes/chart-xkcd.html&lt;/code&gt;.&lt;/p&gt;
-
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A caler dans &lt;code&gt;layout/shortcodes/chart-xkcd.html&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Trois types de diagrammes sont dispos pour le moment : &lt;a href=&#34;#line&#34;&gt;&lt;strong&gt;Line&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#pie&#34;&gt;&lt;strong&gt;Pie&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#bar&#34;&gt;&lt;strong&gt;Bar&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#xy&#34;&gt;&lt;strong&gt;XY&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;#radar&#34;&gt;&lt;strong&gt;Radar&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;Les options de chaque diagramme sont trouvables dans la &lt;a href=&#34;https://timqian.com/chart.xkcd/&#34;&gt;doc&lt;/a&gt;.&lt;/p&gt;
-
 &lt;h2 id=&#34;exemples&#34;&gt;Exemples&lt;/h2&gt;
-
 &lt;h3 id=&#34;line&#34;&gt;Line&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;line&amp;quot; type=&amp;quot;Line&amp;quot; %}}
-    title: &#39;A vs B&#39;,
-    xLabel: &#39;Abscisse&#39;,
-    yLabel: &#39;Ordonnee&#39;,
-    data: {
-      labels:[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;,&#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;10&#39;],
-      datasets: [{
-        label: &#39;A&#39;,
-        data: [30, 2500, 200, 300, 250 ,800, 1500, 2900, 5000, 800],
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;xkcd&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;line&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Line&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;}}
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A vs B&amp;#39;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;xLabel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Abscisse&amp;#39;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;yLabel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Ordonnee&amp;#39;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;4&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;5&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;6&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;7&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;8&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;9&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;10&amp;#39;&lt;/span&gt;],
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;datasets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [{
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;,
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2500&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;200&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;300&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;250&lt;/span&gt; ,&lt;span style=&#34;color:#ae81ff&#34;&gt;800&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1500&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2900&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;800&lt;/span&gt;],
       }, {
-        label: &#39;B&#39;,
-        data: [0, 1, 30, 70, 80, 100, 50, 80, 40, 150],
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;B&amp;#39;&lt;/span&gt;,
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;70&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;40&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;150&lt;/span&gt;],
       }]
     },
-    options: { // optional
-      yTickCount: 10,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; { &lt;span style=&#34;color:#75715e&#34;&gt;// optional
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#a6e22e&#34;&gt;yTickCount&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
     }
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
+{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;k&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div&gt;
 &lt;svg class=&#39;line&#39;&gt;&lt;/svg&gt;
 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -179,25 +191,21 @@
   });
 &lt;/script&gt;
 &lt;/div&gt;
-
 &lt;h3 id=&#34;pie&#34;&gt;Pie&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;pie&amp;quot; type=&amp;quot;Pie&amp;quot; %}}
-    title: &#39;A B C D E&#39;,
-    data: {
-      labels:[ &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;],
-      datasets: [{
-        data: [200, 122, 60, 130, 44,],
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;xkcd&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;pie&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Pie&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;}}
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A B C D E&amp;#39;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;[ &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;B&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;C&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;D&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;E&amp;#39;&lt;/span&gt;],
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;datasets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [{
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;200&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;122&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;130&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;44&lt;/span&gt;,],
       }]
     },
-    options: {
-      innerRadius: 0.5, // mettre à 0 pour obtenir un diagramme camembert (pie chart)
-      legendPosition: chartXkcd.config.positionType.upRight,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;innerRadius&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.5&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// mettre à 0 pour obtenir un diagramme camembert (pie chart)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#a6e22e&#34;&gt;legendPosition&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chartXkcd&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;config&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;positionType&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;upRight&lt;/span&gt;,
     }
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
+{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;k&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div&gt;
 &lt;svg class=&#39;pie&#39;&gt;&lt;/svg&gt;
 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -219,24 +227,20 @@
   });
 &lt;/script&gt;
 &lt;/div&gt;
-
 &lt;h3 id=&#34;bar&#34;&gt;Bar&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;bar&amp;quot; type=&amp;quot;Bar&amp;quot; %}}
-    title: &amp;quot;A B C D&amp;quot;,
-    data: {
-      labels:[&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;],
-      datasets: [{
-        data: [20, 33, 5, 12],
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;xkcd&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bar&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bar&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;}}
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;A B C D&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;B&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;C&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;D&amp;#39;&lt;/span&gt;],
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;datasets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [{
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;33&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;],
       }]
     },
-    options: { // optional
-      yTickCount: 8,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; { &lt;span style=&#34;color:#75715e&#34;&gt;// optional
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;      &lt;span style=&#34;color:#a6e22e&#34;&gt;yTickCount&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;,
     }
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
+{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;k&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div&gt;
 &lt;svg class=&#39;bar&#39;&gt;&lt;/svg&gt;
 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -257,32 +261,28 @@
   });
 &lt;/script&gt;
 &lt;/div&gt;
-
 &lt;h3 id=&#34;xy&#34;&gt;XY&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;xy&amp;quot; type=&amp;quot;XY&amp;quot; %}}
-    title: &#39;A vs B&#39;,
-    xLabel: &#39;Abscisse&#39;,
-    yLabel: &#39;Ordonnee&#39;,
-    data: {
-      datasets: [{
-        label: &#39;A&#39;,
-        data: [{ x: 1, y: 30 }, { x: 3, y: 8 }, { x: 5, y: 45 }, { x: 7, y: 22 }, { x: 9, y: -4 }],
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;xkcd&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xy&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;XY&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;}}
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A vs B&amp;#39;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;xLabel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Abscisse&amp;#39;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;yLabel&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Ordonnee&amp;#39;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;datasets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [{
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;,
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [{ &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt; }, { &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt; }, { &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;45&lt;/span&gt; }, { &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; }, { &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt; }],
       }, {
-        label: &#39;B&#39;,
-        data: [{ x: -2, y: 12 }, { x: 4, y: -20 }, { x: 6, y: 53 }, { x: 8, y: 12 }, { x: 10, y: 20 }],
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;B&amp;#39;&lt;/span&gt;,
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [{ &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt; }, { &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt; }, { &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;53&lt;/span&gt; }, { &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt; }, { &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt; }],
       }],
     },
-    options: {
-      xTickCount: 10,
-      yTickCount: 10,
-      showLine: false,
-      dotSize: 1,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;xTickCount&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;yTickCount&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;showLine&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;dotSize&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,
     }
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
+{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;k&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div&gt;
 &lt;svg class=&#39;xy1&#39;&gt;&lt;/svg&gt;
 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -311,9 +311,7 @@
   });
 &lt;/script&gt;
 &lt;/div&gt;
-
 &lt;p&gt;Avec &lt;code&gt;options: {showLine: true}&lt;/code&gt; :&lt;/p&gt;
-
 &lt;div&gt;
 &lt;svg class=&#39;xy2&#39;&gt;&lt;/svg&gt;
 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
@@ -343,30 +341,26 @@
   });
 &lt;/script&gt;
 &lt;/div&gt;
-
 &lt;h3 id=&#34;radar&#34;&gt;Radar&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;{{% chart-xkcd name=&amp;quot;radar&amp;quot; type=&amp;quot;Radar&amp;quot; %}}
-    title: &#39;A vs B&#39;,
-    data: {
-      labels: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;],
-      datasets: [{
-        label: &#39;A&#39;,
-        data: [4, 1, 3, 3, 2],
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;xkcd&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;radar&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Radar&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;}}
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A vs B&amp;#39;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;],
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;datasets&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [{
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;,
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;],
       }, {
-        label: &#39;B&#39;,
-        data: [1, 4, 2, 3, 1],
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;label&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;B&amp;#39;&lt;/span&gt;,
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;],
       }],
     },
-    options: { 
-      showLegend: true,
-      dotSize: .7,
-      showLabels: true,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; { 
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;showLegend&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;dotSize&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;.7&lt;/span&gt;,
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;showLabels&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
     },
-{{% /chart-xkcd %}}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;div&gt;
+{{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;k&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div&gt;
 &lt;svg class=&#39;radar&#39;&gt;&lt;/svg&gt;
 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/chart.xkcd@1/dist/chart.xkcd.min.js&#34;&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -403,11 +397,8 @@
       
       <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-8-0/</guid>
       <description>&lt;p&gt;Nouvelle release, la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.8.0&#34;&gt;&lt;strong&gt;2.8.0&lt;/strong&gt;&lt;/a&gt;, de mon proxy pour &lt;a href=&#34;https://falco.org/&#34;&gt;&lt;strong&gt;falco&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;La grosse feature étant l&amp;rsquo;ajout de &lt;a href=&#34;https://nats.io/&#34;&gt;&lt;strong&gt;NATS&lt;/strong&gt;&lt;/a&gt; (une &lt;em&gt;message queue&lt;/em&gt; en &lt;strong&gt;Go&lt;/strong&gt;) comme sortie.&lt;/p&gt;
-
 &lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
@@ -418,148 +409,91 @@
       <pubDate>Thu, 05 Sep 2019 23:12:52 +0200</pubDate>
       
       <guid>https://thomas.labarussias.fr/blog/utiliser-k3d/</guid>
-      <description>
-
-&lt;p&gt;Afin de parfaire mes connaissances sur &lt;a href=&#34;https://kubernetes.io/&#34;&gt;&lt;strong&gt;kubernetes&lt;/strong&gt;&lt;/a&gt;, &lt;em&gt;aka&lt;/em&gt; &lt;strong&gt;k8s&lt;/strong&gt; pour les intimes, j&amp;rsquo;avais envie de monter un &lt;em&gt;cluster&lt;/em&gt; sur mon &lt;em&gt;laptop&lt;/em&gt;, pas juste un noeud tout seul. Jusqu&amp;rsquo;à présent je n&amp;rsquo;avais testé que des solutions pour avoir des &lt;strong&gt;k8s&lt;/strong&gt; mono-noeud, c&amp;rsquo;est sympa, mais trop éloigné de la réalité, surtout si on veut tester des méthodes de résilience, d&amp;rsquo;&lt;em&gt;auto-scaling&lt;/em&gt; de &lt;em&gt;pods&lt;/em&gt;, de &lt;em&gt;deployments&lt;/em&gt;, de &lt;em&gt;daemonset&lt;/em&gt;, etc.&lt;/p&gt;
-
+      <description>&lt;p&gt;Afin de parfaire mes connaissances sur &lt;a href=&#34;https://kubernetes.io/&#34;&gt;&lt;strong&gt;kubernetes&lt;/strong&gt;&lt;/a&gt;, &lt;em&gt;aka&lt;/em&gt; &lt;strong&gt;k8s&lt;/strong&gt; pour les intimes, j&amp;rsquo;avais envie de monter un &lt;em&gt;cluster&lt;/em&gt; sur mon &lt;em&gt;laptop&lt;/em&gt;, pas juste un noeud tout seul. Jusqu&#39;à présent je n&amp;rsquo;avais testé que des solutions pour avoir des &lt;strong&gt;k8s&lt;/strong&gt; mono-noeud, c&amp;rsquo;est sympa, mais trop éloigné de la réalité, surtout si on veut tester des méthodes de résilience, d&amp;rsquo;&lt;em&gt;auto-scaling&lt;/em&gt; de &lt;em&gt;pods&lt;/em&gt;, de &lt;em&gt;deployments&lt;/em&gt;, de &lt;em&gt;daemonset&lt;/em&gt;, etc.&lt;/p&gt;
 &lt;p&gt;Et là, la révélation ! Je connaissais déjà &lt;a href=&#34;https://github.com/rancher/k3s&#34;&gt;&lt;strong&gt;k3s&lt;/strong&gt;&lt;/a&gt;, le &lt;strong&gt;k8s&lt;/strong&gt; ultra allégé de chez &lt;a href=&#34;https://rancher.com/&#34;&gt;&lt;strong&gt;rancher&lt;/strong&gt;&lt;/a&gt; et il s&amp;rsquo;avère qu&amp;rsquo;ils ont développé un petit utilitaire pour monter un &lt;em&gt;cluster&lt;/em&gt; dans des &lt;em&gt;containeurs&lt;/em&gt; &lt;strong&gt;docker&lt;/strong&gt; avec, le bien nommé &lt;a href=&#34;https://github.com/rancher/k3d&#34;&gt;&lt;strong&gt;k3d&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;Après plusieurs heures de tests, je suis emballé, c&amp;rsquo;est ultra rapide, ultra &lt;em&gt;light&lt;/em&gt; et ça fonctionne avec tous les outils classiques. Un &lt;strong&gt;ingress controller&lt;/strong&gt; basé sur &lt;strong&gt;traefik&lt;/strong&gt; est directement déployé, donc on a de base un environnement fonctionnel. Simple. Efficace.&lt;/p&gt;
-
 &lt;h2 id=&#34;installation-de-k3d&#34;&gt;Installation de k3d&lt;/h2&gt;
-
 &lt;p&gt;Rien de compliqué pour l&amp;rsquo;installer, plusieurs méthodes sont fournies sur le &lt;a href=&#34;https://github.com/rancher/k3d#get&#34;&gt;repo Github officiel&lt;/a&gt;. Comme c&amp;rsquo;est du &lt;strong&gt;go&lt;/strong&gt;, aucune dépendance. &lt;em&gt;Easy&lt;/em&gt;.&lt;/p&gt;
-
 &lt;h2 id=&#34;créer-son-premier-cluster&#34;&gt;Créer son premier cluster&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ k3d create -n mon-cluster-test --publish 80 --publish 8080 --publish 443 -w 2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;2019/09/05 23:16:34 Created cluster network with ID cae80bddca7cf614494b9d97f7d6edf2b14d45864ef1aa0b1a899a93122ecc1b
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ k3d create -n mon-cluster-test --publish &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt; --publish &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt; --publish &lt;span style=&#34;color:#ae81ff&#34;&gt;443&lt;/span&gt; -w &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;2019/09/05 23:16:34 Created cluster network with ID cae80bddca7cf614494b9d97f7d6edf2b14d45864ef1aa0b1a899a93122ecc1b
 2019/09/05 23:16:34 Created docker volume  k3d-mon-cluster-test-images   
-2019/09/05 23:16:34 Creating cluster [mon-cluster-test]
+2019/09/05 23:16:34 Creating cluster &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;mon-cluster-test&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
 2019/09/05 23:16:34 Creating server using docker.io/rancher/k3s:v0.7.0...
 2019/09/05 23:16:34 Pulling image docker.io/rancher/k3s:v0.7.0...
-2019/09/05 23:16:47 Booting 2 workers for cluster mon-cluster-test
+2019/09/05 23:16:47 Booting &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; workers &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; cluster mon-cluster-test
 2019/09/05 23:16:48 Created worker with ID b0c019c001376c9aa07f8fb65b52da1b2d52fbe61f25cb24c7198c5b122a2a09
 2019/09/05 23:16:49 Created worker with ID a9d959899a2119606248bf8dd5d681f05efb7232d19c5f8206ffb5025f10885b
-2019/09/05 23:16:49 SUCCESS: created cluster [mon-cluster-test]    
+2019/09/05 23:16:49 SUCCESS: created cluster &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;mon-cluster-test&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;    
 2019/09/05 23:16:49 You can now use the cluster with:
 
-export KUBECONFIG=&amp;quot;$(k3d get-kubeconfig --name=&#39;mon-cluster-test&#39;)&amp;quot;
+export KUBECONFIG&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;k3d get-kubeconfig --name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mon-cluster-test&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
 kubectl cluster-info
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Sur ma machine, l&amp;rsquo;exécution a pris environ 20s, en sachant que 95% du temps est lié la récupération de l&amp;rsquo;image &lt;strong&gt;k3s&lt;/strong&gt;. Impressionnant.&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Sur ma machine, l&amp;rsquo;exécution a pris environ 20s, en sachant que 95% du temps est lié la récupération de l&amp;rsquo;image &lt;strong&gt;k3s&lt;/strong&gt;. Impressionnant.&lt;/p&gt;
 &lt;p&gt;Une petite explication des arguments :&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;-n&lt;/code&gt; : le nom de notre cluster &lt;strong&gt;k8s&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;--publish 80 --publish 8080 --publish 443&lt;/code&gt; : les ports qu&amp;rsquo;on va exposer, comme c&amp;rsquo;est fait avec la commande &lt;a href=&#34;https://docs.docker.com/engine/reference/run/#expose-incoming-ports&#34;&gt;&lt;em&gt;docker run&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-w 2&lt;/code&gt; : le nombre de &lt;em&gt;workers&lt;/em&gt; qu&amp;rsquo;on veut&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;On peut lister nos &lt;em&gt;clusters&lt;/em&gt; :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ k3d ls
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ k3d ls
 +------------------+------------------------------+---------+---------+
 |       NAME       |            IMAGE             | STATUS  | WORKERS |
 +------------------+------------------------------+---------+---------+
 | mon-cluster-test | docker.io/rancher/k3s:v0.7.0 | running |   2/2   |
 +------------------+------------------------------+---------+---------+
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;L&amp;rsquo;image est effectivement de taille réduite (&lt;em&gt;proportionnellement aux autres solutions&lt;/em&gt;) :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;REPOSITORY    TAG     IMAGE ID      CREATED       SIZE 
-rancher/k3s   v0.7.0  f1ec9d3fbf66  6 weeks ago   119MB
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;se-connecter-au-cluster&#34;&gt;Se connecter au cluster&lt;/h2&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;L&amp;rsquo;image est effectivement de taille réduite (&lt;em&gt;proportionnellement aux autres solutions&lt;/em&gt;) :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;REPOSITORY    TAG     IMAGE ID      CREATED       SIZE 
+rancher/k3s   v0.7.0  f1ec9d3fbf66  &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt; weeks ago   119MB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;se-connecter-au-cluster&#34;&gt;Se connecter au cluster&lt;/h2&gt;
 &lt;p&gt;Comme précisé dans les logs de création, on peut récupérer le &lt;em&gt;kubeconfig&lt;/em&gt; associé pour utiliser les outils classiques (&lt;a href=&#34;https://github.com/kubernetes/kubernetes/tree/master/pkg/kubectl&#34;&gt;&lt;strong&gt;kubectl&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://github.com/derailed/k9s&#34;&gt;&lt;strong&gt;k9s&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&#34;https://github.com/helm/helm&#34;&gt;&lt;strong&gt;helm&lt;/strong&gt;&lt;/a&gt;, etc) :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ export KUBECONFIG=&amp;quot;$(k3d get-kubeconfig --name=&#39;mon-cluster-test&#39;)&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl get nodes
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ export KUBECONFIG&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;k3d get-kubeconfig --name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mon-cluster-test&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ kubectl get nodes
 NAME                            STATUS   ROLES    AGE   VERSION
 k3d-mon-cluster-test-server     Ready    master   2m    v1.14.4-k3s.1
 k3d-mon-cluster-test-worker-0   Ready    worker   2m    v1.14.4-k3s.1
 k3d-mon-cluster-test-worker-1   Ready    worker   2m    v1.14.4-k3s.1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;premier-déploiement&#34;&gt;Premier déploiement&lt;/h2&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;premier-déploiement&#34;&gt;Premier déploiement&lt;/h2&gt;
 &lt;p&gt;Afin de tester tout cela, nous allons appliquer un premier &lt;em&gt;deployment&lt;/em&gt; et tenter d&amp;rsquo;y accéder. Cela sera un simple &lt;em&gt;micro-service&lt;/em&gt; qui nous répondra quelques infos sur lui-même (sur quel &lt;em&gt;noeud&lt;/em&gt; il tourne, son nom, le contenu de la requête &lt;em&gt;HTTP&lt;/em&gt; qu&amp;rsquo;il a reçue, etc). Le container qui sera utilisé est fourni par ailleurs par ceux derrière &lt;strong&gt;traefik&lt;/strong&gt; : &lt;a href=&#34;https://hub.docker.com/r/containous/whoami&#34;&gt;&lt;strong&gt;containous/whoami&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;création-d-un-namespace-dédié&#34;&gt;Création d&amp;rsquo;un namespace dédié&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl create namespace whoami
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;C&amp;rsquo;est juste histoire de bien segmenter les choses.&lt;/p&gt;
-
+&lt;h3 id=&#34;création-dun-namespace-dédié&#34;&gt;Création d&amp;rsquo;un namespace dédié&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ kubectl create namespace whoami
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;C&amp;rsquo;est juste histoire de bien segmenter les choses.&lt;/p&gt;
 &lt;h3 id=&#34;application-du-deployment&#34;&gt;Application du &lt;em&gt;deployment&lt;/em&gt;&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl create deployment whoami --image=containous/whoami -n whoami
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;scaling-du-replicaset&#34;&gt;&lt;em&gt;Scaling&lt;/em&gt; du &lt;em&gt;replicaSet&lt;/em&gt;&lt;/h3&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ kubectl create deployment whoami --image&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;containous/whoami -n whoami
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;scaling-du-replicaset&#34;&gt;&lt;em&gt;Scaling&lt;/em&gt; du &lt;em&gt;replicaSet&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;Nous avons un &lt;em&gt;cluster&lt;/em&gt; à 2 noeuds, ça serait dommage de n&amp;rsquo;avoir qu&amp;rsquo;un seul &lt;em&gt;pod&lt;/em&gt;, augmentons à 2 le &lt;em&gt;replicaSet&lt;/em&gt; associé :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl scale --replicas 2 deployment/whoami -n whoami
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl get rs -n whoami
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ kubectl scale --replicas &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; deployment/whoami -n whoami
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ kubectl get rs -n whoami
 NAME                DESIRED   CURRENT   READY   AGE  
-whoami-756586b9ff   2         2         2       4m33s
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;création-du-service&#34;&gt;Création du &lt;em&gt;service&lt;/em&gt;&lt;/h3&gt;
-
+whoami-756586b9ff   &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;         &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;         &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;       4m33s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;création-du-service&#34;&gt;Création du &lt;em&gt;service&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;Nous avons 2 &lt;em&gt;pods&lt;/em&gt;, nous allons créer un &lt;em&gt;service&lt;/em&gt; pour avoir une répartition de charge :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl create service clusterip whoami --tcp=80:80 -n whoami
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;création-de-l-ingress&#34;&gt;Création de l&amp;rsquo;&lt;em&gt;ingress&lt;/em&gt;&lt;/h3&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ kubectl create service clusterip whoami --tcp&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;80:80 -n whoami
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;création-de-lingress&#34;&gt;Création de l&amp;rsquo;&lt;em&gt;ingress&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;Tout est prêt au sein de notre &lt;em&gt;cluster&lt;/em&gt;, il est temps de nous permettre d&amp;rsquo;accéder à notre &lt;em&gt;micro-service&lt;/em&gt;, on va utiliser une ressource de type &lt;em&gt;ingress&lt;/em&gt; :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ cat &amp;lt;&amp;lt;EOF | kubectl apply -n whoami -f -
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: whoami
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: &amp;quot;false&amp;quot;
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        backend:
-          serviceName: whoami
-          servicePort: 80
-EOF
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;testons-le-micro-service&#34;&gt;Testons le &lt;em&gt;micro-service&lt;/em&gt;&lt;/h3&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ cat &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;lt;&amp;lt;EOF | kubectl apply -n whoami -f -
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;apiVersion: extensions/v1beta1
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;kind: Ingress
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  name: whoami
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  annotations:
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    ingress.kubernetes.io/ssl-redirect: &amp;#34;false&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;spec:
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  rules:
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  - http:
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      paths:
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      - path: /
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        backend:
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          serviceName: whoami
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;          servicePort: 80
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;EOF&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;testons-le-micro-service&#34;&gt;Testons le &lt;em&gt;micro-service&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;A la création du cluster, nous avons publier le port 80 au niveau de l&amp;rsquo;host, il est temps de trouver le port qui a été associé (&lt;em&gt;bind&lt;/em&gt;) :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ docker inspect --format=&#39;{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -&amp;gt; {{(index $conf 0).HostPort}} {{end}}&#39; $(docker ps --filter &amp;quot;name=k3d-mon-cluster-test-server&amp;quot; -q)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;443/tcp -&amp;gt; 32810  6443/tcp -&amp;gt; 6443  80/tcp -&amp;gt; 32811  8080/tcp -&amp;gt; 32809
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;L&amp;rsquo;&lt;em&gt;ingress&lt;/em&gt; écoute sur le port 80, le port associé est donc le 32811 dans mon cas. Faisons plusieurs appels et vérifions :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ curl http://localhost:32811
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ docker inspect --format&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{{range $p, $conf := .NetworkSettings.Ports}} {{$p}} -&amp;gt; {{(index $conf 0).HostPort}} {{end}}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;docker ps --filter &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name=k3d-mon-cluster-test-server&amp;#34;&lt;/span&gt; -q&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;443/tcp -&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;32810&lt;/span&gt;  6443/tcp -&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;6443&lt;/span&gt;  80/tcp -&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;32811&lt;/span&gt;  8080/tcp -&amp;gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;32809&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;L&amp;rsquo;&lt;em&gt;ingress&lt;/em&gt; écoute sur le port 80, le port associé est donc le 32811 dans mon cas. Faisons plusieurs appels et vérifions :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ curl http://localhost:32811
 Hostname: whoami-756586b9ff-4mqb6
 IP: 127.0.0.1
 IP: ::1
@@ -573,7 +507,7 @@ Accept: */*
 Accept-Encoding: gzip
 X-Forwarded-For: 10.42.1.1
 X-Forwarded-Host: localhost:32811
-X-Forwarded-Port: 32811
+X-Forwarded-Port: &lt;span style=&#34;color:#ae81ff&#34;&gt;32811&lt;/span&gt;
 X-Forwarded-Proto: http
 X-Forwarded-Server: traefik-56688c4464-wlk2r
 X-Real-Ip: 10.42.1.1
@@ -592,30 +526,22 @@ Accept: */*
 Accept-Encoding: gzip
 X-Forwarded-For: 10.42.1.1
 X-Forwarded-Host: localhost:32811
-X-Forwarded-Port: 32811
+X-Forwarded-Port: &lt;span style=&#34;color:#ae81ff&#34;&gt;32811&lt;/span&gt;
 X-Forwarded-Proto: http
 X-Forwarded-Server: traefik-56688c4464-wlk2r
 X-Real-Ip: 10.42.1.1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Nous avons bien 2 réponses différentes :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Hostname: whoami-756586b9ff-4mqb6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Nous avons bien 2 réponses différentes :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Hostname: whoami-756586b9ff-4mqb6
 IP: 10.42.2.4
 
 Hostname: whoami-756586b9ff-6wn52
 IP: 10.42.0.4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Qui correspondent à nos 2 &lt;em&gt;pods&lt;/em&gt; :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~ $ kubectl get pods -n whoami
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Qui correspondent à nos 2 &lt;em&gt;pods&lt;/em&gt; :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;~ $ kubectl get pods -n whoami
 NAME                      READY   STATUS    RESTARTS   AGE
-whoami-756586b9ff-4mqb6   1/1     Running   0          24m
-whoami-756586b9ff-6wn52   1/1     Running   0          20m
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+whoami-756586b9ff-4mqb6   1/1     Running   &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;          24m
+whoami-756586b9ff-6wn52   1/1     Running   &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;          20m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -626,11 +552,8 @@ whoami-756586b9ff-6wn52   1/1     Running   0          20m
       
       <guid>https://thomas.labarussias.fr/blog/falcosidekick-migre-vers-falcosecurity/</guid>
       <description>&lt;p&gt;Les mainteneurs de &lt;strong&gt;falco&lt;/strong&gt;  m&amp;rsquo;ont proposé de migrer &lt;strong&gt;falcosidekick&lt;/strong&gt; au sein de l&amp;rsquo;organisation officielle &lt;strong&gt;falcosecurity&lt;/strong&gt;. Il devient donc un projet officiel 🎉😍.&lt;/p&gt;
-
 &lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;Au passage, j&amp;rsquo;ai sorti la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.7.1&#34;&gt;&lt;strong&gt;2.7.1&lt;/strong&gt;&lt;/a&gt; qui met à jour la version de Go utilisée (1.12).&lt;/p&gt;
-
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
@@ -642,9 +565,7 @@ whoami-756586b9ff-6wn52   1/1     Running   0          20m
       
       <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-7-0/</guid>
       <description>&lt;p&gt;Nouvelle release, la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.7.0&#34;&gt;&lt;strong&gt;2.7.0&lt;/strong&gt;&lt;/a&gt;, de mon proxy pour &lt;a href=&#34;https://falco.org/&#34;&gt;&lt;strong&gt;falco&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;La grosse feature étant l&amp;rsquo;ajout de &lt;a href=&#34;https://grafana.com/oss/loki&#34;&gt;&lt;strong&gt;Loki&lt;/strong&gt;&lt;/a&gt; comme sortie :&lt;/p&gt;
-
 
 
 
@@ -667,9 +588,7 @@ whoami-756586b9ff-6wn52   1/1     Running   0          20m
   &lt;/div&gt;
 
 
-
 &lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
@@ -681,81 +600,75 @@ whoami-756586b9ff-6wn52   1/1     Running   0          20m
       
       <guid>https://thomas.labarussias.fr/blog/traefik-proxyfier-dashboard/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://traefik.io/&#34;&gt;&lt;strong&gt;Traefik&lt;/strong&gt;&lt;/a&gt; possède une &lt;em&gt;UI&lt;/em&gt; basique qui est par défaut exposée sur un port différent. Il est possible de faire en sorte que &lt;strong&gt;Traefik&lt;/strong&gt; serve lui même de proxy, cela permet :&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;ne plus avoir à utiliser un port différent pour accéder l&amp;rsquo;&lt;em&gt;UI&lt;/em&gt;, mais un domaine classique (&amp;rdquo;&lt;em&gt;traefik.mondomaine.net&lt;/em&gt;&amp;rdquo; par ex.)&lt;/li&gt;
+&lt;li&gt;ne plus avoir à utiliser un port différent pour accéder l&amp;rsquo;&lt;em&gt;UI&lt;/em&gt;, mais un domaine classique (&amp;quot;&lt;em&gt;traefik.mondomaine.net&lt;/em&gt;&amp;rdquo; par ex.)&lt;/li&gt;
 &lt;li&gt;forcer l&amp;rsquo;accès en http&lt;strong&gt;s&lt;/strong&gt; avec en prime un certificat &lt;a href=&#34;https://letsencrypt.org/fr/&#34;&gt;&lt;em&gt;Let&amp;rsquo;s Encrypt&lt;/em&gt;&lt;/a&gt; automatique et gratuit&lt;/li&gt;
 &lt;li&gt;permettre de rajouter une authentification, par défaut, l&amp;rsquo;&lt;em&gt;UI&lt;/em&gt; est ouverte à tout une fois activée&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;Dans mon cas, je fais tourner &lt;strong&gt;Traefik&lt;/strong&gt; dans un container, mais ça marchera pareil si vous le faîtes tourner directement sur l&amp;rsquo;&lt;em&gt;host&lt;/em&gt;, prenez juste soin de filtrer le port de l&amp;rsquo;&lt;em&gt;UI&lt;/em&gt; (&lt;em&gt;8080&lt;/em&gt; par défaut) pour qu&amp;rsquo;il n&amp;rsquo;accepte que les connexions de la boucle local (&lt;em&gt;127.0.0.1&lt;/em&gt;).&lt;/p&gt;
-
 &lt;p&gt;Voilà ce qu&amp;rsquo;il faut avoir à minima dans sa configuration &lt;em&gt;config.toml&lt;/em&gt; :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;################################################################&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Configuration globale&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;################################################################&lt;/span&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;################################################################
-# Configuration globale
-################################################################
+&lt;span style=&#34;color:#a6e22e&#34;&gt;defaultEntryPoints&lt;/span&gt; = [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https&amp;#34;&lt;/span&gt;]
 
-defaultEntryPoints = [&amp;quot;http&amp;quot;, &amp;quot;https&amp;quot;]
+[&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoints&lt;/span&gt;]
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoints&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;http&lt;/span&gt;]
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;address&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;:80&amp;#34;&lt;/span&gt;               &lt;span style=&#34;color:#75715e&#34;&gt;# traefik ecoute sur le port 80&lt;/span&gt;
+    [&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoints&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;http&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;redirect&lt;/span&gt;]
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoint&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https&amp;#34;&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;# redirection http &amp;gt; https&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoints&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;https&lt;/span&gt;]
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;address&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;:443&amp;#34;&lt;/span&gt;              &lt;span style=&#34;color:#75715e&#34;&gt;# traefik ecoute sur le port 443&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoints&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;https&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;tls&lt;/span&gt;]
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;minVersion&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;VersionTLS12&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# version minimum de TLS acceptee&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoints&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ui&lt;/span&gt;]
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;address&lt;/span&gt;=&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;127.0.0.1:8080&amp;#34;&lt;/span&gt;      &lt;span style=&#34;color:#75715e&#34;&gt;# on ecoute uniquement sur la boucle locale pour ce port&lt;/span&gt;
+    [&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoints&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ui&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;auth&lt;/span&gt;]
+      [&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoints&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ui&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;auth&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;basic&lt;/span&gt;]
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;users&lt;/span&gt; = [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;XXXX:YYYY&amp;#34;&lt;/span&gt;]   &lt;span style=&#34;color:#75715e&#34;&gt;# les identifiants au format htpasswd&lt;/span&gt;
 
-[entryPoints]
-  [entryPoints.http]
-  address = &amp;quot;:80&amp;quot;               # traefik ecoute sur le port 80
-    [entryPoints.http.redirect]
-      entryPoint = &amp;quot;https&amp;quot;      # redirection http &amp;gt; https
-  [entryPoints.https]
-  address = &amp;quot;:443&amp;quot;              # traefik ecoute sur le port 443
-  [entryPoints.https.tls]
-    minVersion = &amp;quot;VersionTLS12&amp;quot; # version minimum de TLS acceptee
-  [entryPoints.ui]
-  address=&amp;quot;127.0.0.1:8080&amp;quot;      # on ecoute uniquement sur la boucle locale pour ce port
-    [entryPoints.ui.auth]
-      [entryPoints.ui.auth.basic]
-        users = [&amp;quot;XXXX:YYYY&amp;quot;]   # les identifiants au format htpasswd
+&lt;span style=&#34;color:#75715e&#34;&gt;################################################################&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Configuration pour let&amp;#39;s encrypt&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;################################################################&lt;/span&gt;
 
-################################################################
-# Configuration pour let&#39;s encrypt
-################################################################
+[&lt;span style=&#34;color:#a6e22e&#34;&gt;acme&lt;/span&gt;]
+&lt;span style=&#34;color:#a6e22e&#34;&gt;email&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xxx@yyy.zzz&amp;#34;&lt;/span&gt;           &lt;span style=&#34;color:#75715e&#34;&gt;# votre mail pour lets encrypt&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;storage&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/certs/acme.json&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoint&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;onDemand&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;                 &lt;span style=&#34;color:#75715e&#34;&gt;# demande automatique de certificat&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;acmeLogging&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;acme&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;httpChallenge&lt;/span&gt;]
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoint&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http&amp;#34;&lt;/span&gt;
 
-[acme]
-email = &amp;quot;xxx@yyy.zzz&amp;quot;           # votre mail pour lets encrypt
-storage = &amp;quot;/certs/acme.json&amp;quot;
-entryPoint = &amp;quot;https&amp;quot;
-onDemand = true                 # demande automatique de certificat
-acmeLogging = true
-  [acme.httpChallenge]
-  entryPoint = &amp;quot;http&amp;quot;
+&lt;span style=&#34;color:#75715e&#34;&gt;################################################################&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Configuration de l&amp;#39;API de Traefik&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;################################################################&lt;/span&gt;
 
-################################################################
-# Configuration de l&#39;API de Traefik
-################################################################
+[&lt;span style=&#34;color:#a6e22e&#34;&gt;api&lt;/span&gt;]
+&lt;span style=&#34;color:#a6e22e&#34;&gt;entryPoint&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ui&amp;#34;&lt;/span&gt;               &lt;span style=&#34;color:#75715e&#34;&gt;# l API ecoutera sur cet entrypoint&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;dashboard&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;api&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;statistics&lt;/span&gt;]
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;recentErrors&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;
 
-[api]
-entryPoint = &amp;quot;ui&amp;quot;               # l API ecoutera sur cet entrypoint
-dashboard = true
-  [api.statistics]
-  recentErrors = 50
+&lt;span style=&#34;color:#75715e&#34;&gt;################################################################&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Configuration pour l&amp;#39;UI de Traefik&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;################################################################&lt;/span&gt;
 
-################################################################
-# Configuration pour l&#39;UI de Traefik
-################################################################
+[&lt;span style=&#34;color:#a6e22e&#34;&gt;file&lt;/span&gt;]
 
-[file]
+[&lt;span style=&#34;color:#a6e22e&#34;&gt;frontends&lt;/span&gt;]
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;frontends&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ui&lt;/span&gt;]
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;backend&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ui&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;passHostHeader&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+    [&lt;span style=&#34;color:#a6e22e&#34;&gt;frontends&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ui&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;routes&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;default&lt;/span&gt;]
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;rule&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Host:ui.mondomaine.net&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# votre domaine a configurer&lt;/span&gt;
 
-[frontends]
-  [frontends.ui]
-  backend = &amp;quot;ui&amp;quot;
-  passHostHeader = true
-    [frontends.ui.routes.default]
-    rule = &amp;quot;Host:ui.mondomaine.net&amp;quot; # votre domaine a configurer
-
-[backends]
-  [backends.ui]
-    [backends.ui.servers.default]
-      url = &amp;quot;http://127.0.0.1:8080&amp;quot;   # le backend a utiliser qui s avere etre l entrypoint de l API
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+[&lt;span style=&#34;color:#a6e22e&#34;&gt;backends&lt;/span&gt;]
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;backends&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ui&lt;/span&gt;]
+    [&lt;span style=&#34;color:#a6e22e&#34;&gt;backends&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ui&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;servers&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;default&lt;/span&gt;]
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://127.0.0.1:8080&amp;#34;&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;# le backend a utiliser qui s avere etre l entrypoint de l API&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -766,9 +679,7 @@ dashboard = true
       
       <guid>https://thomas.labarussias.fr/blog/falcosidekick-v-2-6-0/</guid>
       <description>&lt;p&gt;Nouvelle release, la &lt;a href=&#34;https://github.com/Issif/falcosidekick/releases/tag/2.6.0&#34;&gt;&lt;strong&gt;2.6.0&lt;/strong&gt;&lt;/a&gt;, de mon proxy pour &lt;a href=&#34;https://falco.org/&#34;&gt;&lt;strong&gt;falco&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;La grosse feature étant l&amp;rsquo;ajout du &lt;strong&gt;SMTP&lt;/strong&gt; (envoi d&amp;rsquo;email) comme sortie :&lt;/p&gt;
-
 
 
 
@@ -791,11 +702,8 @@ dashboard = true
   &lt;/div&gt;
 
 
-
 &lt;p&gt;Afin de respecter les standards, la version &lt;em&gt;html&lt;/em&gt; contient également la version &lt;em&gt;plaintext&lt;/em&gt;. Il est aussi possible d&amp;rsquo;envoyer uniquement la version &lt;em&gt;plaintext&lt;/em&gt;, utile pour certains systèmes de &lt;em&gt;ticketing&lt;/em&gt; qui utilisent l&amp;rsquo;email pour la création.&lt;/p&gt;
-
 &lt;p&gt;Le repo &lt;a href=&#34;https://github.com/falcosecurity/falcosidekick&#34;&gt;Github&lt;/a&gt; et l&amp;rsquo;image sur le &lt;a href=&#34;https://hub.docker.com/r/falcosecurity/falcosidekick/&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
@@ -806,63 +714,34 @@ dashboard = true
       <pubDate>Wed, 21 Aug 2019 17:59:22 +0200</pubDate>
       
       <guid>https://thomas.labarussias.fr/blog/golang-conversion-types/</guid>
-      <description>
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;int64-string&#34;&gt;int64 🠮 string&lt;/h1&gt;
-
-&lt;h2 id=&#34;formatint-https-golang-org-pkg-strconv-formatint&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#FormatInt&#34;&gt;FormatInt&lt;/a&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;strconv.FormatInt(i int64, base int)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;itoa-https-golang-org-pkg-strconv-itoa&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#Itoa&#34;&gt;Itoa&lt;/a&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;strconv.Itoa(i int)
-// Itoa is equivalent to FormatInt(int64(i), 10). 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;string-int64&#34;&gt;string 🠮 int64&lt;/h1&gt;
-
-&lt;h2 id=&#34;parseint-https-golang-org-pkg-strconv-parseint&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#ParseInt&#34;&gt;ParseInt&lt;/a&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;strconv.ParseInt(s string, base int, bitSize int)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;atoi-https-golang-org-pkg-strconv-atoi&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#Atoi&#34;&gt;Atoi&lt;/a&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;strconv.Atoi(s string)
-// Atoi is equivalent to ParseInt(s, 10, 0), converted to type int. 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;string-time&#34;&gt;string 🠮 Time&lt;/h1&gt;
-
+      <description>&lt;hr&gt;
+&lt;h1 id=&#34;int64--string&#34;&gt;int64 🠮 string&lt;/h1&gt;
+&lt;h2 id=&#34;formatinthttpsgolangorgpkgstrconvformatint&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#FormatInt&#34;&gt;FormatInt&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;strconv&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;FormatInt&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int64&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;base&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;itoahttpsgolangorgpkgstrconvitoa&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#Itoa&#34;&gt;Itoa&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;strconv&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Itoa&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;// Itoa is equivalent to FormatInt(int64(i), 10). 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;string--int64&#34;&gt;string 🠮 int64&lt;/h1&gt;
+&lt;h2 id=&#34;parseinthttpsgolangorgpkgstrconvparseint&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#ParseInt&#34;&gt;ParseInt&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;strconv&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ParseInt&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;base&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;bitSize&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;atoihttpsgolangorgpkgstrconvatoi&#34;&gt;&lt;a href=&#34;https://golang.org/pkg/strconv/#Atoi&#34;&gt;Atoi&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;strconv&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Atoi&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;// Atoi is equivalent to ParseInt(s, 10, 0), converted to type int. 
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;string--time&#34;&gt;string 🠮 Time&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Pour le &lt;a href=&#34;https://godoc.org/time#pkg-constants&#34;&gt;layout&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Pour la &lt;a href=&#34;https://godoc.org/time#LoadLocation&#34;&gt;location&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h2 id=&#34;parse-https-godoc-org-time-parse&#34;&gt;&lt;a href=&#34;https://godoc.org/time#Parse&#34;&gt;Parse&lt;/a&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;time.Parse(layout, value string)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;parseinlocation-https-godoc-org-time-parseinlocation&#34;&gt;&lt;a href=&#34;https://godoc.org/time#ParseInLocation&#34;&gt;ParseInLocation&lt;/a&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;time.ParseInLocation(layout, value string, loc *Location)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;time-string&#34;&gt;Time 🠮 string&lt;/h1&gt;
-
+&lt;h2 id=&#34;parsehttpsgodocorgtimeparse&#34;&gt;&lt;a href=&#34;https://godoc.org/time#Parse&#34;&gt;Parse&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Parse&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;layout&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;parseinlocationhttpsgodocorgtimeparseinlocation&#34;&gt;&lt;a href=&#34;https://godoc.org/time#ParseInLocation&#34;&gt;ParseInLocation&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ParseInLocation&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;layout&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;loc&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Location&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;time--string&#34;&gt;Time 🠮 string&lt;/h1&gt;
 &lt;p&gt;Pour le &lt;a href=&#34;https://godoc.org/time#pkg-constants&#34;&gt;layout&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;time-format-https-godoc-org-time-time-format&#34;&gt;&lt;a href=&#34;https://godoc.org/time#Time.Format&#34;&gt;Time.Format&lt;/a&gt;&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;var t time.Time
-t.Format(layout string)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;h2 id=&#34;timeformathttpsgodocorgtimetimeformat&#34;&gt;&lt;a href=&#34;https://godoc.org/time#Time.Format&#34;&gt;Time.Format&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Time&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;t&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Format&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;layout&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -872,27 +751,15 @@ t.Format(layout string)
       
       <guid>https://thomas.labarussias.fr/blog/decoder-du-base64-en-go/</guid>
       <description>&lt;p&gt;Je tentais de décoder la partie &lt;em&gt;payload&lt;/em&gt; d&amp;rsquo;un token &lt;em&gt;JWT&lt;/em&gt; (&lt;a href=&#34;https://scotch.io/tutorials/the-anatomy-of-a-json-web-token&#34;&gt;https://scotch.io/tutorials/the-anatomy-of-a-json-web-token&lt;/a&gt;) quand j&amp;rsquo;ai eu l&amp;rsquo;erreur suivante :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;panic: illegal base64 data at input byte 349
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ma façon de faire était pourtant classique et a toujours fonctionné auparavant :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;base64.StdEncoding.DecodeString(s)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Et le décodage du &lt;em&gt;string&lt;/em&gt; via un autre outil ne posait pas de souci. 😧&lt;/p&gt;
-
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;panic: illegal base64 data at input byte &lt;span style=&#34;color:#ae81ff&#34;&gt;349&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ma façon de faire était pourtant classique et a toujours fonctionné auparavant :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;base64&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;StdEncoding&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;DecodeString&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Et le décodage du &lt;em&gt;string&lt;/em&gt; via un autre outil ne posait pas de souci. 😧&lt;/p&gt;
 &lt;p&gt;La solution se trouvait une fois de plus dans la documentation de &lt;strong&gt;Go&lt;/strong&gt; : &lt;a href=&#34;https://golang.org/pkg/encoding/base64/#pkg-variables&#34;&gt;https://golang.org/pkg/encoding/base64/#pkg-variables&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;Il existe plusieurs fonctions de décodage qui prennent ou non en compte les caractères de &lt;em&gt;padding&lt;/em&gt;, en changeant pour :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;base64.RawStdEncoding.DecodeString(s)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Mon &lt;em&gt;payload&lt;/em&gt; était décodé.&lt;/p&gt;
-
-&lt;p&gt;👍&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;base64&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;RawStdEncoding&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;DecodeString&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Mon &lt;em&gt;payload&lt;/em&gt; était décodé.&lt;/p&gt;
+👍
 </description>
     </item>
     

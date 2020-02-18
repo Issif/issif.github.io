@@ -1,20 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://thomas.labarussias.fr/blog/</loc>
-    <lastmod>2019-10-05T10:28:13+02:00</lastmod>
+    <lastmod>2020-02-18T21:55:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://thomas.labarussias.fr/categories/</loc>
-    <lastmod>2019-10-05T10:28:13+02:00</lastmod>
+    <lastmod>2020-02-18T21:55:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://thomas.labarussias.fr/categories/falco/</loc>
-    <lastmod>2019-10-05T10:28:13+02:00</lastmod>
+    <lastmod>2020-02-18T21:55:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/blog/falcosidekick-100k-pulls/</loc>
+    <lastmod>2020-02-18T21:55:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/go/</loc>
+    <lastmod>2020-02-18T21:55:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/</loc>
+    <lastmod>2020-02-18T21:55:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9/</loc>
+    <lastmod>2020-02-18T21:55:00+01:00</lastmod>
   </url>
   
   <url>
@@ -23,22 +43,7 @@
   </url>
   
   <url>
-    <loc>https://thomas.labarussias.fr/</loc>
-    <lastmod>2019-10-05T10:28:13+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://thomas.labarussias.fr/blog/falco-probes/</loc>
-    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/categories/go/</loc>
-    <lastmod>2019-09-23T23:15:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9/</loc>
     <lastmod>2019-09-23T23:15:46+02:00</lastmod>
   </url>
   

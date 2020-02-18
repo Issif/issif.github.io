@@ -16,11 +16,9 @@
   <meta name="theme-color" content="#ffffff">
 
 
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.64.1" />
   <meta itemprop="name" content="Conversion de Types en Go">
 <meta itemprop="description" content="Comment convertir les types en Go">
-
-
 <meta itemprop="datePublished" content="2019-08-21T17:59:22&#43;02:00" />
 <meta itemprop="dateModified" content="2019-08-21T17:59:22&#43;02:00" />
 <meta itemprop="wordCount" content="74">
@@ -28,7 +26,6 @@
 
 
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Conversion de Types en Go" />
 <meta property="og:description" content="Comment convertir les types en Go" />
 <meta property="og:type" content="article" />
@@ -201,87 +198,55 @@
 
   
     <nav id="TableOfContents">
-<ul>
-<li><a href="#int64-string">int64 🠮 string</a>
-<ul>
-<li><a href="#formatint-https-golang-org-pkg-strconv-formatint"><a href="https://golang.org/pkg/strconv/#FormatInt">FormatInt</a></a></li>
-<li><a href="#itoa-https-golang-org-pkg-strconv-itoa"><a href="https://golang.org/pkg/strconv/#Itoa">Itoa</a></a></li>
-</ul></li>
-<li><a href="#string-int64">string 🠮 int64</a>
-<ul>
-<li><a href="#parseint-https-golang-org-pkg-strconv-parseint"><a href="https://golang.org/pkg/strconv/#ParseInt">ParseInt</a></a></li>
-<li><a href="#atoi-https-golang-org-pkg-strconv-atoi"><a href="https://golang.org/pkg/strconv/#Atoi">Atoi</a></a></li>
-</ul></li>
-<li><a href="#string-time">string 🠮 Time</a>
-<ul>
-<li><a href="#parse-https-godoc-org-time-parse"><a href="https://godoc.org/time#Parse">Parse</a></a></li>
-<li><a href="#parseinlocation-https-godoc-org-time-parseinlocation"><a href="https://godoc.org/time#ParseInLocation">ParseInLocation</a></a></li>
-</ul></li>
-<li><a href="#time-string">Time 🠮 string</a>
-<ul>
-<li><a href="#time-format-https-godoc-org-time-time-format"><a href="https://godoc.org/time#Time.Format">Time.Format</a></a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#formatinthttpsgolangorgpkgstrconvformatint">FormatInt</a></li>
+    <li><a href="#itoahttpsgolangorgpkgstrconvitoa">Itoa</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#parseinthttpsgolangorgpkgstrconvparseint">ParseInt</a></li>
+    <li><a href="#atoihttpsgolangorgpkgstrconvatoi">Atoi</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#parsehttpsgodocorgtimeparse">Parse</a></li>
+    <li><a href="#parseinlocationhttpsgodocorgtimeparseinlocation">ParseInLocation</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#timeformathttpsgodocorgtimetimeformat">Time.Format</a></li>
+  </ul>
 </nav>
   
   <div class="content">
-    
-
-<hr />
-
-<h1 id="int64-string">int64 🠮 string</h1>
-
-<h2 id="formatint-https-golang-org-pkg-strconv-formatint"><a href="https://golang.org/pkg/strconv/#FormatInt">FormatInt</a></h2>
-
-<pre><code class="language-go">strconv.FormatInt(i int64, base int)
-</code></pre>
-
-<h2 id="itoa-https-golang-org-pkg-strconv-itoa"><a href="https://golang.org/pkg/strconv/#Itoa">Itoa</a></h2>
-
-<pre><code class="language-go">strconv.Itoa(i int)
-// Itoa is equivalent to FormatInt(int64(i), 10). 
-</code></pre>
-
-<h1 id="string-int64">string 🠮 int64</h1>
-
-<h2 id="parseint-https-golang-org-pkg-strconv-parseint"><a href="https://golang.org/pkg/strconv/#ParseInt">ParseInt</a></h2>
-
-<pre><code class="language-go">strconv.ParseInt(s string, base int, bitSize int)
-</code></pre>
-
-<h2 id="atoi-https-golang-org-pkg-strconv-atoi"><a href="https://golang.org/pkg/strconv/#Atoi">Atoi</a></h2>
-
-<pre><code class="language-go">strconv.Atoi(s string)
-// Atoi is equivalent to ParseInt(s, 10, 0), converted to type int. 
-</code></pre>
-
-<h1 id="string-time">string 🠮 Time</h1>
-
+    <hr>
+<h1 id="int64--string">int64 🠮 string</h1>
+<h2 id="formatinthttpsgolangorgpkgstrconvformatint"><a href="https://golang.org/pkg/strconv/#FormatInt">FormatInt</a></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">FormatInt</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int64</span>, <span style="color:#a6e22e">base</span> <span style="color:#66d9ef">int</span>)
+</code></pre></div><h2 id="itoahttpsgolangorgpkgstrconvitoa"><a href="https://golang.org/pkg/strconv/#Itoa">Itoa</a></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">Itoa</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>)
+<span style="color:#75715e">// Itoa is equivalent to FormatInt(int64(i), 10). 
+</span></code></pre></div><h1 id="string--int64">string 🠮 int64</h1>
+<h2 id="parseinthttpsgolangorgpkgstrconvparseint"><a href="https://golang.org/pkg/strconv/#ParseInt">ParseInt</a></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">ParseInt</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">base</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">bitSize</span> <span style="color:#66d9ef">int</span>)
+</code></pre></div><h2 id="atoihttpsgolangorgpkgstrconvatoi"><a href="https://golang.org/pkg/strconv/#Atoi">Atoi</a></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">strconv</span>.<span style="color:#a6e22e">Atoi</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>)
+<span style="color:#75715e">// Atoi is equivalent to ParseInt(s, 10, 0), converted to type int. 
+</span></code></pre></div><h1 id="string--time">string 🠮 Time</h1>
 <ul>
 <li>Pour le <a href="https://godoc.org/time#pkg-constants">layout</a>.</li>
 <li>Pour la <a href="https://godoc.org/time#LoadLocation">location</a>.</li>
 </ul>
-
-<h2 id="parse-https-godoc-org-time-parse"><a href="https://godoc.org/time#Parse">Parse</a></h2>
-
-<pre><code class="language-go">time.Parse(layout, value string)
-</code></pre>
-
-<h2 id="parseinlocation-https-godoc-org-time-parseinlocation"><a href="https://godoc.org/time#ParseInLocation">ParseInLocation</a></h2>
-
-<pre><code class="language-go">time.ParseInLocation(layout, value string, loc *Location)
-</code></pre>
-
-<h1 id="time-string">Time 🠮 string</h1>
-
+<h2 id="parsehttpsgodocorgtimeparse"><a href="https://godoc.org/time#Parse">Parse</a></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Parse</span>(<span style="color:#a6e22e">layout</span>, <span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>)
+</code></pre></div><h2 id="parseinlocationhttpsgodocorgtimeparseinlocation"><a href="https://godoc.org/time#ParseInLocation">ParseInLocation</a></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">ParseInLocation</span>(<span style="color:#a6e22e">layout</span>, <span style="color:#a6e22e">value</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">loc</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Location</span>)
+</code></pre></div><h1 id="time--string">Time 🠮 string</h1>
 <p>Pour le <a href="https://godoc.org/time#pkg-constants">layout</a>.</p>
-
-<h2 id="time-format-https-godoc-org-time-time-format"><a href="https://godoc.org/time#Time.Format">Time.Format</a></h2>
-
-<pre><code class="language-go">var t time.Time
-t.Format(layout string)
-</code></pre>
-
+<h2 id="timeformathttpsgodocorgtimetimeformat"><a href="https://godoc.org/time#Time.Format">Time.Format</a></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Time</span>
+<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Format</span>(<span style="color:#a6e22e">layout</span> <span style="color:#66d9ef">string</span>)
+</code></pre></div>
   </div>
   <footer>
     <ul class="stats">
@@ -336,6 +301,21 @@ t.Format(layout string)
       <article class="mini-post">
         <section>
           
+<a href="/blog/falcosidekick-100k-pulls/" class="image featured">
+  <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/falcosidekick-100k-pulls/">Falcosidekick 100k Pulls</a></h1>
+          <time class="published" datetime="">18-02-2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
 <a href="/blog/falcosidekick-v-2-9-0-new-avatar/" class="image featured">
   <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
 </a>
@@ -363,21 +343,6 @@ t.Format(layout string)
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-<a href="/blog/chart-xkcd/" class="image featured">
-  <img src="/img/2019/09/chart-xkcd-feature.png" alt="chart-xkcd-feature">
-</a>
-
-
-        </section>
-        <header>
-          <h1><a href="/blog/chart-xkcd/">Chart XKCD</a></h1>
-          <time class="published" datetime="">12-09-2019</time>
-        </header>
-      </article>
-      
       
         <a href="/blog/" class="button">Voir plus</a>
       
@@ -397,17 +362,17 @@ t.Format(layout string)
           
           <li>
             
-              <a href="/categories/go/">go<span class="count">7</span></a>
+              <a href="/categories/go/">go<span class="count">8</span></a>
             
           
           <li>
             
-              <a href="/categories/falco/">falco<span class="count">6</span></a>
+              <a href="/categories/falco/">falco<span class="count">7</span></a>
             
           
           <li>
             
-              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">6</span></a>
+              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">7</span></a>
             
           
           <li>
@@ -461,12 +426,12 @@ t.Format(layout string)
   
   <p class="copyright">
     
-      &copy; 2019
+      &copy; 2020
       
         Issif
       
     . <br>
-    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.58.3' target='_blank' rel='noopener'>Hugo</a>
+    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.64.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

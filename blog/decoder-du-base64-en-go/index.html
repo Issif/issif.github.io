@@ -16,11 +16,9 @@
   <meta name="theme-color" content="#ffffff">
 
 
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.64.1" />
   <meta itemprop="name" content="Décoder du base64 en Go">
 <meta itemprop="description" content="comment corriger &#34;panic: illegal base64 data at input byte&#34;">
-
-
 <meta itemprop="datePublished" content="2019-08-19T21:18:47&#43;02:00" />
 <meta itemprop="dateModified" content="2019-08-19T21:18:47&#43;02:00" />
 <meta itemprop="wordCount" content="95">
@@ -28,7 +26,6 @@
 
 
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Décoder du base64 en Go" />
 <meta property="og:description" content="comment corriger &#34;panic: illegal base64 data at input byte&#34;" />
 <meta property="og:type" content="article" />
@@ -202,27 +199,15 @@
   
   <div class="content">
     <p>Je tentais de décoder la partie <em>payload</em> d&rsquo;un token <em>JWT</em> (<a href="https://scotch.io/tutorials/the-anatomy-of-a-json-web-token">https://scotch.io/tutorials/the-anatomy-of-a-json-web-token</a>) quand j&rsquo;ai eu l&rsquo;erreur suivante :</p>
-
-<pre><code class="language-bash">panic: illegal base64 data at input byte 349
-</code></pre>
-
-<p>Ma façon de faire était pourtant classique et a toujours fonctionné auparavant :</p>
-
-<pre><code class="language-go">base64.StdEncoding.DecodeString(s)
-</code></pre>
-
-<p>Et le décodage du <em>string</em> via un autre outil ne posait pas de souci. 😧</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">panic: illegal base64 data at input byte <span style="color:#ae81ff">349</span>
+</code></pre></div><p>Ma façon de faire était pourtant classique et a toujours fonctionné auparavant :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">base64</span>.<span style="color:#a6e22e">StdEncoding</span>.<span style="color:#a6e22e">DecodeString</span>(<span style="color:#a6e22e">s</span>)
+</code></pre></div><p>Et le décodage du <em>string</em> via un autre outil ne posait pas de souci. 😧</p>
 <p>La solution se trouvait une fois de plus dans la documentation de <strong>Go</strong> : <a href="https://golang.org/pkg/encoding/base64/#pkg-variables">https://golang.org/pkg/encoding/base64/#pkg-variables</a></p>
-
 <p>Il existe plusieurs fonctions de décodage qui prennent ou non en compte les caractères de <em>padding</em>, en changeant pour :</p>
-
-<pre><code class="language-go">base64.RawStdEncoding.DecodeString(s)
-</code></pre>
-
-<p>Mon <em>payload</em> était décodé.</p>
-
-<p>👍</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">base64</span>.<span style="color:#a6e22e">RawStdEncoding</span>.<span style="color:#a6e22e">DecodeString</span>(<span style="color:#a6e22e">s</span>)
+</code></pre></div><p>Mon <em>payload</em> était décodé.</p>
+👍
 
   </div>
   <footer>
@@ -276,6 +261,21 @@
       <article class="mini-post">
         <section>
           
+<a href="/blog/falcosidekick-100k-pulls/" class="image featured">
+  <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/falcosidekick-100k-pulls/">Falcosidekick 100k Pulls</a></h1>
+          <time class="published" datetime="">18-02-2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
 <a href="/blog/falcosidekick-v-2-9-0-new-avatar/" class="image featured">
   <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
 </a>
@@ -303,21 +303,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-<a href="/blog/chart-xkcd/" class="image featured">
-  <img src="/img/2019/09/chart-xkcd-feature.png" alt="chart-xkcd-feature">
-</a>
-
-
-        </section>
-        <header>
-          <h1><a href="/blog/chart-xkcd/">Chart XKCD</a></h1>
-          <time class="published" datetime="">12-09-2019</time>
-        </header>
-      </article>
-      
       
         <a href="/blog/" class="button">Voir plus</a>
       
@@ -337,17 +322,17 @@
           
           <li>
             
-              <a href="/categories/go/">go<span class="count">7</span></a>
+              <a href="/categories/go/">go<span class="count">8</span></a>
             
           
           <li>
             
-              <a href="/categories/falco/">falco<span class="count">6</span></a>
+              <a href="/categories/falco/">falco<span class="count">7</span></a>
             
           
           <li>
             
-              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">6</span></a>
+              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">7</span></a>
             
           
           <li>
@@ -401,12 +386,12 @@
   
   <p class="copyright">
     
-      &copy; 2019
+      &copy; 2020
       
         Issif
       
     . <br>
-    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.58.3' target='_blank' rel='noopener'>Hugo</a>
+    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.64.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

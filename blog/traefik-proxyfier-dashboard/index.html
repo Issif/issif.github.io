@@ -16,11 +16,9 @@
   <meta name="theme-color" content="#ffffff">
 
 
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.64.1" />
   <meta itemprop="name" content="Proxifier Traefik par Traefik">
 <meta itemprop="description" content="Comment faire en sorte que Traefik proxyfie son dashboard">
-
-
 <meta itemprop="datePublished" content="2019-08-26T14:28:24&#43;02:00" />
 <meta itemprop="dateModified" content="2019-08-26T14:28:24&#43;02:00" />
 <meta itemprop="wordCount" content="321">
@@ -28,7 +26,6 @@
 
 
 <meta itemprop="keywords" content="" />
-
   <meta property="og:title" content="Proxifier Traefik par Traefik" />
 <meta property="og:description" content="Comment faire en sorte que Traefik proxyfie son dashboard" />
 <meta property="og:type" content="article" />
@@ -206,81 +203,75 @@
   
   <div class="content">
     <p><a href="https://traefik.io/"><strong>Traefik</strong></a> possède une <em>UI</em> basique qui est par défaut exposée sur un port différent. Il est possible de faire en sorte que <strong>Traefik</strong> serve lui même de proxy, cela permet :</p>
-
 <ul>
-<li>ne plus avoir à utiliser un port différent pour accéder l&rsquo;<em>UI</em>, mais un domaine classique (&rdquo;<em>traefik.mondomaine.net</em>&rdquo; par ex.)</li>
+<li>ne plus avoir à utiliser un port différent pour accéder l&rsquo;<em>UI</em>, mais un domaine classique (&quot;<em>traefik.mondomaine.net</em>&rdquo; par ex.)</li>
 <li>forcer l&rsquo;accès en http<strong>s</strong> avec en prime un certificat <a href="https://letsencrypt.org/fr/"><em>Let&rsquo;s Encrypt</em></a> automatique et gratuit</li>
 <li>permettre de rajouter une authentification, par défaut, l&rsquo;<em>UI</em> est ouverte à tout une fois activée</li>
 </ul>
-
 <p>Dans mon cas, je fais tourner <strong>Traefik</strong> dans un container, mais ça marchera pareil si vous le faîtes tourner directement sur l&rsquo;<em>host</em>, prenez juste soin de filtrer le port de l&rsquo;<em>UI</em> (<em>8080</em> par défaut) pour qu&rsquo;il n&rsquo;accepte que les connexions de la boucle local (<em>127.0.0.1</em>).</p>
-
 <p>Voilà ce qu&rsquo;il faut avoir à minima dans sa configuration <em>config.toml</em> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#75715e">################################################################</span>
+<span style="color:#75715e"># Configuration globale</span>
+<span style="color:#75715e">################################################################</span>
 
-<pre><code class="language-toml">################################################################
-# Configuration globale
-################################################################
+<span style="color:#a6e22e">defaultEntryPoints</span> = [<span style="color:#e6db74">&#34;http&#34;</span>, <span style="color:#e6db74">&#34;https&#34;</span>]
 
-defaultEntryPoints = [&quot;http&quot;, &quot;https&quot;]
+[<span style="color:#a6e22e">entryPoints</span>]
+  [<span style="color:#a6e22e">entryPoints</span>.<span style="color:#a6e22e">http</span>]
+  <span style="color:#a6e22e">address</span> = <span style="color:#e6db74">&#34;:80&#34;</span>               <span style="color:#75715e"># traefik ecoute sur le port 80</span>
+    [<span style="color:#a6e22e">entryPoints</span>.<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">redirect</span>]
+      <span style="color:#a6e22e">entryPoint</span> = <span style="color:#e6db74">&#34;https&#34;</span>      <span style="color:#75715e"># redirection http &gt; https</span>
+  [<span style="color:#a6e22e">entryPoints</span>.<span style="color:#a6e22e">https</span>]
+  <span style="color:#a6e22e">address</span> = <span style="color:#e6db74">&#34;:443&#34;</span>              <span style="color:#75715e"># traefik ecoute sur le port 443</span>
+  [<span style="color:#a6e22e">entryPoints</span>.<span style="color:#a6e22e">https</span>.<span style="color:#a6e22e">tls</span>]
+    <span style="color:#a6e22e">minVersion</span> = <span style="color:#e6db74">&#34;VersionTLS12&#34;</span> <span style="color:#75715e"># version minimum de TLS acceptee</span>
+  [<span style="color:#a6e22e">entryPoints</span>.<span style="color:#a6e22e">ui</span>]
+  <span style="color:#a6e22e">address</span>=<span style="color:#e6db74">&#34;127.0.0.1:8080&#34;</span>      <span style="color:#75715e"># on ecoute uniquement sur la boucle locale pour ce port</span>
+    [<span style="color:#a6e22e">entryPoints</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">auth</span>]
+      [<span style="color:#a6e22e">entryPoints</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">auth</span>.<span style="color:#a6e22e">basic</span>]
+        <span style="color:#a6e22e">users</span> = [<span style="color:#e6db74">&#34;XXXX:YYYY&#34;</span>]   <span style="color:#75715e"># les identifiants au format htpasswd</span>
 
-[entryPoints]
-  [entryPoints.http]
-  address = &quot;:80&quot;               # traefik ecoute sur le port 80
-    [entryPoints.http.redirect]
-      entryPoint = &quot;https&quot;      # redirection http &gt; https
-  [entryPoints.https]
-  address = &quot;:443&quot;              # traefik ecoute sur le port 443
-  [entryPoints.https.tls]
-    minVersion = &quot;VersionTLS12&quot; # version minimum de TLS acceptee
-  [entryPoints.ui]
-  address=&quot;127.0.0.1:8080&quot;      # on ecoute uniquement sur la boucle locale pour ce port
-    [entryPoints.ui.auth]
-      [entryPoints.ui.auth.basic]
-        users = [&quot;XXXX:YYYY&quot;]   # les identifiants au format htpasswd
+<span style="color:#75715e">################################################################</span>
+<span style="color:#75715e"># Configuration pour let&#39;s encrypt</span>
+<span style="color:#75715e">################################################################</span>
 
-################################################################
-# Configuration pour let's encrypt
-################################################################
+[<span style="color:#a6e22e">acme</span>]
+<span style="color:#a6e22e">email</span> = <span style="color:#e6db74">&#34;xxx@yyy.zzz&#34;</span>           <span style="color:#75715e"># votre mail pour lets encrypt</span>
+<span style="color:#a6e22e">storage</span> = <span style="color:#e6db74">&#34;/certs/acme.json&#34;</span>
+<span style="color:#a6e22e">entryPoint</span> = <span style="color:#e6db74">&#34;https&#34;</span>
+<span style="color:#a6e22e">onDemand</span> = <span style="color:#66d9ef">true</span>                 <span style="color:#75715e"># demande automatique de certificat</span>
+<span style="color:#a6e22e">acmeLogging</span> = <span style="color:#66d9ef">true</span>
+  [<span style="color:#a6e22e">acme</span>.<span style="color:#a6e22e">httpChallenge</span>]
+  <span style="color:#a6e22e">entryPoint</span> = <span style="color:#e6db74">&#34;http&#34;</span>
 
-[acme]
-email = &quot;xxx@yyy.zzz&quot;           # votre mail pour lets encrypt
-storage = &quot;/certs/acme.json&quot;
-entryPoint = &quot;https&quot;
-onDemand = true                 # demande automatique de certificat
-acmeLogging = true
-  [acme.httpChallenge]
-  entryPoint = &quot;http&quot;
+<span style="color:#75715e">################################################################</span>
+<span style="color:#75715e"># Configuration de l&#39;API de Traefik</span>
+<span style="color:#75715e">################################################################</span>
 
-################################################################
-# Configuration de l'API de Traefik
-################################################################
+[<span style="color:#a6e22e">api</span>]
+<span style="color:#a6e22e">entryPoint</span> = <span style="color:#e6db74">&#34;ui&#34;</span>               <span style="color:#75715e"># l API ecoutera sur cet entrypoint</span>
+<span style="color:#a6e22e">dashboard</span> = <span style="color:#66d9ef">true</span>
+  [<span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">statistics</span>]
+  <span style="color:#a6e22e">recentErrors</span> = <span style="color:#ae81ff">50</span>
 
-[api]
-entryPoint = &quot;ui&quot;               # l API ecoutera sur cet entrypoint
-dashboard = true
-  [api.statistics]
-  recentErrors = 50
+<span style="color:#75715e">################################################################</span>
+<span style="color:#75715e"># Configuration pour l&#39;UI de Traefik</span>
+<span style="color:#75715e">################################################################</span>
 
-################################################################
-# Configuration pour l'UI de Traefik
-################################################################
+[<span style="color:#a6e22e">file</span>]
 
-[file]
+[<span style="color:#a6e22e">frontends</span>]
+  [<span style="color:#a6e22e">frontends</span>.<span style="color:#a6e22e">ui</span>]
+  <span style="color:#a6e22e">backend</span> = <span style="color:#e6db74">&#34;ui&#34;</span>
+  <span style="color:#a6e22e">passHostHeader</span> = <span style="color:#66d9ef">true</span>
+    [<span style="color:#a6e22e">frontends</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">routes</span>.<span style="color:#a6e22e">default</span>]
+    <span style="color:#a6e22e">rule</span> = <span style="color:#e6db74">&#34;Host:ui.mondomaine.net&#34;</span> <span style="color:#75715e"># votre domaine a configurer</span>
 
-[frontends]
-  [frontends.ui]
-  backend = &quot;ui&quot;
-  passHostHeader = true
-    [frontends.ui.routes.default]
-    rule = &quot;Host:ui.mondomaine.net&quot; # votre domaine a configurer
-
-[backends]
-  [backends.ui]
-    [backends.ui.servers.default]
-      url = &quot;http://127.0.0.1:8080&quot;   # le backend a utiliser qui s avere etre l entrypoint de l API
-</code></pre>
-
-<p><em>Enjoy</em></p>
+[<span style="color:#a6e22e">backends</span>]
+  [<span style="color:#a6e22e">backends</span>.<span style="color:#a6e22e">ui</span>]
+    [<span style="color:#a6e22e">backends</span>.<span style="color:#a6e22e">ui</span>.<span style="color:#a6e22e">servers</span>.<span style="color:#a6e22e">default</span>]
+      <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;http://127.0.0.1:8080&#34;</span>   <span style="color:#75715e"># le backend a utiliser qui s avere etre l entrypoint de l API</span>
+</code></pre></div><p><em>Enjoy</em></p>
 
   </div>
   <footer>
@@ -342,6 +333,21 @@ dashboard = true
       <article class="mini-post">
         <section>
           
+<a href="/blog/falcosidekick-100k-pulls/" class="image featured">
+  <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/falcosidekick-100k-pulls/">Falcosidekick 100k Pulls</a></h1>
+          <time class="published" datetime="">18-02-2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
 <a href="/blog/falcosidekick-v-2-9-0-new-avatar/" class="image featured">
   <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
 </a>
@@ -369,21 +375,6 @@ dashboard = true
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-<a href="/blog/chart-xkcd/" class="image featured">
-  <img src="/img/2019/09/chart-xkcd-feature.png" alt="chart-xkcd-feature">
-</a>
-
-
-        </section>
-        <header>
-          <h1><a href="/blog/chart-xkcd/">Chart XKCD</a></h1>
-          <time class="published" datetime="">12-09-2019</time>
-        </header>
-      </article>
-      
       
         <a href="/blog/" class="button">Voir plus</a>
       
@@ -403,17 +394,17 @@ dashboard = true
           
           <li>
             
-              <a href="/categories/go/">go<span class="count">7</span></a>
+              <a href="/categories/go/">go<span class="count">8</span></a>
             
           
           <li>
             
-              <a href="/categories/falco/">falco<span class="count">6</span></a>
+              <a href="/categories/falco/">falco<span class="count">7</span></a>
             
           
           <li>
             
-              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">6</span></a>
+              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">7</span></a>
             
           
           <li>
@@ -467,12 +458,12 @@ dashboard = true
   
   <p class="copyright">
     
-      &copy; 2019
+      &copy; 2020
       
         Issif
       
     . <br>
-    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.58.3' target='_blank' rel='noopener'>Hugo</a>
+    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.64.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
