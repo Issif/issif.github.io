@@ -10,13 +10,52 @@
     
     
     <item>
+      <title>Cercat</title>
+      <link>https://thomas.labarussias.fr/blog/cercat/</link>
+      <pubDate>Fri, 17 Apr 2020 21:33:10 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/cercat/</guid>
+      <description>&lt;p&gt;En cette période de confinement, les &lt;em&gt;phishers&lt;/em&gt; s&amp;rsquo;en donnent à coeur joie. La question qui se pose alors est : &lt;strong&gt;Comment les détecter le plus tôt possible?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Comme les sites de &lt;em&gt;phishing&lt;/em&gt; servent souvent à récupérer des données confidentielles (n° de carte, mots de passe, etc), ils profitent de toutes les méthodes récentes pour récupérer des certificats gratuits afin de se donner une belle image avec un joli cadenas dans la barre d&amp;rsquo;URL.&lt;/p&gt;
+&lt;p&gt;Quelques recherches sur ce sujet m&amp;rsquo;a fait découvrir un superbe projet de chez &lt;strong&gt;Calidog&lt;/strong&gt; : &lt;a href=&#34;https://certstream.calidog.io/&#34;&gt;&lt;strong&gt;CertStream&lt;/strong&gt;&lt;/a&gt;. Ils mettent à disposition un flux donnant en temps réel les certificats émis par &lt;em&gt;Let&amp;rsquo;s Encrypt&lt;/em&gt;, &lt;em&gt;Cloudflare&lt;/em&gt;, &lt;em&gt;AWS&lt;/em&gt;, &amp;hellip;&lt;/p&gt;
+&lt;p&gt;Il ne reste plus qu&#39;à s&amp;rsquo;y connecter, faire une correspondance des domaines avec une &lt;em&gt;regexp&lt;/em&gt; pour avoir en temps réel, les possibles sites de &lt;em&gt;phishing&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;D&amp;rsquo;autres ont eu la même idée : &lt;a href=&#34;https://github.com/AssuranceMaladieSec/CertStreamMonitor&#34;&gt;&lt;strong&gt;CertStreamMonitor&lt;/strong&gt;&lt;/a&gt; mais les performances m&amp;rsquo;ont déçues (100% d&amp;rsquo;utilisation permanente d&amp;rsquo;un CORE) et j&amp;rsquo;ai trouvé intéressant de le faire moi-même.&lt;/p&gt;
+&lt;p&gt;Je vous présente donc &lt;strong&gt;&lt;a href=&#34;https://github.com/Issif/cercat&#34;&gt;Cercat&lt;/a&gt;&lt;/strong&gt; aka &lt;em&gt;Certificate Catcher&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Le principe est simple, le service se connecte via &lt;em&gt;websocket&lt;/em&gt; au &lt;em&gt;stream&lt;/em&gt; de &lt;strong&gt;Certstream&lt;/strong&gt;, compare le domaine certifié à une &lt;em&gt;regexp&lt;/em&gt; et si il y a correspondance, un message est posté sur &lt;strong&gt;Slack&lt;/strong&gt; :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/issif/cercat/master/screenshot.png&#34; alt=&#34;Certcat slack screenshot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;et dans les logs :&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;2020/04/14 17:29:40 [INFO]  : A certificate for &#39;www.XXXX.fr&#39; has been issued : {&amp;quot;domain&amp;quot;:&amp;quot;www.XXXX.fr&amp;quot;,&amp;quot;SAN&amp;quot;:[&amp;quot;www.XXXX.fr&amp;quot;],&amp;quot;issuer&amp;quot;:&amp;quot;Let&#39;s Encrypt&amp;quot;,&amp;quot;Addresses&amp;quot;:[&amp;quot;XX.XX.XX.183&amp;quot;,&amp;quot;XX.XX.XX.182&amp;quot;]}
+2020/04/14 17:29:41 [INFO]  : A certificate for &#39;XXXX.fr&#39; has been issued : {&amp;quot;domain&amp;quot;:&amp;quot;XXXX.fr&amp;quot;,&amp;quot;SAN&amp;quot;:[&amp;quot;mail.XXXX.fr&amp;quot;,&amp;quot;XXXX.fr&amp;quot;,&amp;quot;www.XXXX.fr&amp;quot;],&amp;quot;issuer&amp;quot;:&amp;quot;Let&#39;s Encrypt&amp;quot;,&amp;quot;Addresses&amp;quot;:[&amp;quot;XX.XX.XX.108&amp;quot;]}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;La configuration est dans le &lt;a href=&#34;https://github.com/Issif/cercat/blob/master/README.md&#34;&gt;README&lt;/a&gt; et des binaires pré-compilés sont fournis &lt;a href=&#34;https://github.com/Issif/cercat/releases&#34;&gt;ICI&lt;/a&gt; par que je suis gentil.&lt;/p&gt;
+&lt;p&gt;En faisant des tests sur les domaines en &lt;code&gt;.fr&lt;/code&gt; je suis d&amp;rsquo;ailleurs tombé sur ça, un bel exemple de  &lt;em&gt;phishing&lt;/em&gt; :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+   &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;domain&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;google-france.fr&amp;#34;&lt;/span&gt;,
+   &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;SAN&amp;#34;&lt;/span&gt;:[
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;eset.fr.nf&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;google-france.fr&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;page-accueil.info&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;www.eset.fr.nf&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;www.google-france.fr&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;www.page-accueil.info&amp;#34;&lt;/span&gt;
+   ],
+   &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;issuer&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Let&amp;#39;s Encrypt&amp;#34;&lt;/span&gt;,
+   &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;Addresses&amp;#34;&lt;/span&gt;:[
+      &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;X.X.X.24&amp;#34;&lt;/span&gt;
+   ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;En espérant que ça serve à d&amp;rsquo;autres.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Falcosidekick 100k Pulls</title>
       <link>https://thomas.labarussias.fr/blog/falcosidekick-100k-pulls/</link>
       <pubDate>Tue, 18 Feb 2020 21:55:00 +0100</pubDate>
       
       <guid>https://thomas.labarussias.fr/blog/falcosidekick-100k-pulls/</guid>
       <description>&lt;p&gt;Un petit post d&amp;rsquo;auto-promo (après des mois d&amp;rsquo;absences&amp;hellip;).&lt;/p&gt;
-&lt;p&gt;J&amp;rsquo;ai noté récemment que mon petit &lt;code&gt;falcosidekick&lt;/code&gt; a dépassé les &lt;em&gt;100000 pulls&lt;/em&gt; sur le &lt;code&gt;DockerHub&lt;/code&gt;. Je suis bluffé, surtout que je sais que des entités grosses et connues l&amp;rsquo;utilisent (je ne sais pas si je peux dire qui, dont je me tais, &lt;em&gt;sorry&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;J&amp;rsquo;ai noté récemment que mon petit &lt;code&gt;falcsidekick&lt;/code&gt; a dépassé les &lt;em&gt;100000 pulls&lt;/em&gt; sur le &lt;code&gt;DockerHub&lt;/code&gt;. Je suis bluffé, surtout que je sais que des entités grosses et connues l&amp;rsquo;utilisent (je ne sais pas si je peux dire qui, donc je me tais, &lt;em&gt;sorry&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;Un petit graphe pour montrer l&amp;rsquo;historique (la légende est illisible, mais les dates sont obtenables en survolant) :&lt;/p&gt;
 &lt;div&gt;
 &lt;svg class=&#39;line&#39;&gt;&lt;/svg&gt;

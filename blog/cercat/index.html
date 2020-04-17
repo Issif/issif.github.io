@@ -2,8 +2,8 @@
 <html lang="fr">
   <head>
   <meta charset="utf-8">
-<title>falco - Issif</title>
-<meta name="description" content="Go addict">
+<title>Cercat - Issif</title>
+<meta name="description" content="Détecter les possibles sites de phishing en temps réel">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -17,17 +17,25 @@
 
 
   <meta name="generator" content="Hugo 0.64.1" />
-  <meta itemprop="name" content="falco">
-<meta itemprop="description" content="">
-  <meta property="og:title" content="falco" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://thomas.labarussias.fr/categories/falco/" />
-<meta property="og:updated_time" content="2020-02-18T21:55:00+01:00" />
+  <meta itemprop="name" content="Cercat">
+<meta itemprop="description" content="Détecter les possibles sites de phishing en temps réel">
+<meta itemprop="datePublished" content="2020-04-17T21:33:10&#43;02:00" />
+<meta itemprop="dateModified" content="2020-04-17T21:33:10&#43;02:00" />
+<meta itemprop="wordCount" content="297">
+
+
+
+<meta itemprop="keywords" content="" />
+  <meta property="og:title" content="Cercat" />
+<meta property="og:description" content="Détecter les possibles sites de phishing en temps réel" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomas.labarussias.fr/blog/cercat/" />
+<meta property="article:published_time" content="2020-04-17T21:33:10+02:00" />
+<meta property="article:modified_time" content="2020-04-17T21:33:10+02:00" />
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="falco"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Cercat"/>
+<meta name="twitter:description" content="Détecter les possibles sites de phishing en temps réel"/>
 
   
 
@@ -61,7 +69,7 @@
       <a href="/">
         
           
-            Catégories
+            Blog
           
         
       </a>
@@ -107,8 +115,6 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/categories/falco/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         <li><a href="//github.com/issif" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
 
@@ -157,52 +163,80 @@
   
 </section>
       <main id="site-main">
-        <h1>falco</h1>
-        
-        
-            <article class="post">
+        <article class="post">
   <header>
   <div class="title">
     
-        <h2><a href="/blog/falcosidekick-100k-pulls/">Falcosidekick 100k Pulls</a></h2>
+        <h2><a href="/blog/cercat/">Cercat</a></h2>
     
     
-        <p>Plus de 100.000 pulls pour falcosidekick sur le Dockerhub</p>
+        <p>Détecter les possibles sites de phishing en temps réel</p>
     
 </div>
   <div class="meta">
-    <time class="published" datetime="2020-02-18 21:55:00 &#43;0100 CET">
-      18-02-2020
+    <time class="published" datetime="2020-04-17 21:33:10 &#43;0200 CEST">
+      17-04-2020
     </time>
     <span class="author">Issif</span>
     
-        <p>1 minutes</p>
+        <p>2 minutes</p>
     
   </div>
 </header>
 
-  
-<a href="/blog/falcosidekick-100k-pulls/" class="image featured">
-  <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
-</a>
+  <section id="socnet-share">
+    
+
+
 
 
   
-  <p>Un petit post d&rsquo;auto-promo (après des mois d&rsquo;absences&hellip;).</p>
+
+
+  </section>
+  
+
+  
+  <div class="content">
+    <p>En cette période de confinement, les <em>phishers</em> s&rsquo;en donnent à coeur joie. La question qui se pose alors est : <strong>Comment les détecter le plus tôt possible?</strong></p>
+<p>Comme les sites de <em>phishing</em> servent souvent à récupérer des données confidentielles (n° de carte, mots de passe, etc), ils profitent de toutes les méthodes récentes pour récupérer des certificats gratuits afin de se donner une belle image avec un joli cadenas dans la barre d&rsquo;URL.</p>
+<p>Quelques recherches sur ce sujet m&rsquo;a fait découvrir un superbe projet de chez <strong>Calidog</strong> : <a href="https://certstream.calidog.io/"><strong>CertStream</strong></a>. Ils mettent à disposition un flux donnant en temps réel les certificats émis par <em>Let&rsquo;s Encrypt</em>, <em>Cloudflare</em>, <em>AWS</em>, &hellip;</p>
+<p>Il ne reste plus qu'à s&rsquo;y connecter, faire une correspondance des domaines avec une <em>regexp</em> pour avoir en temps réel, les possibles sites de <em>phishing</em>.</p>
+<p>D&rsquo;autres ont eu la même idée : <a href="https://github.com/AssuranceMaladieSec/CertStreamMonitor"><strong>CertStreamMonitor</strong></a> mais les performances m&rsquo;ont déçues (100% d&rsquo;utilisation permanente d&rsquo;un CORE) et j&rsquo;ai trouvé intéressant de le faire moi-même.</p>
+<p>Je vous présente donc <strong><a href="https://github.com/Issif/cercat">Cercat</a></strong> aka <em>Certificate Catcher</em>.</p>
+<p>Le principe est simple, le service se connecte via <em>websocket</em> au <em>stream</em> de <strong>Certstream</strong>, compare le domaine certifié à une <em>regexp</em> et si il y a correspondance, un message est posté sur <strong>Slack</strong> :</p>
+<p><img src="https://raw.githubusercontent.com/issif/cercat/master/screenshot.png" alt="Certcat slack screenshot"></p>
+<p>et dans les logs :</p>
+<pre><code>2020/04/14 17:29:40 [INFO]  : A certificate for 'www.XXXX.fr' has been issued : {&quot;domain&quot;:&quot;www.XXXX.fr&quot;,&quot;SAN&quot;:[&quot;www.XXXX.fr&quot;],&quot;issuer&quot;:&quot;Let's Encrypt&quot;,&quot;Addresses&quot;:[&quot;XX.XX.XX.183&quot;,&quot;XX.XX.XX.182&quot;]}
+2020/04/14 17:29:41 [INFO]  : A certificate for 'XXXX.fr' has been issued : {&quot;domain&quot;:&quot;XXXX.fr&quot;,&quot;SAN&quot;:[&quot;mail.XXXX.fr&quot;,&quot;XXXX.fr&quot;,&quot;www.XXXX.fr&quot;],&quot;issuer&quot;:&quot;Let's Encrypt&quot;,&quot;Addresses&quot;:[&quot;XX.XX.XX.108&quot;]}
+</code></pre><p>La configuration est dans le <a href="https://github.com/Issif/cercat/blob/master/README.md">README</a> et des binaires pré-compilés sont fournis <a href="https://github.com/Issif/cercat/releases">ICI</a> par que je suis gentil.</p>
+<p>En faisant des tests sur les domaines en <code>.fr</code> je suis d&rsquo;ailleurs tombé sur ça, un bel exemple de  <em>phishing</em> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+   <span style="color:#f92672">&#34;domain&#34;</span>:<span style="color:#e6db74">&#34;google-france.fr&#34;</span>,
+   <span style="color:#f92672">&#34;SAN&#34;</span>:[
+      <span style="color:#e6db74">&#34;eset.fr.nf&#34;</span>,
+      <span style="color:#e6db74">&#34;google-france.fr&#34;</span>,
+      <span style="color:#e6db74">&#34;page-accueil.info&#34;</span>,
+      <span style="color:#e6db74">&#34;www.eset.fr.nf&#34;</span>,
+      <span style="color:#e6db74">&#34;www.google-france.fr&#34;</span>,
+      <span style="color:#e6db74">&#34;www.page-accueil.info&#34;</span>
+   ],
+   <span style="color:#f92672">&#34;issuer&#34;</span>:<span style="color:#e6db74">&#34;Let&#39;s Encrypt&#34;</span>,
+   <span style="color:#f92672">&#34;Addresses&#34;</span>:[
+      <span style="color:#e6db74">&#34;X.X.X.24&#34;</span>
+   ]
+}
+</code></pre></div><p>En espérant que ça serve à d&rsquo;autres.</p>
+<p><em>Enjoy</em></p>
+
+  </div>
   <footer>
-    <a href="/blog/falcosidekick-100k-pulls/" class="button big">Lire la suite</a>
     <ul class="stats">
   
     
     
       <li class="categories">
         <ul>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/falco">falco</a></li>
           
             
             <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9">sécurité</a></li>
@@ -216,243 +250,25 @@
 
   </footer>
 </article>
-
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/falcosidekick-v-2-9-0-new-avatar/">Falcosidekick 2.9.0 : nouvelle intégration et nouvel avatar</a></h2>
-    
-    
-        <p>Intégration d&#39;Opsgenie et un avatar avec des couleurs et une forme globale carrée</p>
-    
+<article class="post">
+<div id="comments">
+    <script src="https://utteranc.es/client.js"
+        repo='issif/issif.github.io-comments'
+        issue-term="pathname"
+        theme='github-light'
+        crossorigin="anonymous"
+        async>
+    </script>
 </div>
-  <div class="meta">
-    <time class="published" datetime="2019-10-05 10:28:13 &#43;0200 CEST">
-      05-10-2019
-    </time>
-    <span class="author">Issif</span>
-    
-        <p>1 minutes</p>
-    
-  </div>
-</header>
-
-  
-<a href="/blog/falcosidekick-v-2-9-0-new-avatar/" class="image featured">
-  <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
-</a>
-
-
-  
-  <p>Je viens de sortir la version <a href="https://github.com/falcosecurity/falcosidekick/releases/tag/2.9.0"><strong>2.9.0</strong></a> de <strong>falcosidekick</strong> et en outre un nouvel output, <a href="https://www.opsgenie.com/"><strong>Opsgenie</strong></a>, j&rsquo;ai également refait l&rsquo;avatar du projet. Il est désormais en couleurs et a une forme globale carrée, pour faciliter l&rsquo;utilisation en icône (<strong>Slack</strong>, <strong>Teams</strong>, &hellip;).</p>
-  <footer>
-    <a href="/blog/falcosidekick-v-2-9-0-new-avatar/" class="button big">Lire la suite</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/falco">falco</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-</ul>
-
-  </footer>
 </article>
 
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/falco-probes/">Falco Probes</a></h2>
-    
-    
-        <p>Falco Probes</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-09-23 23:15:46 &#43;0200 CEST">
-      23-09-2019
-    </time>
-    <span class="author">Issif</span>
-    
-        <p>1 minutes</p>
-    
-  </div>
-</header>
-
-  
-<a href="/blog/falco-probes/" class="image featured">
-  <img src="/img/main/falco-feature.png" alt="falco feature">
-</a>
-
-
-  
-  <p>Je traîne pas mal sur le <strong>slack</strong> de <a href="https://sysdig.slack.com/"><strong>sysdig</strong></a>, où on parle bien entendu de <strong>falco</strong>. Un problème très récurrent des utilisateurs est l&rsquo;existence ou non de modules <em>kernel</em> précompilés pour leurs versions de <em>kernel</em>.</p>
-  <footer>
-    <a href="/blog/falco-probes/" class="button big">Lire la suite</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/falco">falco</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9">sécurité</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/falcosidekick-v-2-8-0/">Falcosidekick 2.8.0</a></h2>
-    
-    
-        <p>release v2.8.0</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-09-11 16:00:10 &#43;0200 CEST">
-      11-09-2019
-    </time>
-    <span class="author">Issif</span>
-    
-        <p>1 minutes</p>
-    
-  </div>
-</header>
-
-  
-<a href="/blog/falcosidekick-v-2-8-0/" class="image featured">
-  <img src="/img/main/falcosidekick-feature.png" alt="falcosidekick feature">
-</a>
-
-
-  
-  <p>Nouvelle release, la <a href="https://github.com/Issif/falcosidekick/releases/tag/2.8.0"><strong>2.8.0</strong></a>, de mon proxy pour <a href="https://falco.org/"><strong>falco</strong></a>.</p>
-  <footer>
-    <a href="/blog/falcosidekick-v-2-8-0/" class="button big">Lire la suite</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/falco">falco</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9">sécurité</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-            <article class="post">
-  <header>
-  <div class="title">
-    
-        <h2><a href="/blog/falcosidekick-migre-vers-falcosecurity/">Falcosidekick fait désormais partie de l&#39;organisation Falcosecurity</a></h2>
-    
-    
-        <p>Falcosidekick devient un projet officiel de falco</p>
-    
-</div>
-  <div class="meta">
-    <time class="published" datetime="2019-08-28 11:12:35 &#43;0200 CEST">
-      28-08-2019
-    </time>
-    <span class="author">Issif</span>
-    
-        <p>1 minutes</p>
-    
-  </div>
-</header>
-
-  
-<a href="/blog/falcosidekick-migre-vers-falcosecurity/" class="image featured">
-  <img src="/img/main/falcosidekick-feature.png" alt="falcosidekick feature">
-</a>
-
-
-  
-  <p>Les mainteneurs de <strong>falco</strong>  m&rsquo;ont proposé de migrer <strong>falcosidekick</strong> au sein de l&rsquo;organisation officielle <strong>falcosecurity</strong>. Il devient donc un projet officiel 🎉😍.</p>
-  <footer>
-    <a href="/blog/falcosidekick-migre-vers-falcosecurity/" class="button big">Lire la suite</a>
-    <ul class="stats">
-  
-    
-    
-      <li class="categories">
-        <ul>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/falco">falco</a></li>
-          
-            
-            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/s%C3%A9curit%C3%A9">sécurité</a></li>
-          
-        </ul>
-      </li>
-    
-  
-  
-</ul>
-
-  </footer>
-</article>
-
-        
-        
 <div class="pagination">
   
-    <a href="#" class="disabled button big previous"><i class="fas fa-angle-left"></i></a>
+    <a href="/blog/falcosidekick-100k-pulls/" class="button big previous"><i class="fas fa-angle-left"></i> Falcosidekick 100k Pulls</a>
   
-  
-    <a href="/categories/falco/page/2/" class="button big next"><i class="fas fa-angle-right"></i></a>
   
 </div>
+
 
       </main>
       <section id="site-sidebar">
