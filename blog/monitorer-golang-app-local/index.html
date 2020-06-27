@@ -21,7 +21,7 @@
 <meta itemprop="description" content="Comment récupérer des métriques sur son application Golang tournant localement">
 <meta itemprop="datePublished" content="2020-06-27T22:18:27&#43;02:00" />
 <meta itemprop="dateModified" content="2020-06-27T22:18:27&#43;02:00" />
-<meta itemprop="wordCount" content="526">
+<meta itemprop="wordCount" content="527">
 
 
 
@@ -199,7 +199,7 @@
   
   <div class="content">
     <p>Récemment, après plusieurs jours en production, nous avons détecté au boulot que notre pod <a href="https://github.com/Issif/cercat">Cercat</a> semblait avoir une <em>memory leak</em>.</p>
-<p>Rien de complexe dans notre (ouf), cela a facilement été réglé à coups de <em>profiles Go</em> mais une question s&rsquo;est posée : <em>&ldquo;Aurais-je pu le détecter avant d&rsquo;envoyer en prod en sachant que l'évolution de la consommation mémoire était relativement lente?&quot;</em></p>
+<p>Rien de complexe dans notre cas (ouf), cela a facilement été réglé à coup de <em>profiles Go</em> mais une question s&rsquo;est posée : <em>&ldquo;Aurais-je pu le détecter avant d&rsquo;envoyer en prod en sachant que l'évolution de la consommation mémoire était relativement lente?&quot;</em></p>
 
 
 
@@ -246,7 +246,7 @@
         <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>(<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Intn</span>(<span style="color:#ae81ff">3</span>)) <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
     }
 }
-</code></pre></div><p>Le code est commenté pour comprendre à quoi servent chaque ligne.</p>
+</code></pre></div><p>Le code est commenté pour comprendre à quoi sert chaque ligne.</p>
 </li>
 <li>
 <p>On prépare la configuration de <em>Netdata</em></p>

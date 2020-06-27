@@ -16,7 +16,7 @@
       
       <guid>https://thomas.labarussias.fr/blog/monitorer-golang-app-local/</guid>
       <description>&lt;p&gt;Récemment, après plusieurs jours en production, nous avons détecté au boulot que notre pod &lt;a href=&#34;https://github.com/Issif/cercat&#34;&gt;Cercat&lt;/a&gt; semblait avoir une &lt;em&gt;memory leak&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Rien de complexe dans notre (ouf), cela a facilement été réglé à coups de &lt;em&gt;profiles Go&lt;/em&gt; mais une question s&amp;rsquo;est posée : &lt;em&gt;&amp;ldquo;Aurais-je pu le détecter avant d&amp;rsquo;envoyer en prod en sachant que l&#39;évolution de la consommation mémoire était relativement lente?&amp;quot;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Rien de complexe dans notre cas (ouf), cela a facilement été réglé à coup de &lt;em&gt;profiles Go&lt;/em&gt; mais une question s&amp;rsquo;est posée : &lt;em&gt;&amp;ldquo;Aurais-je pu le détecter avant d&amp;rsquo;envoyer en prod en sachant que l&#39;évolution de la consommation mémoire était relativement lente?&amp;quot;&lt;/em&gt;&lt;/p&gt;
 
 
 
@@ -63,7 +63,7 @@
         &lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Sleep&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Duration&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;rand&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Intn&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Second&lt;/span&gt;)
     }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Le code est commenté pour comprendre à quoi servent chaque ligne.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Le code est commenté pour comprendre à quoi sert chaque ligne.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;On prépare la configuration de &lt;em&gt;Netdata&lt;/em&gt;&lt;/p&gt;
