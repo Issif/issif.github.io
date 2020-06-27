@@ -5,10 +5,210 @@
     <description>Recent content in Categories on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Fri, 17 Apr 2020 21:33:10 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2020 22:18:27 +0200</lastBuildDate>
     
         <atom:link href="https://thomas.labarussias.fr/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Monitorer son application Go en local</title>
+      <link>https://thomas.labarussias.fr/blog/monitorer-golang-app-local/</link>
+      <pubDate>Sat, 27 Jun 2020 22:18:27 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/monitorer-golang-app-local/</guid>
+      <description>&lt;p&gt;Récemment, après plusieurs jours en production, nous avons détecté au boulot que notre pod &lt;a href=&#34;https://github.com/Issif/cercat&#34;&gt;Cercat&lt;/a&gt; semblait avoir une &lt;em&gt;memory leak&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Rien de complexe dans notre (ouf), cela a facilement été réglé à coups de &lt;em&gt;profiles Go&lt;/em&gt; mais une question s&amp;rsquo;est posée : &lt;em&gt;&amp;ldquo;Aurais-je pu le détecter avant d&amp;rsquo;envoyer en prod en sachant que l&#39;évolution de la consommation mémoire était relativement lente?&amp;quot;&lt;/em&gt;&lt;/p&gt;
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  &lt;div class=&#34;fancybox&#34;&gt;
+    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://thomas.labarussias.fr/img/2020/06/cercat-memory-leak.png&#34; data-caption=&#34;Cercat memory leak&#34;&gt;&lt;img src=&#34;https://thomas.labarussias.fr/img/2020/06/cercat-memory-leak.png&#34;&gt;&lt;/a&gt;
+    &lt;div class=&#34;caption&#34;&gt;Cercat memory leak&lt;/div&gt;
+  &lt;/div&gt;
+
+
+&lt;p&gt;Je me suis donc mis en tête d&amp;rsquo;avoir une solution clé en main pour &lt;em&gt;monitorer&lt;/em&gt; en local une application &lt;em&gt;Go&lt;/em&gt; lors de son développement.&lt;/p&gt;
+&lt;p&gt;L&amp;rsquo;idée, très simple au final, est d&amp;rsquo;utiliser une instance de &lt;a href=&#34;https://github.com/netdata/netdata&#34;&gt;Netdata&lt;/a&gt; dans un &lt;em&gt;Docker&lt;/em&gt; qui appelle l&amp;rsquo;endpoint &lt;em&gt;expvar&lt;/em&gt; de mon application &lt;em&gt;Go&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Micro tuto pour comprendre le principe :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Préparer notre application&lt;/p&gt;
+&lt;p&gt;Un micro code pour l&amp;rsquo;exemple :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; (
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;expvar&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// package pour exposer les métriques Go par défaut et notre métrique custom
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;math/rand&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;net/http&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;time&amp;#34;&lt;/span&gt;
+)
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;fake&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;expvar&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;NewFloat&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;custom.fake&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;// une métrique custom complètement fausse 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;go&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;http&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ListenAndServe&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;:1111&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;nil&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;// on démarre un serveur http sur le port 1111
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; { &lt;span style=&#34;color:#75715e&#34;&gt;// une boucle qui met à jour aléatoirement notre métrique custom
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;fake&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Set&lt;/span&gt;((&lt;span style=&#34;color:#a6e22e&#34;&gt;rand&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Float64&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;)
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Sleep&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Duration&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;rand&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Intn&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;)) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Second&lt;/span&gt;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Le code est commenté pour comprendre à quoi servent chaque ligne.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On prépare la configuration de &lt;em&gt;Netdata&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;go_expvar.conf&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;&amp;#39;golang-app&amp;#39;&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;name &lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;golang-app&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# le nom de notre app Go dans Netdata&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;url  &lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://golang-app:1111/debug/vars&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# le port est à adapter en fonction de l&amp;#39;application&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;collect_memstats&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# on active la collecte des métriques mémoires&lt;/span&gt;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;extra_charts&lt;/span&gt;: &lt;span style=&#34;color:#75715e&#34;&gt;# la collecte de notre métrique custom&lt;/span&gt;
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;id&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;custom&amp;#34;&lt;/span&gt;
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;options&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: fake
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;title&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;custom&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;units&lt;/span&gt;: no-unit
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;family&lt;/span&gt;: custom
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;context&lt;/span&gt;: expvar.custom.fake
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;chart_type&lt;/span&gt;: line
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;lines&lt;/span&gt;:
+        - {&lt;span style=&#34;color:#66d9ef&#34;&gt;expvar_key: &amp;#39;custom.fake&amp;#39;, expvar_type: float, id&lt;/span&gt;: custom_fake}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;python.d.conf&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;go_expvar&lt;/span&gt;: yes &lt;span style=&#34;color:#75715e&#34;&gt;# active le monitoring des applications Go&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On démarre le tout via &lt;em&gt;docker-compose&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker-compose.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;---
+&lt;span style=&#34;color:#66d9ef&#34;&gt;version&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;services&lt;/span&gt;:
+&lt;span style=&#34;color:#66d9ef&#34;&gt;netdata&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;image&lt;/span&gt;: netdata/netdata:latest
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;container_name&lt;/span&gt;: netdata
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;ports&lt;/span&gt;:
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;19999:19999&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;volumes&lt;/span&gt;:
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;${PWD}/python.d.conf:/etc/netdata/python.d.conf:ro&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# pour activer le monitoring des applications GO&lt;/span&gt;
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;${PWD}/go_expvar.conf:/etc/netdata/python.d/go_expvar.conf:ro&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# pour configurer la collecte des métriques des applications Go&lt;/span&gt;
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/etc/passwd:/host/etc/passwd:ro&amp;#34;&lt;/span&gt;
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/etc/group:/host/etc/group:ro&amp;#34;&lt;/span&gt;
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/proc:/host/proc:ro&amp;#34;&lt;/span&gt;
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/sys:/host/sys:ro&amp;#34;&lt;/span&gt;
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/var/run/docker.sock:/var/run/docker.sock:ro&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# pour moniter le Docker Go&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;cap_add&lt;/span&gt;:
+    - SYS_PTRACE
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;security_opt&lt;/span&gt;:
+    - apparmor:unconfined
+&lt;span style=&#34;color:#66d9ef&#34;&gt;golang-app&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;image&lt;/span&gt;: golang:alpine
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;container_name&lt;/span&gt;: golang-app
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;ports&lt;/span&gt;:
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1111:1111&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# le port d&amp;#39;écoute de notre application, à adapter&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;volumes&lt;/span&gt;:
+    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;${PWD}:/app&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;working_dir&lt;/span&gt;: /app
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;command&lt;/span&gt;: go run main.go  &lt;span style=&#34;color:#75715e&#34;&gt;# la commande pour lancer l&amp;#39;application, à adapter&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Le plus important est d&amp;rsquo;adapter le port d&#39;écoute et la commande de démarrage en fonction de votre application.&lt;/p&gt;
+&lt;p&gt;On démarre tout :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker-compose -f docker-compose.yaml up -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On vérifie que tout est bien démarré :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ docker ps
+
+CONTAINER ID        IMAGE                    COMMAND              CREATED              STATUS                        PORTS                      NAMES
+5f9a07fa2e1f        netdata/netdata:latest   &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/usr/sbin/run.sh&amp;#34;&lt;/span&gt;   About a minute ago   Up About a minute &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;healthy&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;   0.0.0.0:19999-&amp;gt;19999/tcp   netdata
+4e9d30d12bec        golang:alpine            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;go run main.go&amp;#34;&lt;/span&gt;     &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; days ago           Up About a minute             0.0.0.0:1111-&amp;gt;1111/tcp     golang-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;L&amp;rsquo;instance &lt;em&gt;Netdata&lt;/em&gt; est accessible via &lt;a href=&#34;http://localhost:19999&#34;&gt;http://localhost:19999&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Après quelques secondes on obtient nos métriques.&lt;/p&gt;
+&lt;p&gt;Les métriques du container de notre application :&lt;/p&gt;
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  &lt;div class=&#34;fancybox&#34;&gt;
+    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://thomas.labarussias.fr/img/2020/06/netdata_golang_1.png&#34; data-caption=&#34;Netdata Golang container&#34;&gt;&lt;img src=&#34;https://thomas.labarussias.fr/img/2020/06/netdata_golang_1.png&#34;&gt;&lt;/a&gt;
+    &lt;div class=&#34;caption&#34;&gt;Netdata Golang container&lt;/div&gt;
+  &lt;/div&gt;
+
+
+&lt;p&gt;Les métriques &lt;em&gt;expvar&lt;/em&gt; de notre application :&lt;/p&gt;
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  &lt;div class=&#34;fancybox&#34;&gt;
+    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://thomas.labarussias.fr/img/2020/06/netdata_golang_2.png&#34; data-caption=&#34;Netdata Golang container&#34;&gt;&lt;img src=&#34;https://thomas.labarussias.fr/img/2020/06/netdata_golang_2.png&#34;&gt;&lt;/a&gt;
+    &lt;div class=&#34;caption&#34;&gt;Netdata Golang container&lt;/div&gt;
+  &lt;/div&gt;
+
+
+&lt;p&gt;Notre métrique custom :&lt;/p&gt;
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  &lt;div class=&#34;fancybox&#34;&gt;
+    &lt;a data-fancybox=&#34;Screenshot&#34; href=&#34;https://thomas.labarussias.fr/img/2020/06/netdata_golang_3.png&#34; data-caption=&#34;Netdata Golang container&#34;&gt;&lt;img src=&#34;https://thomas.labarussias.fr/img/2020/06/netdata_golang_3.png&#34;&gt;&lt;/a&gt;
+    &lt;div class=&#34;caption&#34;&gt;Netdata Golang container&lt;/div&gt;
+  &lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mettre à jour notre application&lt;/p&gt;
+&lt;p&gt;C&amp;rsquo;est très simple, il suffit de redémarrer le container &lt;em&gt;Go&lt;/em&gt; :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ docker restart 4e9d30d12bec
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Cercat</title>

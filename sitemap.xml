@@ -4,21 +4,36 @@
   
   <url>
     <loc>https://thomas.labarussias.fr/blog/</loc>
-    <lastmod>2020-04-17T21:33:10+02:00</lastmod>
+    <lastmod>2020-06-27T22:18:27+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://thomas.labarussias.fr/categories/</loc>
-    <lastmod>2020-04-17T21:33:10+02:00</lastmod>
+    <lastmod>2020-06-27T22:18:27+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://thomas.labarussias.fr/blog/cercat/</loc>
-    <lastmod>2020-04-17T21:33:10+02:00</lastmod>
+    <loc>https://thomas.labarussias.fr/categories/go/</loc>
+    <lastmod>2020-06-27T22:18:27+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://thomas.labarussias.fr/</loc>
+    <lastmod>2020-06-27T22:18:27+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/blog/monitorer-golang-app-local/</loc>
+    <lastmod>2020-06-27T22:18:27+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/categories/monitoring/</loc>
+    <lastmod>2020-06-27T22:18:27+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thomas.labarussias.fr/blog/cercat/</loc>
     <lastmod>2020-04-17T21:33:10+02:00</lastmod>
   </url>
   
@@ -34,11 +49,6 @@
   
   <url>
     <loc>https://thomas.labarussias.fr/blog/falcosidekick-100k-pulls/</loc>
-    <lastmod>2020-02-18T21:55:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://thomas.labarussias.fr/categories/go/</loc>
     <lastmod>2020-02-18T21:55:00+01:00</lastmod>
   </url>
   

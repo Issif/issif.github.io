@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+  <meta charset="utf-8">
+<title>Monitorer son application Go en local - Issif</title>
+<meta name="description" content="Comment récupérer des métriques sur son application Golang tournant localement">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png?v=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png?v=1">
+  <link rel="manifest" href="/favicon/site.webmanifest?v=1">
+  
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+
+  <meta name="generator" content="Hugo 0.64.1" />
+  <meta itemprop="name" content="Monitorer son application Go en local">
+<meta itemprop="description" content="Comment récupérer des métriques sur son application Golang tournant localement">
+<meta itemprop="datePublished" content="2020-06-27T22:18:27&#43;02:00" />
+<meta itemprop="dateModified" content="2020-06-27T22:18:27&#43;02:00" />
+<meta itemprop="wordCount" content="526">
+
+
+
+<meta itemprop="keywords" content="" />
+  <meta property="og:title" content="Monitorer son application Go en local" />
+<meta property="og:description" content="Comment récupérer des métriques sur son application Golang tournant localement" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://thomas.labarussias.fr/blog/monitorer-golang-app-local/" />
+<meta property="article:published_time" content="2020-06-27T22:18:27+02:00" />
+<meta property="article:modified_time" content="2020-06-27T22:18:27+02:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Monitorer son application Go en local"/>
+<meta name="twitter:description" content="Comment récupérer des métriques sur son application Golang tournant localement"/>
+
+  
+
+  <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
+  
+    
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+      
+      
+      <link rel="stylesheet" href="/css/main.min.e25bd28619877b6db95b4bb0d84aada96f31ca55d4e0ac23b576470df37a8f85.css" integrity="sha256-4lvShhmHe225W0uw2EqtqW8xylXU4KwjtXZHDfN6j4U=">
+      <link rel="stylesheet" href="/css/add-on.css">
+    
+  
+  
+  
+  
+  
+</head>
+
+  <body>
+    
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu">
+      
+        <a href="/" class="link"><i class="fas fa-home">&nbsp;</i>Accueil</a>
+      
+        <a href="/categories/" class="link"><i class="fas fa-sitemap">&nbsp;</i>Catégories</a>
+      
+        <a href="https://github.com/issif" class="link"><i class="fas fa-tools">&nbsp;</i>Projets</a>
+      
+        <a href="/about/" class="link"><i class="fas fa-id-card">&nbsp;</i>A propos</a>
+      
+        <a href="/contact/" class="link"><i class="far fa-envelope">&nbsp;</i>Contact</a>
+      
+        <a href="/index.xml" class="link"><i class="fas fa-rss">&nbsp;</i>RSS</a>
+      
+      
+      
+
+    </menu>
+    
+
+    
+    
+    <a href="#site-nav" class="nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro">
+  <a href="/"><img src="/img/main/logo.png" class="circle" width="85px" alt="Pouet" /></a>
+  <header>
+    
+  </header>
+  <main>
+    <p>Wake me up before you code Go!</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/issif" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <li><a href="/contact" title="Email" class="far fa-envelope"></a></li>
+      </ul>
+    </footer>
+  
+</section>
+      <main id="site-main">
+        <article class="post">
+  <header>
+  <div class="title">
+    
+        <h2><a href="/blog/monitorer-golang-app-local/">Monitorer son application Go en local</a></h2>
+    
+    
+        <p>Comment récupérer des métriques sur son application Golang tournant localement</p>
+    
+</div>
+  <div class="meta">
+    <time class="published" datetime="2020-06-27 22:18:27 &#43;0200 CEST">
+      27-06-2020
+    </time>
+    <span class="author">Issif</span>
+    
+        <p>3 minutes</p>
+    
+  </div>
+</header>
+
+  <section id="socnet-share">
+    
+
+
+
+
+  
+
+
+  </section>
+  
+
+  
+  <div class="content">
+    <p>Récemment, après plusieurs jours en production, nous avons détecté au boulot que notre pod <a href="https://github.com/Issif/cercat">Cercat</a> semblait avoir une <em>memory leak</em>.</p>
+<p>Rien de complexe dans notre (ouf), cela a facilement été réglé à coups de <em>profiles Go</em> mais une question s&rsquo;est posée : <em>&ldquo;Aurais-je pu le détecter avant d&rsquo;envoyer en prod en sachant que l'évolution de la consommation mémoire était relativement lente?&quot;</em></p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Screenshot" href="/img/2020/06/cercat-memory-leak.png" data-caption="Cercat memory leak"><img src="/img/2020/06/cercat-memory-leak.png"></a>
+    <div class="caption">Cercat memory leak</div>
+  </div>
+
+
+<p>Je me suis donc mis en tête d&rsquo;avoir une solution clé en main pour <em>monitorer</em> en local une application <em>Go</em> lors de son développement.</p>
+<p>L&rsquo;idée, très simple au final, est d&rsquo;utiliser une instance de <a href="https://github.com/netdata/netdata">Netdata</a> dans un <em>Docker</em> qui appelle l&rsquo;endpoint <em>expvar</em> de mon application <em>Go</em>.</p>
+<p>Micro tuto pour comprendre le principe :</p>
+<ol>
+<li>
+<p>Préparer notre application</p>
+<p>Un micro code pour l&rsquo;exemple :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;expvar&#34;</span> <span style="color:#75715e">// package pour exposer les métriques Go par défaut et notre métrique custom
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;math/rand&#34;</span>
+    <span style="color:#e6db74">&#34;net/http&#34;</span>
+    <span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">fake</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">expvar</span>.<span style="color:#a6e22e">NewFloat</span>(<span style="color:#e6db74">&#34;custom.fake&#34;</span>) <span style="color:#75715e">// une métrique custom complètement fausse 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;:1111&#34;</span>, <span style="color:#66d9ef">nil</span>) <span style="color:#75715e">// on démarre un serveur http sur le port 1111
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> { <span style="color:#75715e">// une boucle qui met à jour aléatoirement notre métrique custom
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">fake</span>.<span style="color:#a6e22e">Set</span>((<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Float64</span>() <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">5</span>)
+        <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>(<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">Intn</span>(<span style="color:#ae81ff">3</span>)) <span style="color:#f92672">*</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+    }
+}
+</code></pre></div><p>Le code est commenté pour comprendre à quoi servent chaque ligne.</p>
+</li>
+<li>
+<p>On prépare la configuration de <em>Netdata</em></p>
+<p><code>go_expvar.conf</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">&#39;golang-app&#39;</span>:
+  <span style="color:#66d9ef">name </span>: <span style="color:#e6db74">&#39;golang-app&#39;</span> <span style="color:#75715e"># le nom de notre app Go dans Netdata</span>
+  <span style="color:#66d9ef">url  </span>: <span style="color:#e6db74">&#39;http://golang-app:1111/debug/vars&#39;</span> <span style="color:#75715e"># le port est à adapter en fonction de l&#39;application</span>
+  <span style="color:#66d9ef">collect_memstats</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e"># on active la collecte des métriques mémoires</span>
+  <span style="color:#66d9ef">extra_charts</span>: <span style="color:#75715e"># la collecte de notre métrique custom</span>
+    - <span style="color:#66d9ef">id</span>: <span style="color:#e6db74">&#34;custom&#34;</span>
+      <span style="color:#66d9ef">options</span>:
+        <span style="color:#66d9ef">name</span>: fake
+        <span style="color:#66d9ef">title</span>: <span style="color:#e6db74">&#34;custom&#34;</span>
+        <span style="color:#66d9ef">units</span>: no-unit
+        <span style="color:#66d9ef">family</span>: custom
+        <span style="color:#66d9ef">context</span>: expvar.custom.fake
+        <span style="color:#66d9ef">chart_type</span>: line
+      <span style="color:#66d9ef">lines</span>:
+        - {<span style="color:#66d9ef">expvar_key: &#39;custom.fake&#39;, expvar_type: float, id</span>: custom_fake}
+</code></pre></div><p><code>python.d.conf</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">go_expvar</span>: yes <span style="color:#75715e"># active le monitoring des applications Go</span>
+</code></pre></div></li>
+<li>
+<p>On démarre le tout via <em>docker-compose</em></p>
+<p><code>docker-compose.yaml</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+<span style="color:#66d9ef">services</span>:
+<span style="color:#66d9ef">netdata</span>:
+    <span style="color:#66d9ef">image</span>: netdata/netdata:latest
+    <span style="color:#66d9ef">container_name</span>: netdata
+    <span style="color:#66d9ef">ports</span>:
+    - <span style="color:#e6db74">&#34;19999:19999&#34;</span>
+    <span style="color:#66d9ef">volumes</span>:
+    - <span style="color:#e6db74">&#34;${PWD}/python.d.conf:/etc/netdata/python.d.conf:ro&#34;</span> <span style="color:#75715e"># pour activer le monitoring des applications GO</span>
+    - <span style="color:#e6db74">&#34;${PWD}/go_expvar.conf:/etc/netdata/python.d/go_expvar.conf:ro&#34;</span> <span style="color:#75715e"># pour configurer la collecte des métriques des applications Go</span>
+    - <span style="color:#e6db74">&#34;/etc/passwd:/host/etc/passwd:ro&#34;</span>
+    - <span style="color:#e6db74">&#34;/etc/group:/host/etc/group:ro&#34;</span>
+    - <span style="color:#e6db74">&#34;/proc:/host/proc:ro&#34;</span>
+    - <span style="color:#e6db74">&#34;/sys:/host/sys:ro&#34;</span>
+    - <span style="color:#e6db74">&#34;/var/run/docker.sock:/var/run/docker.sock:ro&#34;</span> <span style="color:#75715e"># pour moniter le Docker Go</span>
+    <span style="color:#66d9ef">cap_add</span>:
+    - SYS_PTRACE
+    <span style="color:#66d9ef">security_opt</span>:
+    - apparmor:unconfined
+<span style="color:#66d9ef">golang-app</span>:
+    <span style="color:#66d9ef">image</span>: golang:alpine
+    <span style="color:#66d9ef">container_name</span>: golang-app
+    <span style="color:#66d9ef">ports</span>:
+    - <span style="color:#e6db74">&#34;1111:1111&#34;</span> <span style="color:#75715e"># le port d&#39;écoute de notre application, à adapter</span>
+    <span style="color:#66d9ef">volumes</span>:
+    - <span style="color:#e6db74">&#34;${PWD}:/app&#34;</span>
+    <span style="color:#66d9ef">working_dir</span>: /app
+    <span style="color:#66d9ef">command</span>: go run main.go  <span style="color:#75715e"># la commande pour lancer l&#39;application, à adapter</span>
+</code></pre></div><p>Le plus important est d&rsquo;adapter le port d'écoute et la commande de démarrage en fonction de votre application.</p>
+<p>On démarre tout :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose -f docker-compose.yaml up -d
+</code></pre></div><p>On vérifie que tout est bien démarré :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker ps
+
+CONTAINER ID        IMAGE                    COMMAND              CREATED              STATUS                        PORTS                      NAMES
+5f9a07fa2e1f        netdata/netdata:latest   <span style="color:#e6db74">&#34;/usr/sbin/run.sh&#34;</span>   About a minute ago   Up About a minute <span style="color:#f92672">(</span>healthy<span style="color:#f92672">)</span>   0.0.0.0:19999-&gt;19999/tcp   netdata
+4e9d30d12bec        golang:alpine            <span style="color:#e6db74">&#34;go run main.go&#34;</span>     <span style="color:#ae81ff">5</span> days ago           Up About a minute             0.0.0.0:1111-&gt;1111/tcp     golang-app
+</code></pre></div><p>L&rsquo;instance <em>Netdata</em> est accessible via <a href="http://localhost:19999">http://localhost:19999</a>.</p>
+<p>Après quelques secondes on obtient nos métriques.</p>
+<p>Les métriques du container de notre application :</p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Screenshot" href="/img/2020/06/netdata_golang_1.png" data-caption="Netdata Golang container"><img src="/img/2020/06/netdata_golang_1.png"></a>
+    <div class="caption">Netdata Golang container</div>
+  </div>
+
+
+<p>Les métriques <em>expvar</em> de notre application :</p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Screenshot" href="/img/2020/06/netdata_golang_2.png" data-caption="Netdata Golang container"><img src="/img/2020/06/netdata_golang_2.png"></a>
+    <div class="caption">Netdata Golang container</div>
+  </div>
+
+
+<p>Notre métrique custom :</p>
+
+
+
+  
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="fancybox">
+    <a data-fancybox="Screenshot" href="/img/2020/06/netdata_golang_3.png" data-caption="Netdata Golang container"><img src="/img/2020/06/netdata_golang_3.png"></a>
+    <div class="caption">Netdata Golang container</div>
+  </div>
+
+
+</li>
+<li>
+<p>Mettre à jour notre application</p>
+<p>C&rsquo;est très simple, il suffit de redémarrer le container <em>Go</em> :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker restart 4e9d30d12bec
+</code></pre></div></li>
+</ol>
+<p><em>Enjoy</em></p>
+
+  </div>
+  <footer>
+    <ul class="stats">
+  
+    
+    
+      <li class="categories">
+        <ul>
+          
+            
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/go">go</a></li>
+          
+            
+            <li><a class="article-category-link" href="https://thomas.labarussias.fr/categories/monitoring">monitoring</a></li>
+          
+        </ul>
+      </li>
+    
+  
+  
+</ul>
+
+  </footer>
+</article>
+<article class="post">
+<div id="comments">
+    <script src="https://utteranc.es/client.js"
+        repo='issif/issif.github.io-comments'
+        issue-term="pathname"
+        theme='github-light'
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+</article>
+
+<div class="pagination">
+  
+    <a href="/blog/cercat/" class="button big previous"><i class="fas fa-angle-left"></i> Cercat</a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Posts récents</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/monitorer-golang-app-local/">Monitorer son application Go en local</a></h1>
+          <time class="published" datetime="">27-06-2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h1><a href="/blog/cercat/">Cercat</a></h1>
+          <time class="published" datetime="">17-04-2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+<a href="/blog/falcosidekick-100k-pulls/" class="image featured">
+  <img src="/img/main/falcosidekick-color-feature.png" alt="falcosidekick feature">
+</a>
+
+
+        </section>
+        <header>
+          <h1><a href="/blog/falcosidekick-100k-pulls/">Falcosidekick 100k Pulls</a></h1>
+          <time class="published" datetime="">18-02-2020</time>
+        </header>
+      </article>
+      
+      
+        <a href="/blog/" class="button">Voir plus</a>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Catégories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/go/">go<span class="count">9</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/s%C3%A9curit%C3%A9/">sécurité<span class="count">8</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/falco/">falco<span class="count">7</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/chart/">chart<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/hugo/">hugo<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/javascript/">javascript<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/kubernetes/">kubernetes<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/monitoring/">monitoring<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/traefik/">traefik<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/web/">web<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  <section id="mini-bio">
+    <header>
+      <h1>A propos</h1>
+    </header>
+    <p>Du Go, de l'AWS et autres par un SRE/FinOps</p>
+    <footer>
+      <a href="/about" class="button">En savoir plus</a>
+    </footer>
+  </section>
+</section>
+
+      <footer id="site-footer">
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Issif
+      
+    . <br>
+    Thème : <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>Un <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>portage de HTML5 UP</a> | Propulsé par <a href='https://gohugo.io/' title='0.64.1' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+<script data-goatcounter="https://stats.labarussias.fr/count"
+        async src="//stats.labarussias.fr/count.js"></script>
+
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/htmlbars.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/scss.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/go.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src=/js/util.js></script>
+  <script src=/js/main.js></script>
+  <script src=/js/add-on.js></script>
+  
+
+
+
+    </div>
+  </body>
+</html>
