@@ -5,10 +5,26 @@
     <description>Recent content in falco on Issif</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Tue, 18 Feb 2020 21:55:00 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 06 Apr 2021 12:02:20 +0200</lastBuildDate>
     
         <atom:link href="https://thomas.labarussias.fr/categories/falco/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Falco: Détection et réaction aux menaces dans Kubernetes</title>
+      <link>https://thomas.labarussias.fr/blog/cncf-meetup-paris-mars-2021/</link>
+      <pubDate>Tue, 06 Apr 2021 12:02:20 +0200</pubDate>
+      
+      <guid>https://thomas.labarussias.fr/blog/cncf-meetup-paris-mars-2021/</guid>
+      <description>&lt;p&gt;J&amp;rsquo;ai enregistré il y a quelques jours une présentation traitant de &lt;code&gt;falco&lt;/code&gt; et &lt;code&gt;falcosidekick&lt;/code&gt; pour un Meetup CNCF Paris. J&amp;rsquo;y aborde ce que sont &lt;code&gt;falco&lt;/code&gt; et &lt;code&gt;falcosidekick&lt;/code&gt; et je montre comment on peut se servir des &lt;em&gt;outputs&lt;/em&gt; de &lt;code&gt;falcosidekick&lt;/code&gt; pour réagir en cas de détection de comportements suspects.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/UCXyHRhPbdg?start=2138&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Enjoy&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Monitorer son application Go en local</title>
