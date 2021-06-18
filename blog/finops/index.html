@@ -286,12 +286,12 @@ Pas très parlant au demeurant, on s&rsquo;attend plus à de la comptabilité qu
 <p>Les 3 s&rsquo;influencent bien évidemment mutuellement.</p>
 <p>Par exemples:</p>
 <ul>
-<li>Si la <strong>HA</strong> est un critères dominante, les coûts vont forcément grimper et les performances peuvent baisser <em>(multi-régions, multi-cloud)</em>.</li>
+<li>Si la <strong>HA</strong> est un critère dominante, les coûts vont forcément grimper et les performances peuvent baisser <em>(multi-régions, multi-cloud)</em>.</li>
 <li>Si on privilégie les <strong>performances</strong>, des machines plus grosses seront à payer mais la <strong>HA</strong> pourra être sacrifiée également <em>(j&rsquo;ai eu un client qui faisait tout tourner sur une seule AZ AWS car les latences entre les datacenters AWS avaient un impact sur sa grille de calcul)</em>.</li>
 <li>Si on cherche absolument à baisser les coûts, on sacrifiera les <strong>performances</strong> et/ou la <strong>haute-disponibilité</strong>.</li>
 </ul>
 <h3 id="un-autre-critère-à-prendre-en-compte-la-sécurité">Un autre critère à prendre en compte: la Sécurité</h3>
-<p>J&rsquo;ai volontairement omis de rajouter ce 4ème critère dans la liste précédente, car il est particulier et à toute son importance. Il impacte potentiellement les 3 autres critères et s&rsquo;inscrit dans une cadre plus important très souvent impossible à négliger (<em>PCI-DSS</em>, <em>HADS</em>, etc). Il faut donc veiller à ce que les recommandations s&rsquo;inscrivent dans les bonnes pratiques de sécurité, voire dans le cadre de la loi.</p>
+<p>J&rsquo;ai volontairement omis de rajouter ce 4ème critère dans la liste précédente, car il est particulier et à toute son importance. Il impacte potentiellement les 3 autres critères et s&rsquo;inscrit dans un cadre plus important très souvent impossible à négliger (<em>PCI-DSS</em>, <em>HADS</em>, etc). Il faut donc veiller à ce que les recommandations s&rsquo;inscrivent dans les bonnes pratiques de sécurité, voire dans le cadre de la loi.</p>
 <h3 id="ajuster-ses-critères">Ajuster ses critères</h3>
 <p>Il ressort de tout cela une bonne nouvelle, c&rsquo;est que nous sommes dans le cadre d&rsquo;une plateforme <em>Cloud</em>, qui vient avec ses contraintes mais aussi ses avantages, avec en tête de la liste la flexibilité.</p>
 <p>J&rsquo;ai mentionné précédemment que tout l&rsquo;art du <em>FinOps</em> était de trouver le bon dosage entre les <em>perfs</em>, la <em>HA</em> et les <em>coûts</em>, et ce qu&rsquo;il y a de <em>magique</em> avec le <em>Cloud</em>, c&rsquo;est que ce dosage n&rsquo;est pas voué à être immuable et universel. La souplesse des <em>Cloud Providers</em> permet d&rsquo;ajuster la balance comme on le souhaite et quand on le souhaite.</p>
@@ -405,7 +405,7 @@ Pas très parlant au demeurant, on s&rsquo;attend plus à de la comptabilité qu
 
 
 <h2 id="la-métrologie">La Métrologie</h2>
-<p>Tous les <em>Cloud Providers</em> fournissent leurs propres solutions de métrologie, plus ou moins avancée. Dans le cas d&rsquo;AWS, la solution s&rsquo;appelle <em>Cloudwatch</em>. Bien que pratiques, il est nécessaire, pour évaluer le bon usage des ressources, d&rsquo;avoir son propre système de métrologie, avec une granularité plus fine, mais surtout plus de métriques.
+<p>Tous les <em>Cloud Providers</em> fournissent leurs propres solutions de métrologie, plus ou moins avancées. Dans le cas d&rsquo;AWS, la solution s&rsquo;appelle <em>Cloudwatch</em>. Bien que pratiques, il est nécessaire, pour évaluer le bon usage des ressources, d&rsquo;avoir son propre système de métrologie, avec une granularité plus fine, mais surtout plus de métriques.
 Prenons le cas de l&rsquo;utilisation CPU, qui est certes rarement un facteur limitant sur des services Web, l&rsquo;utilisation de la mémoire ou les IO étant plus à suivre. Vous n&rsquo;avez aucune information sur les contextes d&rsquo;exécution (<em>user</em>, <em>system</em>, <em>steal</em>, <em>iowait</em>, &hellip;).
 Dans le cas de la RAM, votre <em>Cloud Provider</em> ne vous fournira pas de détails sur son utilisation, difficile de juger en l'état de la pertinence de sa taille pour vos besoins.</p>
 <h2 id="beaucoup-dactions-possibles">Beaucoup d&rsquo;actions possibles</h2>
@@ -422,7 +422,7 @@ Dans le cas de la RAM, votre <em>Cloud Provider</em> ne vous fournira pas de dé
 <p>La première action à laquelle on pense, est bien évidemment de réduire les gâchis. La flexibilité du <em>Cloud</em> amenant souvent à créer puis laisser traîner des ressources dans un coin.</p>
 <p>Voici une liste de quelques gâchis communs:</p>
 <ul>
-<li><em>Snapshots anciens</em>: Plusieurs cas de figures, soit ce sont des <em>Snapshots</em> pour des <em>AMI</em> obsolètes, soit de volumes <em>EBS</em> n&rsquo;existant plus. Il se peut que ce soit de vieux <em>Snapshots</em> d&rsquo;<em>EBS</em> encore en fonctionnement, dans ce cas, comme ils sont sauvegardés de manière incrémentale, leurs suppressions entraînera un gain moins important sur la facture, les plus récents ayant toujours besoin d&rsquo;une référence.</li>
+<li><em>Snapshots anciens</em>: Plusieurs cas de figures, soit ce sont des <em>Snapshots</em> pour des <em>AMI</em> obsolètes, soit de volumes <em>EBS</em> n&rsquo;existant plus. Il se peut que ce soit de vieux <em>Snapshots</em> d&rsquo;<em>EBS</em> encore en fonctionnement, dans ce cas, comme ils sont sauvegardés de manière incrémentale, leurs suppressions entraîneront un gain moins important sur la facture, les plus récents ayant toujours besoin d&rsquo;une référence.</li>
 <li><em>AMI Anciennes</em>: Sauf si cela s&rsquo;avère vraiment nécessaire, il n&rsquo;est pas utile de garder de vieilles <em>AMI</em>, avec des systèmes et des paquets obsolètes. Leurs suppressions ne font rien gagner à proprement parlé, mais libèrent des <em>Snapshots</em> qui eux peuvent ensuite être supprimés.</li>
 <li><em>EIP détachées</em>: Le gain est minime, mais si vraiment elles ne servent à rien, autant les libérer.</li>
 <li><em>EBS détachés</em>: Cela vient souvent de la suppression d&rsquo;<em>Instances</em> sans suppression des volumes qui les utilisaient. Si en plus il y avait de l&rsquo;<em>AutoScaling</em> d&rsquo;actif, les volumes peuvent vite monter.</li>
@@ -432,7 +432,7 @@ Dans le cas de la RAM, votre <em>Cloud Provider</em> ne vous fournira pas de dé
 <li><em>EC2 stoppées depuis longtemps</em>: Le <em>compute</em> n&rsquo;est pas payé dans ce cas, seul le stockage, cela peut être légitime ou non. A vous de voir.</li>
 <li><em>Buckets S3 avec des objets de type Reduced Redundancy Storage Class</em>: AWS a déprécié ce type d&rsquo;objet, en le rendant légèrement plus chère d&rsquo;un millième que le type <em>Standard</em>, sur des Po voire To, cela  vite (histoire vécue avec une plateforme de streaming de musique)</li>
 <li><em>Buckets S3 Buckets qui sont Publics mais pas derrière une distribution CloudFront</em>: Rien que le fait de sortir sur Internet à travers une distribution <em>Cloudfront</em> réduit les coûts de bande passante, cache activé ou non. Ceci est valable dans tous les cas, devant <code>xLB</code> ou <code>EC2</code>.</li>
-<li><em>RDS sans connexion depuis longtemps</em>: Si la base ne sert que de temps en temps, il est toujours possible de l'éteindre (pour 7j maximum, ensuite il faut éteindre de nouveau).</li>
+<li><em>RDS sans connexion depuis longtemps</em>: Si la base ne sert que de temps en temps, il est toujours possible de l'éteindre (pour 7j maximum, ensuite il faudra éteindre de nouveau).</li>
 <li><em>RDS utilisant du PIOPS inutile</em>: Pour chaque GB de <em>GP2/3</em>, <em>AWS</em> assure un plancher de 3 IOPS, ce qui implique qu&rsquo;avec 350GB, vous avez plus (1050 IOPS) que les 1000 IOPS demandés à être payés en minimum pour le stockage <em>PIOPS</em>, et ce pour beaucoup moins cher.</li>
 </ul>
 <p>Pour vous aider à identifier ces éléments, l&rsquo;<em>API</em> et les métriques en votre possession seront très utiles.</p>
