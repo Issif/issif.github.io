@@ -21,7 +21,7 @@
 <meta itemprop="description" content="Ce que j&#39;ai tiré de mon expérience de FinOps">
 <meta itemprop="datePublished" content="2021-06-17T12:00:00&#43;02:00" />
 <meta itemprop="dateModified" content="2021-06-17T12:00:00&#43;02:00" />
-<meta itemprop="wordCount" content="5755">
+<meta itemprop="wordCount" content="5774">
 
 
 
@@ -250,7 +250,7 @@ Avant d&rsquo;oublier ce que je sais, je me suis dit qu&rsquo;il serait peut-êt
 <li><a href="#utiliser-les-services-manag%C3%A9s">Utiliser les services managés</a></li>
 <li><a href="#mettre-en-place-des-outils-des-proc%C3%A9dures-des-formations">Mettre en place des outils, des procédures, des formations</a></li>
 <li><a href="#architecturer-pour-r%C3%A9duire-les-co%C3%BBts">Architecturer pour réduire les coûts</a></li>
-<li><a href="#politiques-de-scale-inout">Politiques de Scale In/Out</a></li>
+<li><a href="#politiqes-de-scale-inout">Politiqes de Scale In/Out</a></li>
 <li><a href="#r%C3%A9servations--saving-plans">Réservations / Saving Plans</a></li>
 <li><a href="#spot-instances">Spot Instances</a></li>
 <li><a href="#organisation-des-comptes">Organisation des comptes</a></li>
@@ -465,7 +465,7 @@ Un volet à ne pas négliger à cette étape (à toutes en fait), est de former 
 <li>utiliser des <em>ALB</em> devant les <em>Lambda</em> et non des <em>API Gateway</em></li>
 </ul>
 <p>Il faut garder à l&rsquo;esprit encore une fois, que toutes les actions ont des coûts <em>Indirects</em> (JH pour migrer le code d&rsquo;une solution technique à une autre, formations, etc), et peuvent vous &ldquo;verrouiller&rdquo; chez un <em>Cloud Provider</em>, on touche là, à la politique de l&rsquo;entreprise.</p>
-<h3 id="politiques-de-scale-inout">Politiques de Scale In/Out</h3>
+<h3 id="politiqes-de-scale-inout">Politiqes de Scale In/Out</h3>
 <p>La capacité d&rsquo;adapter la flotte de machines à la charge est une fonctionnalité de base, c&rsquo;est presque la raison première de l&rsquo;existence du <em>Cloud</em>. Avec le temps, que ce soit en natif ou via des fonctions externes, on peut piloter les groupes d&rsquo;<em>AutoScaling</em> pour faire beaucoup de choses comme:</p>
 <ul>
 <li>Retirer tout ou partie des machines en dehors des heures ouvrées</li>
@@ -518,14 +518,15 @@ Les usages S3 sont respectivement:</p>
 </ul>
 <p>Si les comptes étaient facturés séparément, il devraient:</p>
 <ul>
-<li>compte A: <code>30To x 0,024$/GB = $720</code></li>
-<li>compte B: <code>40To x 0,024$/GB = $960</code></li>
+<li>compte A: <code>40To x 0,024$/GB = $960</code></li>
+<li>compte B: <code>30To x 0,024$/GB = $720</code></li>
 <li>total: <code>$1680</code></li>
 </ul>
 <p>Avec les Blended Costs, le compte Z consolidant le tout paiera en fait:</p>
 <ul>
 <li><code>50To x 0,024$/GB + 20To x 0,023$/GB = $1620</code></li>
 </ul>
+<p>Le principe sous-jacent étant que pour S3, en eu-west-3, les 50 premiers To valent <code>0,024$/GB</code> et <code>0,023$/GB</code> au delà.</p>
 <p>On a donc une économie de $60, sans aucune action autre qu&rsquo;avoir lié les comptes A et B à Z.</p>
 </blockquote>
 <p>(voir <a href="https://aws.amazon.com/fr/s3/pricing/">ICI</a> pour les tarifs de <em>S3</em>)</p>
